@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8682973657917607173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8682973657917607172}
+  - component: {fileID: 8682973657917607199}
+  - component: {fileID: 8682973657917607196}
+  - component: {fileID: 8682973657917607195}
+  - component: {fileID: 8682973657917607197}
+  - component: {fileID: 8682973657917607171}
+  - component: {fileID: 8682973657917607168}
+  - component: {fileID: 8682973657917607170}
+  m_Layer: 0
+  m_Name: Player Skill Power Word Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8682973657917607172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682973657917607173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8682973658153549267}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8682973657917607199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682973657917607173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 'Power Word: Shield'
+  _description: '{{cast:0.0}}'
+  _skillPriority: 0
+  _iconSkill: {fileID: 21300000, guid: 85fcef3312a8dac47aa7988b49f0422a, type: 3}
+  _skillUiPrefab: {fileID: 6292989599850068953, guid: f0367987a1517244abb0d496f19a6299, type: 3}
+  _dontUseUi: 0
+  SkillPrefab: {fileID: 0}
+--- !u!114 &8682973657917607196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682973657917607173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51534486e1bc4b54fa65a96b63f34aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsSequenceFinish:
+  - {fileID: 1031077534722676990}
+  _castTime: 0
+  _effectsCastFinish: []
+  _canBeCastWhileCasting: 0
+  _channelTime: 0
+  _effectsChanneling: []
+  _canBeCastWhileChanneling: 1
+  _channelPerformances: 0
+  _channelPerformOneAtStart: 0
+--- !u!114 &8682973657917607195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682973657917607173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7672b014fdedd95458a0d9dc3e94004b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manaCost: 5
+  _activationType: 0
+--- !u!114 &8682973657917607197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682973657917607173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047f61fd4b896340868a372133f67a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _warmupCooldown:
+    _min: 1.5
+    _max: 1.5
+    _roundingType: 0
+  _localCooldownApply:
+    _min: 4
+    _max: 4
+    _roundingType: 0
+  _globalCooldownApply: 1.5
+  _doNotApplyGlobalCooldown: 0
+--- !u!114 &8682973657917607171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682973657917607173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18112141779fcd4b9a13ca0feb0f514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canTargetDead: 0
+  _activationPoint: 0
+--- !u!114 &8682973657917607168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682973657917607173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeceaf487f043447ad3811ff387817e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8682973657917607170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682973657917607173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28480c7e548aa7d44980b2e4ac708f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsClickDown: 0
+--- !u!1 &8682973658153549268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8682973658153549267}
+  - component: {fileID: 1031077534722676990}
+  m_Layer: 0
+  m_Name: Skill Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8682973658153549267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682973658153549268}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8682973657917607172}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1031077534722676990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682973658153549268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ff3a78141f75349bb974d0cf46c294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateDataToApply: {fileID: 8117412904085671196, guid: 14ccc5d2248eed242a64d09228774bb9, type: 3}

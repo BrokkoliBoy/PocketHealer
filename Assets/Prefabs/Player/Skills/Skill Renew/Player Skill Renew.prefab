@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7290346001648388274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7290346001648388269}
+  - component: {fileID: 7290346001648388268}
+  m_Layer: 0
+  m_Name: Skill Effect - Apply State (HoT)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7290346001648388269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290346001648388274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7290346001803519784}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7290346001648388268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290346001648388274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ff3a78141f75349bb974d0cf46c294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateDataToApply: {fileID: 8117412904085671196, guid: b2d68643a600f68439aac78cba77158f, type: 3}
+--- !u!1 &7290346001803519785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7290346001803519784}
+  - component: {fileID: 7290346001803519776}
+  - component: {fileID: 7290346001803519777}
+  - component: {fileID: 7290346001803519782}
+  - component: {fileID: 7290346001803519783}
+  - component: {fileID: 7290346001803519780}
+  - component: {fileID: 7290346001803519781}
+  - component: {fileID: 7290346001803519787}
+  m_Layer: 0
+  m_Name: Player Skill Renew
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7290346001803519784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290346001803519785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7290346001648388269}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7290346001803519776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290346001803519785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Renew
+  _description: '{{cast:0.0}}'
+  _skillPriority: 0
+  _iconSkill: {fileID: 21300000, guid: a45e221b4610e4147824e40f3b504d72, type: 3}
+  _skillUiPrefab: {fileID: 6292989599850068953, guid: f0367987a1517244abb0d496f19a6299, type: 3}
+  _dontUseUi: 0
+  SkillPrefab: {fileID: 0}
+--- !u!114 &7290346001803519777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290346001803519785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51534486e1bc4b54fa65a96b63f34aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsSequenceFinish: []
+  _castTime: 0
+  _effectsCastFinish:
+  - {fileID: 7290346001648388268}
+  _canBeCastWhileCasting: 0
+  _channelTime: 0
+  _effectsChanneling: []
+  _canBeCastWhileChanneling: 1
+  _channelPerformances: 0
+  _channelPerformOneAtStart: 0
+--- !u!114 &7290346001803519782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290346001803519785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7672b014fdedd95458a0d9dc3e94004b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manaCost: 5
+  _activationType: 1
+--- !u!114 &7290346001803519783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290346001803519785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047f61fd4b896340868a372133f67a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _warmupCooldown:
+    _min: 1.5
+    _max: 1.5
+    _roundingType: 0
+  _localCooldownApply:
+    _min: 4
+    _max: 4
+    _roundingType: 0
+  _globalCooldownApply: 1.5
+  _doNotApplyGlobalCooldown: 0
+--- !u!114 &7290346001803519780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290346001803519785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18112141779fcd4b9a13ca0feb0f514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canTargetDead: 0
+  _activationPoint: 0
+--- !u!114 &7290346001803519781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290346001803519785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeceaf487f043447ad3811ff387817e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7290346001803519787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290346001803519785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28480c7e548aa7d44980b2e4ac708f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsClickDown: 0

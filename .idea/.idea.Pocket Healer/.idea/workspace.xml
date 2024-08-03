@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c9e66fcb-5e23-4bd3-859e-0e1fe8c71663" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Menus/Choose Encounter/MenuPanelChooseEncounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Encounter/EnemySkillsInfoPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Encounter/EncounterPartySettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2021.1.0f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.render-pipelines.core/Editor/LookDev/DisplayWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/GameFlowManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/HoverPanel/HoverInfoMaster.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Character/Player/Control/UiTarget.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Character/Player/Control/UiTargetSkill.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6CD98968-4D0C-46E5-8E0C-E6F2DFD9AC5C/72/76990c63/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Casting/SkillCast.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIMaster.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/DynamicPanels.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDroppableSkill.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Ui/SkillUiManagerPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZoneSkill.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2021.1.0f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.shadergraph/Editor/Generation/Processors/PropertyCollector.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/SkillLearnSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Range/SkillRangeRandomOpponent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/SkillPerformance.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Button/ChooseEncounterButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Misc/GameProgress.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/States/StateData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/States/StateEffects/StateAura.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6CD98968-4D0C-46E5-8E0C-E6F2DFD9AC5C/33/207a9265/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5406A456-CF73-4443-B3D0-2A7D123287F1/f8/958b72fd/Single.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/States/StateUi.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/SkillManagerPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/States/StateUiManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6CD98968-4D0C-46E5-8E0C-E6F2DFD9AC5C/47/47f3c171/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Encounter/EncounterPanelPreparation.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Effect/SkillEffect.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Effect/SkillEffectDamage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Effect/SkillEffectAddState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/States/States/SkillEffectAlterStats.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Effect/SkillEffectHeal.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Effect/SkillEffectRemoveState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/States/StateData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Encounter/EnemySkillsInfoPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Encounter/EncounterPreparationMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Encounter/EncounterPanelPauseMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Encounter/EncounterPanelPreparation.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Encounter/EncounterUi.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/SkillManagerPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/SkillManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Ui/SkillUiManagerPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Activation Type/KeyBinding.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZoneSkill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Ui/SkillUiManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Ui/SkillUi.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Cooldown/CooldownManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Cooldown/SkillCooldown.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Floating Text/FloatingTextManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Character/Stats/CharacterHealth.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Button/EncounterChooser.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Party/PartyUi.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Encounter/Encounter.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Party/Party.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Character/CharacterUi.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Character/Character.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/HoverPanel/InfoPanelSkill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Menus/MenuPanelChooseEncounter.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Menus/Choose Encounter/ChooseEncounterButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Button/ChooseEncounterButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Menus/Choose Encounter/MenuPanelChooseEncounter.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Encounter/EncounterManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/GameProgress.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Debug/DebugMode.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/SkillPerformance.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Casting/CastManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Range/SkillRangePlayerMouseHover.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Simulation.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillConfiguration.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Encounter/EncounterPartySettings.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Bar/SkillBar.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/SkillLearnSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Extern/Ludiq/Ludiq.PeekCore/Editor/Interface/UnityEditorDynamic.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Character/Player/Control/PlayerInputManager.cs" />
+    </changedPaths>
+  </component>
+  <component name="ProjectId" id="1jWHjSYf0opFXJR96tZaA321zQg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.6067172" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.28886926" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Builds/PocketHealer v0.0.1 Basics (2020_11_07)\Pocket Healer.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Unity\Workspace Unity\Pocket Healer\Builds\PocketHealer v0.0.1 Basics (2020_11_07)" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

@@ -1,0 +1,2 @@
+Bugs
+- Adding a state creates an empty game object

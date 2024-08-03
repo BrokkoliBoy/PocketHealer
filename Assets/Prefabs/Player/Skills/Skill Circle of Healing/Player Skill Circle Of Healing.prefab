@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7718840898091453350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7718840898091453351}
+  - component: {fileID: 7718840898091453352}
+  m_Layer: 0
+  m_Name: Skill Effect Heal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7718840898091453351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718840898091453350}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7718840899128159628}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7718840898091453352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718840898091453350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d90a1710d6d6647b9c0b52974f0e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healAmount: 40
+--- !u!1 &7718840899128159627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7718840899128159628}
+  - component: {fileID: 7718840899128159631}
+  - component: {fileID: 7718840899128159635}
+  - component: {fileID: 7718840899128159637}
+  - component: {fileID: 7718840899128159636}
+  - component: {fileID: 7718840899128159630}
+  - component: {fileID: 7718840899128159633}
+  - component: {fileID: 5744534732462538863}
+  m_Layer: 0
+  m_Name: Player Skill Circle Of Healing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7718840899128159628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718840899128159627}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7718840898091453351}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7718840899128159631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718840899128159627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Circle of Healing
+  _description: Heals up to 5 allies by {{cast:0.0}} health.
+  _skillPriority: 0
+  _iconSkill: {fileID: 21300000, guid: 18355895e2eba5b45b8110b914a83207, type: 3}
+  _skillUiPrefab: {fileID: 6292989599850068953, guid: f0367987a1517244abb0d496f19a6299, type: 3}
+  _dontUseUi: 0
+  SkillPrefab: {fileID: 0}
+--- !u!114 &7718840899128159635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718840899128159627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51534486e1bc4b54fa65a96b63f34aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsSequenceFinish: []
+  _castTime: 0
+  _effectsCastFinish:
+  - {fileID: 7718840898091453352}
+  _canBeCastWhileCasting: 0
+  _channelTime: 0
+  _effectsChanneling: []
+  _canBeCastWhileChanneling: 1
+  _channelPerformances: 0
+  _channelPerformOneAtStart: 0
+--- !u!114 &7718840899128159637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718840899128159627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7672b014fdedd95458a0d9dc3e94004b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manaCost: 8
+  _activationType: 1
+--- !u!114 &7718840899128159636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718840899128159627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047f61fd4b896340868a372133f67a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _warmupCooldown:
+    _min: 1.5
+    _max: 1.5
+    _roundingType: 0
+  _localCooldownApply:
+    _min: 7
+    _max: 7
+    _roundingType: 0
+  _globalCooldownApply: 1.5
+  _doNotApplyGlobalCooldown: 0
+--- !u!114 &7718840899128159630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718840899128159627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeceaf487f043447ad3811ff387817e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7718840899128159633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718840899128159627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28480c7e548aa7d44980b2e4ac708f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsClickDown: 0
+--- !u!114 &5744534732462538863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718840899128159627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c44a3057249ab04da4c0f41a47cf070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canTargetDead: 0
+  _activationPoint: 0
+  _numberTargets: 5
+  _targetTypes: 03000000
+  _roles: 
+  _prioOrder: []
+  _maxNumberHitSameTarget: 1
+  _numberDontHitSameInARow: 0
+  _doNotLeavePrioOrder: 1
+  _timeSwitchTarget: 0
+  _targetsForSwitchTargets: 0
+  _targetingsForSwitchTargets: 0
+  _canBeCastIfNoPool: 0

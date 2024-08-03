@@ -1,0 +1,12 @@
+Bosses
+
+Name ???
+P1:
+- usual stuff until the boss reaches low hp. Then it casts a long skill dealing more aoe dmg the lower ghp it has.
+- The player has to heal him within that time window or the raid wipes.
+- the boss is now at high hp again and P2 starts.
+P2:
+- the boss receives more healing and dmg, the more dmg it takes, stacking indefintetely.
+- when calculating the damage, the threshold what counts as low hp is at hp at the start and gradually decreases to low hp.
+- The player has to heal the boss before it finishes the cast.
+- the player has to do those cycles until the boss takes so much dmg, it is killed within one cycle.

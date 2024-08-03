@@ -1,0 +1,193 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4290686658763769109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6823318951960460120}
+  - component: {fileID: 8146721615162106797}
+  m_Layer: 0
+  m_Name: SkillEffect Damage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6823318951960460120
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290686658763769109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8196063058060087068}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8146721615162106797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290686658763769109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02d972c9e30bb2469cd5a0cec693a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage:
+    _min: 0
+    _max: 0
+    _roundingType: 0
+  _roleModifiers: []
+--- !u!1 &7730357011001189967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8196063058060087068}
+  - component: {fileID: 915427129587097545}
+  - component: {fileID: 8591431118220409147}
+  - component: {fileID: 8976231431615263860}
+  - component: {fileID: 5074341894251735151}
+  - component: {fileID: 9061589742979749932}
+  m_Layer: 0
+  m_Name: Ally Skill Damage (Template)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8196063058060087068
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730357011001189967}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6823318951960460120}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &915427129587097545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730357011001189967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Skill name
+  _skillPriority: 0
+  _iconSkill: {fileID: 21300000, guid: a4c75202dc584ab44a893a06ddef45aa, type: 3}
+  _dontUseUi: 1
+--- !u!114 &8591431118220409147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730357011001189967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51534486e1bc4b54fa65a96b63f34aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsSequenceFinish: []
+  _castTime: 2.5
+  _effectsCastFinish:
+  - {fileID: 8146721615162106797}
+  _canBeCastWhileCasting: 0
+  _channelTime: 0
+  _effectsChanneling: []
+  _canBeCastWhileChanneling: 1
+  _channelPerformances: 1
+  _channelPerformOneAtStart: 0
+--- !u!114 &8976231431615263860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730357011001189967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047f61fd4b896340868a372133f67a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _warmupCooldown:
+    _min: 1
+    _max: 2
+    _roundingType: 0
+  _localCooldownApply:
+    _min: 5
+    _max: 10
+    _roundingType: 0
+  _globalCooldownApply: 1
+  _doNotApplyGlobalCooldown: 0
+--- !u!114 &5074341894251735151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730357011001189967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79be9bf9484824b4ba479f8ca1e0b7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9061589742979749932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730357011001189967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c44a3057249ab04da4c0f41a47cf070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canTargetDead: 0
+  _activationPoint: 0
+  _numberTargets: 1
+  _targetTypes: 04000000
+  _roles: 
+  _prioOrder: []
+  _maxNumberHitSameTarget: 1
+  _numberDontHitSameInARow: 0
+  _doNotLeavePrioOrder: 1
+  _timeSwitchTarget: 0
+  _targetsForSwitchTargets: 0
+  _targetingsForSwitchTargets: 0
+  _canBeCastIfNoPool: 0

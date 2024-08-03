@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889794c411054f7ca8e6fbdc6728c846, type: 3}
+  m_Name: _UIButtonDatabase
+  m_EditorClassIdentifier: 
+  DatabaseType: 0
+  CategoryNames:
+  - Custom
+  - Configure Menu
+  - Encounter
+  - Example
+  - General
+  - Main Menu
+  - Settings Menu
+  - Encounter Menu
+  - Quit Menu
+  - GameFile Menu
+  Categories:
+  - {fileID: 11400000, guid: 7545de41365377640b9c5efca8050d44, type: 2}
+  - {fileID: 11400000, guid: 5f6f255185de63946aff759e8ed0b493, type: 2}
+  - {fileID: 11400000, guid: 40f9e81ff80114a47a3721228ba749ed, type: 2}
+  - {fileID: 11400000, guid: 8175258dfc43b9248b655037dc7f78ed, type: 2}
+  - {fileID: 11400000, guid: d8a4bfe88aa4bb74faa11c265fbe2953, type: 2}
+  - {fileID: 11400000, guid: c8930d34a780b6b4ca277fe7ab97bd56, type: 2}
+  - {fileID: 11400000, guid: ee85124cbbc3fee4e8ef654bbecb8f6b, type: 2}
+  - {fileID: 11400000, guid: 60e6b5157151b86419bb3eeccaa35329, type: 2}
+  - {fileID: 11400000, guid: 5ef089fc98c64714d8105dada0be1a1a, type: 2}
