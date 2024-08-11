@@ -61,7 +61,7 @@ namespace Gavi.Encounter
             foreach (Enemy prefab in _initialenemies)
             {
                 Enemy enemy = Instantiate(prefab, _bossInstantiateTransform).GetComponent<Enemy>();
-                enemy.Initialize();
+                enemy.InitializeForBattle();
                 _aliveEnemies.Add(enemy);
                 _enemies.Add(enemy);
             }

@@ -21,15 +21,19 @@ namespace Gavi
         [SerializeField] private RectTransform _draggedParent;
         
         // This list filled with all spots at the initial setup. Empty slots are null.
-        private List<Skill> _skillsAvailable = new List<Skill>();
+        public List<Skill> SkillsAvailable => _skillsAvailable;
+        private List<Skill> _skillsAvailable = new ();
         // This list filled with all spots at the initial setup. Empty slots are null.
-        private List<Skill> _skillsChosenNormalHc = new List<Skill>();
-        private List<Skill> _skillsChosenMythic = new List<Skill>();
+        public List<Skill> SkillsChosenNormalHc => _skillsChosenNormalHc;
+        private List<Skill> _skillsChosenNormalHc = new ();
+        public List<Skill> SkillsChosenMythic => _skillsChosenMythic;
+        private List<Skill> _skillsChosenMythic = new ();
 
         private bool _isInitialized;
         public bool IsInConfigurationMenu => _isInConfigurationMenu;
         private bool _isInConfigurationMenu;
         
+        public enum BarType { ActiveNormalHc, ActiveMythic, Available }
         
         
         #region Mono
@@ -40,12 +44,12 @@ namespace Gavi
             _skillBarNormalHc.Initialize();
             _skillBarNormalHc.SkillDragged.AddListener(OnSkillDraggedNormalHc);
             _skillBarNormalHc.SkillDroppedPhysically.AddListener(OnSkillDroppedPhysicallyNormalHc);
-            // _skillBarNormalHc.SkillDroppedManually.AddListener(OnSkillDroppedManuallyNormalHc);
+            AssignInitialKeyBindings(_skillBarNormalHc);
             
             _skillBarMythic.Initialize();
             _skillBarMythic.SkillDragged.AddListener(OnSkillDraggedMythic);
             _skillBarMythic.SkillDroppedPhysically.AddListener(OnSkillDroppedPhysicallyMythic);
-            // _skillBarMythic.SkillDroppedManually.AddListener(OnSkillDroppedManuallyMythic);
+            AssignInitialKeyBindings(_skillBarMythic);
             
             for (int barIndex = 0; barIndex < _skillBarsAvailable.Count; barIndex++) 
             {
@@ -53,7 +57,6 @@ namespace Gavi
                 bar.Initialize();
                 bar.SkillDragged.AddListener(OnSkillDraggedAvailable);
                 bar.SkillDroppedPhysically.AddListener(OnSkillDroppedPhysicallyAvailable);
-                // zone.SkillDroppedManually.AddListener(OnSkillDroppedManuallyAvailable);
             }
             EncounterManager.Instance.OnEncounterClear.AddListener(OnEncounterClear);
         }
@@ -61,58 +64,25 @@ namespace Gavi
 
 
         #region Life Cycle
-        public void AssignInitialSetup(List<Skill> initialSkillsAvailablePrefabs, List<Skill> initialSkillsChosenPrefabs)
+        public void AssignInitialSetup(List<PlayerSkillPrefab> initialSkillsAvailablePrefabs, List<PlayerSkillPrefab> initialSkillsChosenPrefabs)
         {
             if (_isInitialized)
                 return;
             _isInitialized = true;
 
-            if (initialSkillsAvailablePrefabs == null || initialSkillsChosenPrefabs == null)
-                return;
-
-            // add initial available skills to list of available skills
-            int skillIndex = 0;
-            for (int barIndex = 0; barIndex < _skillBarsAvailable.Count; barIndex++)
+            foreach (PlayerSkillPrefab prefab in initialSkillsChosenPrefabs)
             {
-                SkillBar bar = _skillBarsAvailable[barIndex];
-                bar.Initialize();
-                for (int zoneIndex = 0; zoneIndex < bar.ZoneCount; zoneIndex++)
-                {
-                    // add skills from the initial skills available list if skillIndex is in range and != null
-                    if (skillIndex < initialSkillsAvailablePrefabs.Count && initialSkillsAvailablePrefabs[skillIndex] != null)
-                    {
-                        Skill skill = Instantiate(initialSkillsAvailablePrefabs[skillIndex], SkillManagerPlayer.Instance.SkillsParent);
-                        skill.SkillPrefab = initialSkillsAvailablePrefabs[skillIndex];
-                        _skillsAvailable.Add(skill);
-                    }
-                    else // add null else to have the _skillsAvailable filled with skills and nulls on for each bar zone
-                        _skillsAvailable.Add(null);
-                    skillIndex++;
-                }
+                if (prefab == null)
+                    continue;
+                UnlockSkill(prefab, BarType.ActiveNormalHc);
             }
 
-            
-            // add initial active skills to list of active skills
-            skillIndex = 0;
-            _skillBarNormalHc.Initialize();
-            AssignInitialKeyBindings(_skillBarNormalHc);
-            for (int zoneIndex = 0; zoneIndex < _skillBarNormalHc.ZoneCount; zoneIndex++)
+            foreach (PlayerSkillPrefab prefab in initialSkillsAvailablePrefabs)
             {
-                if (skillIndex < initialSkillsChosenPrefabs.Count && initialSkillsChosenPrefabs[skillIndex] != null)
-                {
-                    Skill skill = Instantiate(initialSkillsChosenPrefabs[skillIndex], SkillManagerPlayer.Instance.SkillsParent);
-                    skill.SkillPrefab = initialSkillsChosenPrefabs[skillIndex];
-                    _skillsChosenNormalHc.Add(skill);
-                }
-                else
-                    _skillsChosenNormalHc.Add(null);
-                skillIndex++;
+                if (prefab == null)
+                    continue;
+                UnlockSkill(prefab, BarType.Available);
             }
-            
-            _skillBarMythic.Initialize();
-            AssignInitialKeyBindings(_skillBarMythic);
-            
-            UpdateSkillBars();
         }
 
         private void AssignInitialKeyBindings(SkillBar bar)
@@ -135,28 +105,70 @@ namespace Gavi
         }
 
         /// <summary>
-        /// Instantiates the skill and adds it to either the list of active skills (if there is space left)
-        /// or to the list of available skills (else).
+        /// Unlocks and thus instantiates the skill and adds it to the specified list of skills. If the bar type is
+        /// active but active is full, it will automatically add it to the list of available ones.
         /// </summary>
         /// <param name="skillPrefab">Skill to be learned. Must be a prefab.</param>
-        public Skill UnlockSkill(Skill skillPrefab, bool addSkillToLists = true)
+        /// <param name="addToBarType">Bar to add the skill to. Either the bar of active skills or the bar of available
+        /// skills.</param>
+        public Skill UnlockSkill(PlayerSkillPrefab skillPrefab, BarType addToBarType)
         {
-            if (HasSkillUnlocked(skillPrefab, true))
+            if (HasSkillUnlocked(skillPrefab))
                 return null;
             
-            Skill skill = Instantiate(skillPrefab, SkillManagerPlayer.Instance.SkillsParent);
+            Skill skill = Instantiate(skillPrefab, SkillManagerPlayer.Instance.SkillsParent).Skill;
             skill.SkillPrefab = skillPrefab;
-            if (!addSkillToLists)
-                return skill;
+
+            bool wasAddedToActiveSkills = false;
+            if (addToBarType == BarType.ActiveNormalHc)
+            {
+                wasAddedToActiveSkills = AddSkillToList(skill, _skillsChosenNormalHc);
+                if (wasAddedToActiveSkills)
+                    return skill;
+            }
+
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+            if (addToBarType == BarType.Available || (addToBarType == BarType.ActiveNormalHc && !wasAddedToActiveSkills))
+            {
+                bool wasAddedToAvailableSkills = AddSkillToList(skill, _skillsAvailable);
+                if (wasAddedToAvailableSkills)
+                    return skill;
+            }
             
-            bool wasAddedToActiveSkills = AddSkillToList(skill, _skillsChosenNormalHc);
-            if (wasAddedToActiveSkills)
-                return skill;
-            bool wasAddedToAvailableSkills = AddSkillToList(skill, _skillsAvailable);
-            if (!wasAddedToAvailableSkills)
-                Debugger.LogError("Tried to learn skill " + skill.Name + " but there was no space available.");
+            Debugger.LogError("Tried to learn skill " + skill.Name + " but there was no space available.");
+            return null;
+        }
+
+        /// <summary>
+        /// Unlocks and thus instantiates the skill and adds it to the specified list of skills. Given the index it will
+        /// attempt to put the skill to the specified index position of said bar(s). 
+        /// </summary>
+        /// <param name="skillPrefab">Skill to be learned. Must be a prefab.</param>
+        /// <param name="addToBarType">Bar to add the skill to. Either the bar of active skills or the bar of available
+        /// skills.</param>
+        /// <param name="skillIndex">Index of the bar(s) to put the skill to. If multiple bars are available, it
+        /// will go from top to bottom bar and increase the index with every bar entry.</param>
+        public Skill UnlockSkillFromSafeFile(PlayerSkillPrefab skillPrefab, BarType addToBarType, int skillIndex)
+        {
+            if (HasSkillUnlocked(skillPrefab))
+                return null;
+
+            Skill skill = Instantiate(skillPrefab, SkillManagerPlayer.Instance.SkillsParent).Skill;
+            skill.SkillPrefab = skillPrefab;
+
+            List<Skill> listOfSkills = null;
+            if (addToBarType == BarType.ActiveNormalHc)
+                listOfSkills = _skillsChosenNormalHc;
+            else if (addToBarType == BarType.ActiveMythic)
+                listOfSkills = _skillsChosenMythic;
+            else if (addToBarType == BarType.Available)
+                listOfSkills = _skillsAvailable;
+            bool success = AddSkillToList(skill, listOfSkills, skillIndex);
+            if (!success)
+                return null;
             return skill;
-        } 
+        }
+
         
         /// <summary>
         /// Adds the (already instantiated) skill to the first available space of the available skills.
@@ -164,9 +176,24 @@ namespace Gavi
         /// </summary>
         /// <param name="skill">Skill to add.</param>
         /// <param name="listOfSkills">List of skills the skill should be added to.</param>
+        /// <param name="index">Specifies the index of the skill to be added at. If smaller 0, the first available
+        /// index will be chosen.</param>
         /// <returns>Returns if the skill was successfully added to the skill bar.</returns>
-        private bool AddSkillToList(Skill skill, List<Skill> listOfSkills)
+        private bool AddSkillToList(Skill skill, List<Skill> listOfSkills, int index = -1)
         {
+            if (index >= 0)
+            {
+                while (listOfSkills.Count <= index)
+                    listOfSkills.Add(null);
+                if (listOfSkills[index] != null)
+                    return false;
+                listOfSkills[index] = skill;
+
+                UpdateSkillBars();
+                GameFileManager.Instance.SaveCurrentGameFile();
+                return true;
+            }
+            
             for (int i = 0; i < listOfSkills.Count; i++)
             {
                 if (listOfSkills[i] != null)
@@ -174,9 +201,15 @@ namespace Gavi
                 
                 listOfSkills[i] = skill;
                 UpdateSkillBars();
+                GameFileManager.Instance.SaveCurrentGameFile();
                 return true;
             }
-            return false;
+
+            listOfSkills.Add(skill);
+            UpdateSkillBars();
+            GameFileManager.Instance.SaveCurrentGameFile();
+
+            return true;
         }
         #endregion
         
@@ -189,6 +222,7 @@ namespace Gavi
             _skillBarNormalHc.EjectAllZones();
             _skillBarMythic.EjectAllZones();
 
+            
             AddSkillsToAvailableBars();
             AddSkillsToNormalHcBar();
             AddSkillsToMythicBar();
@@ -250,9 +284,6 @@ namespace Gavi
                 _skillsChosenNormalHc[_skillsChosenNormalHc.IndexOf(skill)] = null;
             else if (_skillsChosenMythic.Contains(skill))
                 _skillsChosenMythic[_skillsChosenMythic.IndexOf(skill)] = null;
-            else
-                ;// Debugger.LogError("Skill not found in any list in PlayerSkillConfiguration.RemoveSkillFromList(" +
-                //                    skill.Name + ")!");
         }
         #endregion
         
@@ -261,20 +292,18 @@ namespace Gavi
         public void OnSkillDraggedAvailable(DragAndDroppableSkill droppableSkill, SkillBar bar, int zoneIndex)
         {
             droppableSkill.RootTransform.SetParent(_draggedParent);
-            // _skillsAvailable.Remove(skill.SkillUi.Skill);
         }
 
         public void OnSkillDroppedPhysicallyAvailable(DragAndDroppableSkill droppableSkill, SkillBar bar, int zoneIndex)
         {
             RemoveSkillFromLists(droppableSkill.SkillUi.Skill);
-            int skillIndex = 0;
             int barZoneIndex = 0;
             for (int barIndex = 0; barIndex < _skillBarsAvailable.Count; barIndex++)
             {
                 SkillBar tBar = _skillBarsAvailable[barIndex];
                 if (tBar == bar)
                 {
-                    _skillsAvailable[barZoneIndex + zoneIndex] = droppableSkill.SkillUi.Skill;
+                    AddSkillToList(droppableSkill.SkillUi.Skill, _skillsAvailable, barZoneIndex + zoneIndex);
                     break;
                 }
                 barZoneIndex += tBar.ZoneCount;
@@ -284,25 +313,23 @@ namespace Gavi
         public void OnSkillDraggedNormalHc(DragAndDroppableSkill droppableSkill, SkillBar bar, int zoneIndex)
         {
             droppableSkill.RootTransform.SetParent(_draggedParent);
-            // _skillsChosenNormalHc[zoneIndex] = droppableSkill.SkillUi.Skill;
         }
         
         public void OnSkillDroppedPhysicallyNormalHc(DragAndDroppableSkill droppableSkill, SkillBar bar, int zoneIndex)
         {
             RemoveSkillFromLists(droppableSkill.SkillUi.Skill);
-            _skillsChosenNormalHc[zoneIndex] = droppableSkill.SkillUi.Skill;
+            AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenNormalHc, zoneIndex);
         }
         
         public void OnSkillDraggedMythic(DragAndDroppableSkill droppableSkill, SkillBar bar, int zoneIndex)
         {
             droppableSkill.RootTransform.SetParent(_draggedParent);
-            // _skillsChosenMythic.Remove(skill.SkillUi.Skill);
         }
         
         public void OnSkillDroppedPhysicallyMythic(DragAndDroppableSkill droppableSkill, SkillBar bar, int zoneIndex)
         {
             RemoveSkillFromLists(droppableSkill.SkillUi.Skill);
-            _skillsChosenMythic[zoneIndex] = droppableSkill.SkillUi.Skill;
+            AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenMythic, zoneIndex);
         }
 
         
@@ -336,20 +363,20 @@ namespace Gavi
             return new List<Skill>();
         }
 
-        public bool HasSkillUnlocked(Skill skill, bool isPrefab = false)
+        public bool HasSkillUnlocked(PlayerSkillPrefab skill)
         {
             foreach (Skill skillAvailable in _skillsAvailable)
             {
                 if (skillAvailable == null)
                     continue;
-                if ((!isPrefab && skillAvailable == skill) || (isPrefab && skillAvailable.SkillPrefab == skill))
+                if (skillAvailable.SkillPrefab == skill)
                     return true;
             }
             foreach (Skill skillChosen in _skillsChosenNormalHc)
             {
                 if (skillChosen == null)
                     continue;
-                if ((!isPrefab && skillChosen == skill) || (isPrefab && skillChosen.SkillPrefab == skill))
+                if (skillChosen.SkillPrefab == skill)
                     return true;
             }
             

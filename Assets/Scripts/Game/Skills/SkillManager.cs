@@ -51,6 +51,14 @@ namespace Gavi.Skills
 
         private void Start()
         {
+            if (Character.IsPlayer && _initialSkillsPrefab.Count != 0)
+            {
+                Debugger.LogAssertionFail("This should not happen! Player skill should only be initialized when " +
+                                          "a safe file is loaded and not in the Start function. Make sure that the " +
+                                          "initial player skills are empty or rewrite some code.");
+            }
+                
+            
             for (int i = 0; i < _initialSkillsPrefab.Count; i++)
             {
                 Skill skill = Instantiate(_initialSkillsPrefab[i], _skillsParentTransform);

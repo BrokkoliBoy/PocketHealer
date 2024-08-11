@@ -93,7 +93,7 @@ namespace Gavi.Characters
                 Character character = Instantiate(characters[i].gameObject, _parent).GetComponent<Character>();
                 _members.Add(character);
                 _aliveMembers.Add(character);
-                character.Initialize();
+                character.InitializeForBattle();
             }
             PartyUi.Instance.AllignCharacters(_members);
         }

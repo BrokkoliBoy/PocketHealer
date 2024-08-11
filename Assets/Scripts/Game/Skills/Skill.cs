@@ -67,7 +67,7 @@ namespace Gavi.Skills
         public SkillUi UI => _ui;
         private SkillUi _ui;
 
-        [HideInInspector] public Skill SkillPrefab;
+        public PlayerSkillPrefab SkillPrefab { get; set; }
 
         public string Identifier => _name;
         #endregion

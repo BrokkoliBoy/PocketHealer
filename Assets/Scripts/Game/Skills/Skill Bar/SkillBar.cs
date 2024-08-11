@@ -30,7 +30,7 @@ namespace Gavi
         public UnityEvent<DragAndDroppableSkill, SkillBar, int> SkillDroppedPhysically; // int = zoneIndex
         public UnityEvent<DragAndDroppableSkill, SkillBar, int> SkillDroppedManually; // int = zoneIndex
         public List<DragAndDropZoneSkill> Zones => _zones;
-        private List<DragAndDropZoneSkill> _zones = new List<DragAndDropZoneSkill>();
+        private List<DragAndDropZoneSkill> _zones = new ();
         public int ZoneCount => _zones.Count;
         private bool _isInitialized;
         
@@ -172,7 +172,8 @@ namespace Gavi
                     }
                 }
             }
-
+            
+            // Debug.Log("Adding " + (skill == null ? "null" : skill.Name) + " // " + (_zones[zoneIndex].ContainingDroppable == null ? "null" : _zones[zoneIndex].ContainingDroppable.SkillUi.Skill.Name));
             if (_zones[zoneIndex].ContainingDroppable != null)
             {
                 Debugger.LogError("You tried to assign a Skill to a zone of a SkillBar that already contains a Skill. This is currently not supported!");
@@ -193,7 +194,12 @@ namespace Gavi
         {
             Initialize();
             foreach (DragAndDropZoneSkill zone in _zones)
+            {
                 zone.Eject();
+            }
+
+            if (_zones[0].ContainingDroppable != null)
+                Debug.Log(_zones[0].ContainingDroppable.SkillUi.Skill.Name);
         }
 
         public void EjectZone(Skill skill)

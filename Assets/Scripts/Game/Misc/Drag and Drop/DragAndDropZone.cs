@@ -15,7 +15,8 @@ namespace Gavi
         [SerializeField] private Image _imageBackground;
         [SerializeField] private Image _imageHighlightValid;
         [SerializeField] private Image _imageHighlightInvalid;
-        
+
+        public bool IsEmpty => _currentDroppable == null;
         protected DragAndDroppable _currentDroppable;
 
 
@@ -58,7 +59,6 @@ namespace Gavi
         
         public virtual void Drag()
         {
-            // Debug.Log("Drag zone: " + name);
             if (_currentDroppable == null)
                 return;
             _currentDroppable = null;
@@ -67,7 +67,6 @@ namespace Gavi
 
         public virtual void Eject()
         {
-            // Debug.Log("Eject zone: " + name);
             if (_currentDroppable == null)
                 return;
             _currentDroppable.HomeZone = null;

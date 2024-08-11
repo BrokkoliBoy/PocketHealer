@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0f05e564-85e4-482c-b0a4-c044028f2dd0" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZoneSkill.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5A41D6B7-1898-42EC-A409-FD0B1C3E3DCF/42/System.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Editors/2022.3.7f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.shadergraph/Editor/Data/Nodes/Input/Texture/SampleVirtualTextureNode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillPrefab.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillDatabase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileUiManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5A41D6B7-1898-42EC-A409-FD0B1C3E3DCF/48/System.IO.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/GameProgress.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillDatabase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Ui/SkillUi.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillPrefab.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/SkillLearnSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Character/Character.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/States/StateUiManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/SkillManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileUiManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/GameFlowManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Bar/SkillBar.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDroppable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZone.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZoneSkill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillConfiguration.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileManager.cs" />
+    </changedPaths>
+  </component>
+  <component name="ProjectId" id="2kI4crotmkuejGo88VWCKW1EQkw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

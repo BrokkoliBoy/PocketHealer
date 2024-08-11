@@ -13,7 +13,7 @@ namespace Gavi
     [System.Serializable]
     public class SkillUnlockCondition
     {
-        public Skill SkillPrefab;
+        public PlayerSkillPrefab SkillPrefab;
         [Tooltip("CAUTION: This is not equal to the index of the encounter in any list but the ingame encounter number that " +
                  "the player will see.")]
         public int EncounterNumber = -1;
@@ -23,12 +23,16 @@ namespace Gavi
     
     public class SkillLearnSystem : MonoBehaviour
     {
+        public static SkillLearnSystem Instance;
+        
         [Header("- Skills to Unlock -")]
         [SerializeField] private List<SkillUnlockCondition> _skillsToUnlock;
         
         [Header("- Initial Skills -")]
-        [SerializeField] private List<Skill> _initialSkillsAvailablePrefabs;
-        [SerializeField] private List<Skill> _initialSkillsChosenPrefabs;
+        [Tooltip("Skills that are available if a new game file is started.")]
+        [SerializeField] private List<PlayerSkillPrefab> _initialSkillsAvailablePrefabs;
+        [Tooltip("Skills that are chosen for normal and hc bar if a new game file is started.")]
+        [SerializeField] private List<PlayerSkillPrefab> _initialSkillsChosenPrefabs;
 
         [Header("- UI -")]
         [SerializeField] private float _padding = 50f;
@@ -38,19 +42,37 @@ namespace Gavi
         [SerializeField] private TextMeshProUGUI _textSkillUnlocked;
 
         [Header("- DEBUG -")] 
-        [SerializeField] private List<Skill> _DEBUG_SKILLS_UNLOCK_AT_START;
-        
+        [SerializeField] private List<PlayerSkillPrefab> _DEBUG_SKILLS_UNLOCK_AT_START;
+
+
+        #region Mono
+
         private void Awake()
         {
-            EncounterManager.Instance.OnEncounterSuccess.AddListener(OnEncounterSuccess);
-            DebugMode.Instance.OnDebugEnabled.AddListener(DebugLearnAllSkills);
+            if (Instance != null)
+                Debugger.LogInstanceError(GetType());
+            Instance = this;
         }
 
         private void Start()
         {
+            EncounterManager.Instance.OnEncounterSuccess.AddListener(OnEncounterSuccess);
+            DebugMode.Instance.OnDebugEnabled.AddListener(DEBUG_LEARN_ALL_SKILLS);
+            
+        }
+        #endregion
+
+
+        #region Life Cycle
+        public void LearnInitialSkills()
+        {
             PlayerSkillConfiguration.Instance.AssignInitialSetup(_initialSkillsAvailablePrefabs, _initialSkillsChosenPrefabs);
         }
-
+        #endregion
+        
+        
+        
+        #region Encoutner Success
         public void OnEncounterSuccess()
         {
             foreach (InfoPanelSkill infoPanel in _infoPanelSkills)
@@ -66,7 +88,7 @@ namespace Gavi
                 if (condition.EncounterDifficulty != EncounterManager.Instance.CurrentEncounter.Difficulty)
                     continue;
 
-                Skill skillUnlocked = PlayerSkillConfiguration.Instance.UnlockSkill(condition.SkillPrefab);
+                Skill skillUnlocked = PlayerSkillConfiguration.Instance.UnlockSkill(condition.SkillPrefab, PlayerSkillConfiguration.BarType.ActiveNormalHc);
                 if (skillUnlocked != null)
                     ShowSkillUnlocked(skillUnlocked, index);
                 index++;
@@ -95,14 +117,15 @@ namespace Gavi
                 infoPanel.Root.anchoredPosition = new Vector2(x, infoPanel.Root.anchoredPosition.y);
             }
         }
+        #endregion
 
         
         #region Debug
-        private void DebugLearnAllSkills()
+        private void DEBUG_LEARN_ALL_SKILLS()
         {
-            foreach (Skill skill in _DEBUG_SKILLS_UNLOCK_AT_START)
+            foreach (PlayerSkillPrefab prefab in _DEBUG_SKILLS_UNLOCK_AT_START)
             {
-                Skill skillUnlocked = PlayerSkillConfiguration.Instance.UnlockSkill(skill);
+                PlayerSkillConfiguration.Instance.UnlockSkill(prefab, PlayerSkillConfiguration.BarType.ActiveNormalHc);
             }
         }
         #endregion

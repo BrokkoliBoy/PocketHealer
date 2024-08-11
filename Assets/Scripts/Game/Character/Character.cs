@@ -69,7 +69,7 @@ namespace Gavi.Characters
         
         
         #region Life Cycle
-        public void Initialize()
+        public void InitializeForBattle()
         {
             if (_textFieldName != null)
                 _textFieldName.text = Name;

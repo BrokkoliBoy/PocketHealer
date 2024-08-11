@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8682973657917607171}
   - component: {fileID: 8682973657917607168}
   - component: {fileID: 8682973657917607170}
+  - component: {fileID: 2777644276648119174}
   m_Layer: 0
   m_Name: Player Skill Power Word Shield
   m_TagString: Untagged
@@ -30,13 +31,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8682973657917607173}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8682973658153549267}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8682973657917607199
 MonoBehaviour:
@@ -129,6 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canTargetDead: 0
   _activationPoint: 0
+  _canTargetAlly: 1
+  _canTargetEnemy: 0
 --- !u!114 &8682973657917607168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +158,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsClickDown: 0
+--- !u!114 &2777644276648119174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682973657917607173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c0dbb23cb32c14cbeb850dda9ce4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _generateGuid: 0
+  _guid: aff5bc72-a790-4573-a12d-1f738a5f390e
+  _skill: {fileID: 8682973657917607199}
 --- !u!1 &8682973658153549268
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,12 +197,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8682973658153549268}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8682973657917607172}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1031077534722676990
 MonoBehaviour:

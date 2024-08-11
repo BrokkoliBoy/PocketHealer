@@ -11,9 +11,7 @@ namespace Gavi.Skills
 {
     public class SkillUi : MonoBehaviour
     {
-
-        #region Serialized Variables
-        
+        #region Variables
         [SerializeField] private Image _iconSkill;
         [SerializeField] private UI.Bar _barCooldown;
         //[SerializeField] private TextMeshProUGUI _textCooldown;
@@ -21,10 +19,6 @@ namespace Gavi.Skills
         public DragAndDroppableSkill DragAndDroppable => _dragAndDroppable;
         [SerializeField] private DragAndDroppableSkill _dragAndDroppable;
         [SerializeField] private Image _imageCastIndicator;
-        #endregion
-
-
-        #region Non-Serialized Variables
         public Skill Skill => _skill;
         private Skill _skill;
         public RectTransform Transform { get { if (_transform == null) _transform = GetComponent<RectTransform>(); return _transform; } }

@@ -14,12 +14,15 @@ namespace Gavi.States
         private List<UI> _uis = new List<UI>();
         //private Dictionary<State, StateUi> _stateUis;
 
+        #region Mono
         private void Update()
         {
             UpdateUi();
         }
+        #endregion
 
 
+        #region UI Control
         private void UpdateUi()
         {
             for (int i = 0; i < _uis.Count; i++)
@@ -56,6 +59,7 @@ namespace Gavi.States
                 }
             }
         }
+        #endregion
 
 
 

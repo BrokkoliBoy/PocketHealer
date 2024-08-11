@@ -90,7 +90,6 @@ namespace Gavi
             }
 
             DropBackToHomeZone();
-            
         }
         #endregion
 

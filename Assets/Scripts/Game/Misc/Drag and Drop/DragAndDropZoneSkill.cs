@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Gavi.Player.Skills;
-using Ludiq.PeekCore.ReflectionMagic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -11,8 +10,17 @@ namespace Gavi
 {
     public class DragAndDropZoneSkill : DragAndDropZone
     {
-        [HideInInspector] public DragAndDroppableSkill ContainingDroppable;
-        
+        public DragAndDroppableSkill ContainingDroppable
+        {
+            get => _containingDroppable;
+            set
+            {
+                // Debug.Log("Setting " + (value == null ? "null" : value.SkillUi.Skill.Name));
+                _containingDroppable = value;
+            }
+        }
+        private DragAndDroppableSkill _containingDroppable;
+
         public UnityEvent<DragAndDropZoneSkill, DragAndDroppableSkill> SkillDragged;
         public UnityEvent<DragAndDropZoneSkill, DragAndDroppableSkill> SkillDroppedPhysically;
         public UnityEvent<DragAndDropZoneSkill, DragAndDroppableSkill> SkillDroppedManually;
@@ -52,8 +60,8 @@ namespace Gavi
         public override void DropPhysically(DragAndDroppable droppable)
         {
             ContainingDroppable = droppable as DragAndDroppableSkill;
-            SkillDroppedPhysically.Invoke(this, ContainingDroppable);
             base.DropPhysically(droppable);
+            SkillDroppedPhysically.Invoke(this, ContainingDroppable);
         }
 
         public override void DropManually(DragAndDroppable droppable)
