@@ -1,15 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.CompilerServices;
 using Gavi.Base;
 using Gavi.Skills;
-using Gavi.UI;
 using Gavi.Utility;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Random = System.Random;
 
 namespace Gavi
 {
@@ -26,7 +21,7 @@ namespace Gavi
          */
 
         [SerializeField] private int _minGameFiles = 3;
-        [SerializeField] private int _maxGameFiles = 3;
+        // [SerializeField] private int _maxGameFiles = 3;
         
         private GameFile _currentGameFile;
         public static string SafeFileDirectoryPath => Application.dataPath + "/SaveFiles";
@@ -111,6 +106,12 @@ namespace Gavi
             List<Skill> skillsChosenMythic = PlayerSkillConfiguration.Instance.SkillsChosenMythic;
             List<Skill> skillsAvailable = PlayerSkillConfiguration.Instance.SkillsAvailable;
             SaveSkills(skillsChosenNormalHc, skillsChosenMythic, skillsAvailable);
+            
+            List<int> encountersSuccessNormal = GameProgress.Instance.EncountersSuccessNormal;
+            List<int> encountersSuccessHeroic = GameProgress.Instance.EncountersSuccessHeroic;
+            List<int> encountersSuccessMythic = GameProgress.Instance.EncountersSuccessMythic;
+            KeyValueList<int, List<int>> encountersSuccessMythicPlus = GameProgress.Instance.EncountersSuccessMythicPlus;
+            SaveEncounterProgress(encountersSuccessNormal, encountersSuccessHeroic, encountersSuccessMythic, encountersSuccessMythicPlus);
 
             _currentGameFile.WriteToDisk();
         }
@@ -156,33 +157,45 @@ namespace Gavi
             skillSafeFile.SkillEntries = skillEntries;
             _currentGameFile.SaveSkills(skillSafeFile);
         }
+
+        private void SaveEncounterProgress(List<int> encountersSuccessNormal, List<int> encountersSuccessHeroic,
+            List<int> encountersSuccessMythic, KeyValueList<int, List<int>> encountersSuccessMythicPlus)
+        {
+            EncounterProgressSafeFile encounterProgressSafeFile = new EncounterProgressSafeFile();
+            encounterProgressSafeFile.EncountersSuccessNormal = encountersSuccessNormal;
+            encounterProgressSafeFile.EncountersSuccessHeroic = encountersSuccessHeroic;
+            encounterProgressSafeFile.EncountersSuccessMythic = encountersSuccessMythic;
+            encounterProgressSafeFile.EncountersSuccessMythicPlus = encountersSuccessMythicPlus;
+
+            _currentGameFile.SaveEncounterProgress(encounterProgressSafeFile);
+        }
         #endregion
     }
 
     [System.Serializable]
     public class GameFile
     {
+        #region Variables
         [SerializeField] private bool _isValidGameFile;
         
-        private string _filePath => GameFileManager.SafeFileDirectoryPath + "/" + FileNamePlusExtension;
+        private string FilePath => GameFileManager.SafeFileDirectoryPath + "/" + FileNamePlusExtension;
         public string FileNamePlusExtension => _fileName + ".json";
         public string FileName => _fileName;
         [SerializeField] private string _fileName;
 
         public SkillSafeFile SkillSafeFile => _skillSafeFile;
         [SerializeField] private SkillSafeFile _skillSafeFile;
-        public BossProgressSafeFile BossProgressSafeFile => _bossProgressSafeFile;
-        [SerializeField] private BossProgressSafeFile _bossProgressSafeFile;
-        public SettingsSafeFile SettingsSafeFile => _settingsSafeFile;
-        [SerializeField] private SettingsSafeFile _settingsSafeFile;
+        public EncounterProgressSafeFile EncounterProgressSafeFile => _encounterProgressSafeFile;
+        [SerializeField] private EncounterProgressSafeFile _encounterProgressSafeFile;
+        #endregion
 
-
+        
         #region Loading
         public static GameFile CreateNewGameFile()
         {
             GameFile gameFile = new GameFile();
             gameFile._isValidGameFile = true;
-            gameFile._fileName = "New Game File " + UnityEngine.Random.Range(0, 10000);
+            gameFile._fileName = "New Game File " + Random.Range(0, 10000);
             
             gameFile.WriteToDisk();
             return gameFile;
@@ -214,14 +227,18 @@ namespace Gavi
         public void SaveSkills(SkillSafeFile skillSafeFile)
         {
             _skillSafeFile = skillSafeFile;
-            // WriteToDisk();
+        }
+        
+        public void SaveEncounterProgress(EncounterProgressSafeFile encounterProgressSafeFile)
+        {
+            _encounterProgressSafeFile = encounterProgressSafeFile;
         }
         
         public void WriteToDisk()
         {
             string json = JsonUtility.ToJson(this, true);
             
-            StreamWriter writer = new StreamWriter(_filePath, false);
+            StreamWriter writer = new StreamWriter(FilePath, false);
             writer.WriteLine(json);
             writer.Close();
         }
@@ -245,14 +262,11 @@ namespace Gavi
     }
 
     [System.Serializable]
-    public class BossProgressSafeFile
+    public class EncounterProgressSafeFile
     {
-
-    }
-
-    [System.Serializable]
-    public class SettingsSafeFile
-    {
-
+        public List<int> EncountersSuccessNormal = new ();
+        public List<int> EncountersSuccessHeroic = new ();
+        public List<int> EncountersSuccessMythic = new ();
+        public KeyValueList<int, List<int>> EncountersSuccessMythicPlus = new ();
     }
 }

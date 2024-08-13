@@ -124,7 +124,10 @@ namespace Gavi
             {
                 wasAddedToActiveSkills = AddSkillToList(skill, _skillsChosenNormalHc);
                 if (wasAddedToActiveSkills)
+                {
+                    GameFileManager.Instance.SaveCurrentGameFile();
                     return skill;
+                }
             }
 
             // ReSharper disable once ConditionIsAlwaysTrueOrFalse
@@ -132,7 +135,10 @@ namespace Gavi
             {
                 bool wasAddedToAvailableSkills = AddSkillToList(skill, _skillsAvailable);
                 if (wasAddedToAvailableSkills)
+                {
+                    GameFileManager.Instance.SaveCurrentGameFile();
                     return skill;
+                }
             }
             
             Debugger.LogError("Tried to learn skill " + skill.Name + " but there was no space available.");
@@ -190,7 +196,6 @@ namespace Gavi
                 listOfSkills[index] = skill;
 
                 UpdateSkillBars();
-                GameFileManager.Instance.SaveCurrentGameFile();
                 return true;
             }
             
@@ -304,6 +309,7 @@ namespace Gavi
                 if (tBar == bar)
                 {
                     AddSkillToList(droppableSkill.SkillUi.Skill, _skillsAvailable, barZoneIndex + zoneIndex);
+                    GameFileManager.Instance.SaveCurrentGameFile();
                     break;
                 }
                 barZoneIndex += tBar.ZoneCount;
@@ -319,6 +325,7 @@ namespace Gavi
         {
             RemoveSkillFromLists(droppableSkill.SkillUi.Skill);
             AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenNormalHc, zoneIndex);
+            GameFileManager.Instance.SaveCurrentGameFile();
         }
         
         public void OnSkillDraggedMythic(DragAndDroppableSkill droppableSkill, SkillBar bar, int zoneIndex)
@@ -330,6 +337,7 @@ namespace Gavi
         {
             RemoveSkillFromLists(droppableSkill.SkillUi.Skill);
             AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenMythic, zoneIndex);
+            GameFileManager.Instance.SaveCurrentGameFile();
         }
 
         

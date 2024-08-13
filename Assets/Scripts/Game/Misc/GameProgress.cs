@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Gavi.Encounter;
+using Gavi.Utility;
 using UnityEngine;
 
 namespace Gavi
@@ -9,6 +10,7 @@ namespace Gavi
     public class GameProgress : MonoBehaviour
     {
         public static GameProgress Instance;
+        
         
         #region Mono
         private void Awake()
@@ -28,10 +30,14 @@ namespace Gavi
         
         
         #region Encounter
-        private List<int> _encountersSuccessNormal = new List<int>();
-        private List<int> _encountersSuccessHeroic = new List<int>();
-        private List<int> _encountersSuccessMythic = new List<int>();
-        private Dictionary<int, List<int>> _encountersSuccessMythicPlus = new Dictionary<int, List<int>>();
+        public List<int> EncountersSuccessNormal => _encountersSuccessNormal;
+        private List<int> _encountersSuccessNormal = new ();
+        public List<int> EncountersSuccessHeroic => _encountersSuccessHeroic;
+        private List<int> _encountersSuccessHeroic = new ();
+        public List<int> EncountersSuccessMythic => _encountersSuccessMythic;
+        private List<int> _encountersSuccessMythic = new ();
+        public KeyValueList<int, List<int>> EncountersSuccessMythicPlus => _encountersSuccessMythicPlus;
+        private KeyValueList<int, List<int>> _encountersSuccessMythicPlus = new ();
 
         private void OnEncounterSuccess()
         {
@@ -54,9 +60,15 @@ namespace Gavi
                 if (!_encountersSuccessMythicPlus.ContainsKey(encounterNumber))
                     _encountersSuccessMythicPlus.Add(encounterNumber, new List<int>());
                 // TODO: Use correct mythic plus number
-                if (!_encountersSuccessMythicPlus[encounterNumber].Contains(mythicPlusNumber))
-                    _encountersSuccessMythicPlus[encounterNumber].Add(mythicPlusNumber); 
+                if (!_encountersSuccessMythicPlus.GetFirstValue(encounterNumber).Contains(mythicPlusNumber))
+                    _encountersSuccessMythicPlus.GetFirstValue(encounterNumber).Add(mythicPlusNumber); 
             }
+        }
+
+        public void LoadEncounterProgress(int encounterNumber, Encounter.Encounter.EncounterDifficulty difficulty,
+            int mythicPlusNumber = 0)
+        {
+            AddEncounterToSuccess(encounterNumber, difficulty, mythicPlusNumber);
         }
 
         private void ApplyDebugEncounter()
@@ -80,7 +92,7 @@ namespace Gavi
                 return true;
             if (difficulty == Encounter.Encounter.EncounterDifficulty.MythicPlus)
             {
-                if (_encountersSuccessMythicPlus.ContainsKey(encounterNumber) && _encountersSuccessMythicPlus[encounterNumber].Contains(mythicPlusNumber))
+                if (_encountersSuccessMythicPlus.ContainsKey(encounterNumber) && _encountersSuccessMythicPlus.GetFirstValue(encounterNumber).Contains(mythicPlusNumber))
                     return true;
             }
 

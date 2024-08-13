@@ -9,7 +9,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZoneSkill.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/KeyValueList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5A41D6B7-1898-42EC-A409-FD0B1C3E3DCF/42/System.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/KeyValueEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Editors/2022.3.7f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.shadergraph/Editor/Data/Nodes/Input/Texture/SampleVirtualTextureNode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillPrefab.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillDatabase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -18,7 +20,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/GameProgress.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillDatabase.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Ui/SkillUi.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillPrefab.cs" />
@@ -26,15 +27,19 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Character/Character.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/States/StateUiManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/SkillManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileUiManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Game/GameFlowManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Bar/SkillBar.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDroppable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZoneSkill.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillConfiguration.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utility/DictionaryEntry.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utility/KeyValueEntry.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/GameProgress.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utility/KeyValueList.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/GameFlowManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillConfiguration.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileManager.cs" />
     </changedPaths>
   </component>
