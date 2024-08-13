@@ -38,9 +38,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/GameProgress.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utility/KeyValueList.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/GameFlowManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillConfiguration.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillConfiguration.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="2kI4crotmkuejGo88VWCKW1EQkw" />

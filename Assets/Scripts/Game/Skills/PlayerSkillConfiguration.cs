@@ -122,7 +122,7 @@ namespace Gavi
             bool wasAddedToActiveSkills = false;
             if (addToBarType == BarType.ActiveNormalHc)
             {
-                wasAddedToActiveSkills = AddSkillToList(skill, _skillsChosenNormalHc);
+                wasAddedToActiveSkills = AddSkillToList(skill, _skillsChosenNormalHc, _skillBarNormalHc.ZoneCount);
                 if (wasAddedToActiveSkills)
                 {
                     GameFileManager.Instance.SaveCurrentGameFile();
@@ -133,7 +133,7 @@ namespace Gavi
             // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             if (addToBarType == BarType.Available || (addToBarType == BarType.ActiveNormalHc && !wasAddedToActiveSkills))
             {
-                bool wasAddedToAvailableSkills = AddSkillToList(skill, _skillsAvailable);
+                bool wasAddedToAvailableSkills = AddSkillToList(skill, _skillsAvailable, -1);
                 if (wasAddedToAvailableSkills)
                 {
                     GameFileManager.Instance.SaveCurrentGameFile();
@@ -162,33 +162,54 @@ namespace Gavi
             Skill skill = Instantiate(skillPrefab, SkillManagerPlayer.Instance.SkillsParent).Skill;
             skill.SkillPrefab = skillPrefab;
 
+            int maxSize = -1;
             List<Skill> listOfSkills = null;
             if (addToBarType == BarType.ActiveNormalHc)
+            {
+                maxSize = _skillBarNormalHc.ZoneCount;
                 listOfSkills = _skillsChosenNormalHc;
+            }
             else if (addToBarType == BarType.ActiveMythic)
+            {
+                maxSize = _skillBarMythic.ZoneCount;
                 listOfSkills = _skillsChosenMythic;
+            }
             else if (addToBarType == BarType.Available)
+            {
+                maxSize = -1;
                 listOfSkills = _skillsAvailable;
-            bool success = AddSkillToList(skill, listOfSkills, skillIndex);
+            }
+            bool success = AddSkillToList(skill, listOfSkills, maxSize, skillIndex);
             if (!success)
                 return null;
             return skill;
         }
 
-        
+
         /// <summary>
         /// Adds the (already instantiated) skill to the first available space of the available skills.
         /// If there is no space on the skill bars, the skill will not be added and false will be returned, else true.
         /// </summary>
         /// <param name="skill">Skill to add.</param>
         /// <param name="listOfSkills">List of skills the skill should be added to.</param>
+        /// <param name="maxSize">Maximum size of the list. If smaller 0, no limit is applied.</param>
         /// <param name="index">Specifies the index of the skill to be added at. If smaller 0, the first available
         /// index will be chosen.</param>
         /// <returns>Returns if the skill was successfully added to the skill bar.</returns>
-        private bool AddSkillToList(Skill skill, List<Skill> listOfSkills, int index = -1)
+        private bool AddSkillToList(Skill skill, List<Skill> listOfSkills, int maxSize, int index = -1)
         {
+            if (index >= 0 && maxSize >= 0 && index >= maxSize) // >= because e.g. with size = 5, index = 5 would be bad
+            {
+                Debugger.LogError("Tried to add skill to list, but index was higher than max size.");
+                return false;
+            }
+            
+            // if an index was specified, add spaces until index is reached. If it was reached before, make sure the
+            // specified index is not occupied.
             if (index >= 0)
             {
+                // add new entries until we have enough for index. No need to check max size since this was checked
+                // at the start of the function.
                 while (listOfSkills.Count <= index)
                     listOfSkills.Add(null);
                 if (listOfSkills[index] != null)
@@ -199,21 +220,25 @@ namespace Gavi
                 return true;
             }
             
+            // if no index was specified, just append to first empty slot. 
             for (int i = 0; i < listOfSkills.Count; i++)
             {
                 if (listOfSkills[i] != null)
                     continue;
-                
                 listOfSkills[i] = skill;
                 UpdateSkillBars();
                 GameFileManager.Instance.SaveCurrentGameFile();
                 return true;
             }
 
-            listOfSkills.Add(skill);
+            // if all slots are occupied, add new entry to the list, but only if it doesn't exceed maxSize.
+            if (maxSize < 0 || listOfSkills.Count < maxSize)
+                listOfSkills.Add(skill);
+            else
+                return false;
+            
             UpdateSkillBars();
             GameFileManager.Instance.SaveCurrentGameFile();
-
             return true;
         }
         #endregion
@@ -308,7 +333,7 @@ namespace Gavi
                 SkillBar tBar = _skillBarsAvailable[barIndex];
                 if (tBar == bar)
                 {
-                    AddSkillToList(droppableSkill.SkillUi.Skill, _skillsAvailable, barZoneIndex + zoneIndex);
+                    AddSkillToList(droppableSkill.SkillUi.Skill, _skillsAvailable, -1, barZoneIndex + zoneIndex);
                     GameFileManager.Instance.SaveCurrentGameFile();
                     break;
                 }
@@ -324,7 +349,7 @@ namespace Gavi
         public void OnSkillDroppedPhysicallyNormalHc(DragAndDroppableSkill droppableSkill, SkillBar bar, int zoneIndex)
         {
             RemoveSkillFromLists(droppableSkill.SkillUi.Skill);
-            AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenNormalHc, zoneIndex);
+            AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenNormalHc, _skillBarNormalHc.ZoneCount, zoneIndex);
             GameFileManager.Instance.SaveCurrentGameFile();
         }
         
@@ -336,7 +361,7 @@ namespace Gavi
         public void OnSkillDroppedPhysicallyMythic(DragAndDroppableSkill droppableSkill, SkillBar bar, int zoneIndex)
         {
             RemoveSkillFromLists(droppableSkill.SkillUi.Skill);
-            AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenMythic, zoneIndex);
+            AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenMythic, _skillBarMythic.ZoneCount, zoneIndex);
             GameFileManager.Instance.SaveCurrentGameFile();
         }
 

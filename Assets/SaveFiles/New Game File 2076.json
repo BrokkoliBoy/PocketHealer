@@ -1,0 +1,15 @@
+{
+    "_isValidGameFile": true,
+    "_fileName": "New Game File 2076",
+    "_skillSafeFile": {
+        "SkillEntries": []
+    },
+    "_encounterProgressSafeFile": {
+        "EncountersSuccessNormal": [],
+        "EncountersSuccessHeroic": [],
+        "EncountersSuccessMythic": [],
+        "EncountersSuccessMythicPlus": {
+            "_keyValuePairs": []
+        }
+    }
+}
