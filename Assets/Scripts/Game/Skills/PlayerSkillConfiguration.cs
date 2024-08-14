@@ -184,8 +184,10 @@ namespace Gavi
                 return null;
             return skill;
         }
+        #endregion
 
 
+        #region List of Skills
         /// <summary>
         /// Adds the (already instantiated) skill to the first available space of the available skills.
         /// If there is no space on the skill bars, the skill will not be added and false will be returned, else true.
@@ -241,10 +243,20 @@ namespace Gavi
             GameFileManager.Instance.SaveCurrentGameFile();
             return true;
         }
+        
+        public void RemoveSkillFromLists(Skill skill)
+        {
+            if (_skillsAvailable.Contains(skill))
+                _skillsAvailable[_skillsAvailable.IndexOf(skill)] = null;
+            else if (_skillsChosenNormalHc.Contains(skill))
+                _skillsChosenNormalHc[_skillsChosenNormalHc.IndexOf(skill)] = null;
+            else if (_skillsChosenMythic.Contains(skill))
+                _skillsChosenMythic[_skillsChosenMythic.IndexOf(skill)] = null;
+        }
         #endregion
         
         
-        #region Ui
+        #region Bars
         private void UpdateSkillBars()
         {
             foreach (SkillBar bar in _skillBarsAvailable)
@@ -306,15 +318,6 @@ namespace Gavi
             }
         }
 
-        private void RemoveSkillFromLists(Skill skill)
-        {
-            if (_skillsAvailable.Contains(skill))
-                _skillsAvailable[_skillsAvailable.IndexOf(skill)] = null;
-            else if (_skillsChosenNormalHc.Contains(skill))
-                _skillsChosenNormalHc[_skillsChosenNormalHc.IndexOf(skill)] = null;
-            else if (_skillsChosenMythic.Contains(skill))
-                _skillsChosenMythic[_skillsChosenMythic.IndexOf(skill)] = null;
-        }
         #endregion
         
 

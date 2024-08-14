@@ -38,13 +38,13 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDroppableSkill.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillConfiguration.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/GameFlowManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utility/Utility.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDroppable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZone.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZoneSkill.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Bar/SkillBar.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillConfiguration.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZoneSkill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZone.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="2kI4crotmkuejGo88VWCKW1EQkw" />

@@ -53,9 +53,9 @@ namespace Gavi
                 DragAndDropZoneSkill zone = _parentSkillDropZones.GetChild(i).GetChild(0).GetComponent<DragAndDropZoneSkill>();
                 if (zone == null)
                     continue;
-
                 if (!zone.enabled || !zone.RootTransform.gameObject.activeSelf)
                     continue;
+                
                 _zones.Add(zone);
                 zone.PreSkillDragged.AddListener(OnSkillDragged);
                 zone.PostSkillDroppedPhysically.AddListener(OnSkillDroppedPhysically);

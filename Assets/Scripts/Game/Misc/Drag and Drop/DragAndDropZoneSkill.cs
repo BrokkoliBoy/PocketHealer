@@ -58,8 +58,27 @@ namespace Gavi
 
         public override void DropPhysically(DragAndDroppable droppable)
         {
-            base.DropPhysically(droppable);
-            ContainingDroppable = droppable as DragAndDroppableSkill;
+            DragAndDroppableSkill skillDragAndDroppable = droppable as DragAndDroppableSkill;
+            if (skillDragAndDroppable == null)
+            {
+                base.DropPhysically(droppable);
+                return;
+            }
+            
+            // we have to make this check because when base.DropPhysically is called, before anything else happens,
+            // the skill that is currently in this drop zone will be force dropped into the home zone of the incoming
+            // skill. While doing so, the PlayerConfigurationManager will try to add the old skill to the list and index
+            // of the incoming skill. Yet at that moment, the incoming skill has not yet been removed from that index
+            // so the adding will fail. The incoming skill will only change it's index in the list of skills once
+            // the below PostSkillDroppedPhysically is called (but as mentioned, at that point the old skill will 
+            // already have tried to be added to the list).
+            // To counter this, we remove the incoming skill from the list of skills first, and then call
+            // base.DropPhysically, which will in turn do all it's stuff with the old skill.
+            if (_currentDroppable != null && _currentDroppable != skillDragAndDroppable)
+                PlayerSkillConfiguration.Instance.RemoveSkillFromLists(skillDragAndDroppable.SkillUi.Skill);
+            
+            base.DropPhysically(skillDragAndDroppable);
+            ContainingDroppable = skillDragAndDroppable;
             PostSkillDroppedPhysically.Invoke(this, ContainingDroppable);
             // has to be called again because  invoking above event likely changes the droppables parent 
             UpdateDroppablePosition();
