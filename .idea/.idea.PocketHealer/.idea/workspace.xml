@@ -16,6 +16,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillPrefab.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E97D8420-4F8D-4AEF-92B5-38C5BAB948F1/db/3742f59c/UnityEvent`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Skills/PlayerSkillDatabase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E97D8420-4F8D-4AEF-92B5-38C5BAB948F1/fa/351c002f/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Game File/GameFileUiManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5A41D6B7-1898-42EC-A409-FD0B1C3E3DCF/48/System.IO.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -41,9 +42,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/GameFlowManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utility/Utility.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDroppable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Bar/SkillBar.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Game/Misc/Drag and Drop/DragAndDropZoneSkill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Game/Skills/Skill Bar/SkillBar.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="2kI4crotmkuejGo88VWCKW1EQkw" />

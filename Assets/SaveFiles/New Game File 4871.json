@@ -1,0 +1,36 @@
+{
+    "_isValidGameFile": true,
+    "_fileName": "New Game File 4871",
+    "_skillSafeFile": {
+        "SkillEntries": [
+            {
+                "GUID": "249d931f-8ae8-4d36-9f01-7a0b45658e61",
+                "BarType": 2,
+                "ZoneIndex": 0
+            },
+            {
+                "GUID": "6fd4c242-5f56-4b1a-a55d-8dc797add510",
+                "BarType": 2,
+                "ZoneIndex": 15
+            },
+            {
+                "GUID": "e413f3f4-9c3a-401e-a669-f5e87663f984",
+                "BarType": 2,
+                "ZoneIndex": 24
+            },
+            {
+                "GUID": "93205561-fc28-4dac-87ca-05b739b9525c",
+                "BarType": 2,
+                "ZoneIndex": 25
+            }
+        ]
+    },
+    "_encounterProgressSafeFile": {
+        "EncountersSuccessNormal": [],
+        "EncountersSuccessHeroic": [],
+        "EncountersSuccessMythic": [],
+        "EncountersSuccessMythicPlus": {
+            "_keyValuePairs": []
+        }
+    }
+}

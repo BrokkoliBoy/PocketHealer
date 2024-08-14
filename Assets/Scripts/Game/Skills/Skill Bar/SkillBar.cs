@@ -36,7 +36,7 @@ namespace Gavi
         private bool _isInitialized;
         
         #region Mono
-        private void Awake()
+        private void Start()
         {
             Initialize();   
         }
@@ -53,9 +53,9 @@ namespace Gavi
                 DragAndDropZoneSkill zone = _parentSkillDropZones.GetChild(i).GetChild(0).GetComponent<DragAndDropZoneSkill>();
                 if (zone == null)
                     continue;
-                if (!zone.isActiveAndEnabled)
+
+                if (!zone.enabled || !zone.RootTransform.gameObject.activeSelf)
                     continue;
-                
                 _zones.Add(zone);
                 zone.PreSkillDragged.AddListener(OnSkillDragged);
                 zone.PostSkillDroppedPhysically.AddListener(OnSkillDroppedPhysically);
