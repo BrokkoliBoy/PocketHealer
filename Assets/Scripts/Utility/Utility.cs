@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Gavi.Utility
 {
-    public class Utility : MonoBehaviour
+    public class Utility
     {
         public static float MapValuePercent(float minValue, float maxValue, float value)
         {
@@ -169,6 +169,15 @@ namespace Gavi.Utility
             }
 
             return minutesString + secondsString;
+        }
+
+        public static string GetHierarchy(Transform transform)
+        {
+            if (transform.parent == null)
+                return "";
+
+            return GetHierarchy(transform.parent) + " -> " + transform.gameObject.name;
+
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Gavi
 {
     public class DragAndDropZone : UiTarget
     {
+        #region Variables
         public RectTransform RootTransform => _rootTransform;
         [SerializeField] private RectTransform _rootTransform;
         [SerializeField] private Image _imageBackground;
@@ -18,20 +19,24 @@ namespace Gavi
 
         public bool IsEmpty => _currentDroppable == null;
         protected DragAndDroppable _currentDroppable;
-
-
+        #endregion
+        
+        
+        #region Mono
         protected virtual void Awake()
         {
             // place holder for children
         }
+        #endregion
 
+        
         #region Zone
         public virtual void DropPhysically(DragAndDroppable droppable)
         {
             if (_currentDroppable != null)
             {
                 DragAndDroppable oldDroppable = _currentDroppable;
-                Drag();
+                OnCurrentDroppableDragged();
                 droppable.HomeZone.DropPhysically(oldDroppable);
             }
 
@@ -39,7 +44,7 @@ namespace Gavi
             _currentDroppable.OnDroppedIntoZone(this);
             UpdateDroppablePosition();
             _imageBackground.gameObject.SetActive(false);
-            HighlightStop();
+            StopHighlight();
         }
 
         public virtual void DropManually(DragAndDroppable droppable)
@@ -54,10 +59,10 @@ namespace Gavi
             _currentDroppable.OnDroppedIntoZone(this);
             UpdateDroppablePosition();
             _imageBackground.gameObject.SetActive(false);
-            HighlightStop();
+            StopHighlight();
         }
         
-        public virtual void Drag()
+        public virtual void OnCurrentDroppableDragged()
         {
             if (_currentDroppable == null)
                 return;
@@ -70,17 +75,23 @@ namespace Gavi
             if (_currentDroppable == null)
                 return;
             _currentDroppable.HomeZone = null;
-            Drag();
+            OnCurrentDroppableDragged();
         }
         
         public void UpdateDroppablePosition()
         {
             if (_currentDroppable == null)
                 return;
+            
             _currentDroppable.RootTransform.anchorMin = _rootTransform.anchorMin;
             _currentDroppable.RootTransform.anchorMax = _rootTransform.anchorMax;
             _currentDroppable.RootTransform.pivot = _rootTransform.pivot;
             _currentDroppable.RootTransform.anchoredPosition = _rootTransform.anchoredPosition;
+            
+            // Debug.Log(_currentDroppable.RootTransform.anchorMin + " / " + _rootTransform.anchorMin + "\n" + 
+            //           _currentDroppable.RootTransform.anchorMax + " / " + _rootTransform.anchorMax + "\n"+ 
+            //           _currentDroppable.RootTransform.pivot + " / " + _rootTransform.pivot + "\n" +
+            //           _currentDroppable.RootTransform.anchoredPosition + " / " + _rootTransform.anchoredPosition + "\n");
         }
         #endregion
 
@@ -104,7 +115,7 @@ namespace Gavi
         
         protected override void OnMouseHoverStop()
         {
-            HighlightStop();
+            StopHighlight();
             if (_currentDroppable == null)
                 _imageBackground.gameObject.SetActive(true);
         }
@@ -124,7 +135,7 @@ namespace Gavi
             _imageHighlightInvalid.gameObject.SetActive(true);
         }
 
-        private void HighlightStop()
+        private void StopHighlight()
         {
             _imageHighlightValid.gameObject.SetActive(false);
             _imageHighlightInvalid.gameObject.SetActive(false);

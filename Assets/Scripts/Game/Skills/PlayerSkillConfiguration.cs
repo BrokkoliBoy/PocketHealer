@@ -216,7 +216,7 @@ namespace Gavi
                     return false;
                 listOfSkills[index] = skill;
 
-                UpdateSkillBars();
+                // UpdateSkillBars();
                 return true;
             }
             
@@ -226,7 +226,7 @@ namespace Gavi
                 if (listOfSkills[i] != null)
                     continue;
                 listOfSkills[i] = skill;
-                UpdateSkillBars();
+                // UpdateSkillBars();
                 GameFileManager.Instance.SaveCurrentGameFile();
                 return true;
             }
@@ -237,7 +237,7 @@ namespace Gavi
             else
                 return false;
             
-            UpdateSkillBars();
+            // UpdateSkillBars();
             GameFileManager.Instance.SaveCurrentGameFile();
             return true;
         }

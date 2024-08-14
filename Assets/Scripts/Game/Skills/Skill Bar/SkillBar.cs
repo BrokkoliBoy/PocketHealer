@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Gavi.Skills;
 using Gavi.Utility;
 using UnityEngine;
@@ -56,9 +57,9 @@ namespace Gavi
                     continue;
                 
                 _zones.Add(zone);
-                zone.SkillDragged.AddListener(OnSkillDragged);
-                zone.SkillDroppedPhysically.AddListener(OnSkillDroppedPhysically);
-                zone.SkillDroppedManually.AddListener(OnSkillDroppedManually);
+                zone.PreSkillDragged.AddListener(OnSkillDragged);
+                zone.PostSkillDroppedPhysically.AddListener(OnSkillDroppedPhysically);
+                zone.PostSkillDroppedManually.AddListener(OnSkillDroppedManually);
             }
 
             while (_zones.Count < _minDropZones)
@@ -83,9 +84,9 @@ namespace Gavi
             }
             
             _zones.Add(zone);
-            zone.SkillDragged.AddListener(OnSkillDragged);
-            zone.SkillDroppedPhysically.AddListener(OnSkillDroppedPhysically);
-            zone.SkillDroppedManually.AddListener(OnSkillDroppedManually);
+            zone.PreSkillDragged.AddListener(OnSkillDragged);
+            zone.PostSkillDroppedPhysically.AddListener(OnSkillDroppedPhysically);
+            zone.PostSkillDroppedManually.AddListener(OnSkillDroppedManually);
             UpdateUi();
             return true;
         }
@@ -100,24 +101,26 @@ namespace Gavi
             SkillDragged.Invoke(droppableSkill, this, _zones.IndexOf(zone));
         }
         
-        public void OnSkillDroppedPhysically(DragAndDropZoneSkill zone,DragAndDroppableSkill droppableSkill)
+        public void OnSkillDroppedPhysically(DragAndDropZoneSkill zone, DragAndDroppableSkill droppableSkill)
         {
             if (!_zones.Contains(zone))
             {
                 Debugger.LogError("!_zones.Contains(zone) in SkillBar.OnSkillDroppedPhysically(...)!");
                 return;
             }
+            
             SetUiParent(droppableSkill.SkillUi.Skill);
             SkillDroppedPhysically.Invoke(droppableSkill, this, _zones.IndexOf(zone));
         }
         
-        public void OnSkillDroppedManually(DragAndDropZoneSkill zone,DragAndDroppableSkill droppableSkill)
+        public void OnSkillDroppedManually(DragAndDropZoneSkill zone, DragAndDroppableSkill droppableSkill)
         {
             if (!_zones.Contains(zone))
             {
                 Debugger.LogError("!_zones.Contains(zone) in SkillBar.OnSkillDroppedManually(...)!");
                 return;
             }
+            
             SetUiParent(droppableSkill.SkillUi.Skill);
             SkillDroppedManually.Invoke(droppableSkill, this, _zones.IndexOf(zone));
         }

@@ -9,15 +9,16 @@ namespace Gavi
 {
     public class DragAndDroppable : UiTarget
     {
+        #region Variables
         public RectTransform RootTransform => _rootTransform;
         [SerializeField] private RectTransform _rootTransform;
 
         private bool _isDragging;
         public DragAndDropZone HomeZone { get; set; }
 
-
         public static DragAndDroppable CurrentDragged;
-
+        #endregion
+        
 
         #region Mono
         private void OnDisable()
@@ -30,7 +31,7 @@ namespace Gavi
         {
             if (!_isDragging)
                 return;
-            OnDrag();
+            UpdateDragPosition();
         }
 
         protected override void LateUpdate()
@@ -42,14 +43,14 @@ namespace Gavi
 
         private void OnDestroy()
         {
-            //Debugger.LogError("DragAndDroppable destroyed! This path is not yet implemented.");
+            if (CurrentDragged == this)
+                CurrentDragged = null;
         }
-
         #endregion
 
         
         #region Dragging & Dropping
-        protected virtual void DragStart()
+        protected virtual void StartDrag()
         {
             if (!PlayerSkillConfiguration.Instance.IsInConfigurationMenu)
                 return;
@@ -63,10 +64,10 @@ namespace Gavi
             CurrentDragged = this;
             _isDragging = true;
             if (HomeZone != null)
-                HomeZone.Drag();
+                HomeZone.OnCurrentDroppableDragged();
         }
 
-        protected virtual void OnDrag()
+        protected virtual void UpdateDragPosition()
         {
             if (_rootTransform == null)
                 return;
@@ -99,13 +100,11 @@ namespace Gavi
         {
             if (HomeZone == null)
                 return;
-            // Debug.Log("Drop to home droppable: " + name + " // " + HomeZone.name);
             HomeZone.DropManually(this);
         }
 
         public virtual void OnDroppedIntoZone(DragAndDropZone zone)
         {
-            // Debug.Log("OnDroppedIntoZone doppable " + name);
             HomeZone = zone;
         }
         #endregion
@@ -116,22 +115,8 @@ namespace Gavi
         {
             if (_isDragging)
                 return;
-            DragStart();
+            StartDrag();
         }
-
-        // public override void OnMouseHold()
-        // {
-        //     if (!_isDragging)
-        //         return;
-        //     OnDrag();
-        // }
-        
-        // public override void OnMousePressedUp()
-        // {
-        //     if (!_isDragging)
-        //         return;
-        //     Drop();
-        // }
         #endregion
     }
 }

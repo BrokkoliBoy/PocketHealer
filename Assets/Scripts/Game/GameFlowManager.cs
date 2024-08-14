@@ -23,7 +23,7 @@ namespace Gavi.Base
         public void StartGame(GameFile gameFile)
         {
             // load empty file: initialize
-            if (gameFile.SkillSafeFile == null || gameFile.SkillSafeFile.SkillEntries == null)
+            if (gameFile.SkillSafeFile == null || gameFile.SkillSafeFile.SkillEntries == null || gameFile.SkillSafeFile.SkillEntries.Count <= 0)
             {
                 InitializeSkillsForNewSafeFile();
                 GameFileManager.Instance.SaveCurrentGameFile();

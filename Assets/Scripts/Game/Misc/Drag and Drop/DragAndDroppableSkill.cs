@@ -8,7 +8,7 @@ namespace Gavi
 {
     public class DragAndDroppableSkill : DragAndDroppable
     {
-        public SkillUi SkillUi => _skill;
-        [SerializeField] private SkillUi _skill;
+        public SkillUi SkillUi => _skillUi;
+        [SerializeField] private SkillUi _skillUi;
     }
 }
