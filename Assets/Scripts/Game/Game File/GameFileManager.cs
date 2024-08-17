@@ -8,55 +8,38 @@ using UnityEngine.SceneManagement;
 
 namespace Gavi
 {
-    #region Game File
     public class GameFileManager : MonoBehaviour
     {
-        public static GameFileManager Instance;
-        
-        /*
-         * - Unlocked spells: PlayerSkillConfiguration.UnlockSkill(Skill skill)
-         * - Spell bar positions: PlayerSkillConfiguration custom function
-         * - Boss progress: GameProgress.AddEncounterToSuccess(int encounterNumber, EncounterDifficulty difficulty, int mythicPlusNumber)
-         * - Settings: 
-         */
+        #region Variables
 
-        [SerializeField] private int _minGameFiles = 3;
-        // [SerializeField] private int _maxGameFiles = 3;
-        
-        private GameFile _currentGameFile;
+        public static GameFileManager Instance;
+
+        [SerializeField] private int _fileAmount = 3;
+
+        private SafeFile _currentSafeFile;
         public static string SafeFileDirectoryPath => Application.dataPath + "/SaveFiles";
 
-
-        #region DEBUG
-        [SerializeField] private bool _GENERATE_FILES_FROM_DISK;
-
-        private void OnDrawGizmosSelected()
-        {
-            if (_GENERATE_FILES_FROM_DISK)
-            {
-                _GENERATE_FILES_FROM_DISK = false;
-                GenerateGameFilesFromDisk();
-            }
-        }
         #endregion
 
 
         #region Mono
+
         private void Awake()
         {
             if (Instance != null)
                 Debugger.LogInstanceError(typeof(GameFileManager));
             Instance = this;
         }
-        #endregion
-        
-        
-        #region Life Cycle
-        public List<GameFile> GenerateGameFilesFromDisk()
-        {
-            List<GameFile> gameFiles = new List<GameFile>();
 
+        #endregion
+
+
+        #region Life Cycle
+
+        public List<SafeFile> GenerateGameFilesFromDisk()
+        {
             // read existing game files
+            List<SafeFile> existingFiles = new ();
             Directory.CreateDirectory(SafeFileDirectoryPath);
             DirectoryInfo directoryInfo = new DirectoryInfo(SafeFileDirectoryPath);
             FileInfo[] files = directoryInfo.GetFiles();
@@ -64,64 +47,100 @@ namespace Gavi
             {
                 if (file.Extension != ".json")
                     continue;
-                GameFile gameFile = GameFile.TryLoadGameFileFromDisk(file.Name);
-                if (gameFile == null)
+                SafeFile safeFile = SafeFile.TryLoadGameFileFromDisk(file.Name);
+                if (safeFile == null)
                     continue;
-                gameFiles .Add(gameFile);
-            }
-            
-            // fill up with new game files
-            while (gameFiles.Count < _minGameFiles)
-            {
-                GameFile gameFile = GameFile.CreateNewGameFile();
-                gameFiles.Add(gameFile);
+
+                // if we already have reached the max number of game files, just don't add any more and log an error
+                if (existingFiles.Count >= _fileAmount)
+                {
+                    Debugger.LogError("Found too many game files on disk.");
+                    break;
+                }
+                
+                existingFiles.Add(safeFile);
             }
 
-            return gameFiles;
+            // make indices work
+            List<SafeFile> sortedFiles = new(_fileAmount); 
+            while (sortedFiles.Count < _fileAmount) 
+                sortedFiles.Add(null);
+            for (int i = 0; i < existingFiles.Count; i++)
+            {
+                SafeFile file = existingFiles[i];
+                // if the file index is too high, just set it to 0 and retry the iteration
+                if (file.FileIndex >= _fileAmount)
+                {
+                    file.FileIndex = 0;
+                    i--;
+                    continue;
+                }
+                // if the slot is already occupied, just increase the index and retry the iteration. Even if the index
+                // would overshoot the size of the list, due to the above statement it would go down to 0 eventually.
+                if (sortedFiles[file.FileIndex] != null )
+                {
+                    file.FileIndex++;
+                    i++;
+                    continue;
+                }
+
+                sortedFiles[file.FileIndex] = file;
+            }
+
+            // fill up empty slots with new game files
+            for (int i = 0; i < sortedFiles.Count; i++)
+            {
+                if (sortedFiles[i] != null)
+                    continue;
+                SafeFile newSafeFile = SafeFile.CreateNewGameFile(i);
+                sortedFiles[i] = newSafeFile;
+            }
+
+            return sortedFiles;
         }
 
         // called from logout button
         public void Logout()
         {
             SaveCurrentGameFile();
-            _currentGameFile = null;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
         #endregion
 
 
         #region Load
-        public void LoadGameFile(GameFile file)
+        public void LoadGameFile(SafeFile file)
         {
-            _currentGameFile = file;
-            GameFlowManager.Instance.StartGame(_currentGameFile);
+            _currentSafeFile = file;
+            GameFlowManager.Instance.StartGame(_currentSafeFile);
         }
+
         #endregion
 
-        
+
         #region Save
         public void SaveCurrentGameFile()
         {
+            SkillSafeFile skillSaveFile = GenerateSkillSaveFile();
+            _currentSafeFile.GameFile.SaveSkills(skillSaveFile);
+
+            EncounterProgressSafeFile encounterProgressSafeFile = GenerateEncounterProgressFile();
+            _currentSafeFile.GameFile.SaveEncounterProgress(encounterProgressSafeFile);
+
+            _currentSafeFile.WriteToDisk();
+        }
+
+        public SkillSafeFile GenerateSkillSaveFile()
+        {
             List<Skill> skillsChosenNormalHc = PlayerSkillConfiguration.Instance.SkillsChosenNormalHc;
             List<Skill> skillsChosenMythic = PlayerSkillConfiguration.Instance.SkillsChosenMythic;
-            List<Skill> skillsAvailable = PlayerSkillConfiguration.Instance.SkillsAvailable;
-            SaveSkills(skillsChosenNormalHc, skillsChosenMythic, skillsAvailable);
-            
-            List<int> encountersSuccessNormal = GameProgress.Instance.EncountersSuccessNormal;
-            List<int> encountersSuccessHeroic = GameProgress.Instance.EncountersSuccessHeroic;
-            List<int> encountersSuccessMythic = GameProgress.Instance.EncountersSuccessMythic;
-            KeyValueList<int, List<int>> encountersSuccessMythicPlus = GameProgress.Instance.EncountersSuccessMythicPlus;
-            SaveEncounterProgress(encountersSuccessNormal, encountersSuccessHeroic, encountersSuccessMythic, encountersSuccessMythicPlus);
+            List<Skill> skillsChosenAvailable = PlayerSkillConfiguration.Instance.SkillsAvailable;
 
-            _currentGameFile.WriteToDisk();
-        }
-        
-        public void SaveSkills(List<Skill> chosenSkillsNormalHc, List<Skill> chosenSkillsMythic, List<Skill> availableSkills)
-        {
             List<SkillEntry> skillEntries = new List<SkillEntry>();
-            for (int i = 0; i < chosenSkillsNormalHc.Count; i++)
+            for (int i = 0; i < skillsChosenNormalHc.Count; i++)
             {
-                Skill skill = chosenSkillsNormalHc[i];
+                Skill skill = skillsChosenNormalHc[i];
                 if (skill == null)
                     continue;
                 SkillEntry skillEntry = new SkillEntry();
@@ -130,9 +149,10 @@ namespace Gavi
                 skillEntry.ZoneIndex = i;
                 skillEntries.Add(skillEntry);
             }
-            for (int i = 0; i < chosenSkillsMythic.Count; i++)
+
+            for (int i = 0; i < skillsChosenMythic.Count; i++)
             {
-                Skill skill = chosenSkillsMythic[i];
+                Skill skill = skillsChosenMythic[i];
                 if (skill == null)
                     continue;
                 SkillEntry skillEntry = new SkillEntry();
@@ -141,9 +161,10 @@ namespace Gavi
                 skillEntry.ZoneIndex = i;
                 skillEntries.Add(skillEntry);
             }
-            for (int i = 0; i < availableSkills.Count; i++)
+
+            for (int i = 0; i < skillsChosenAvailable.Count; i++)
             {
-                Skill skill = availableSkills[i];
+                Skill skill = skillsChosenAvailable[i];
                 if (skill == null)
                     continue;
                 SkillEntry skillEntry = new SkillEntry();
@@ -152,99 +173,132 @@ namespace Gavi
                 skillEntry.ZoneIndex = i;
                 skillEntries.Add(skillEntry);
             }
-            
+
             SkillSafeFile skillSafeFile = new SkillSafeFile();
             skillSafeFile.SkillEntries = skillEntries;
-            _currentGameFile.SaveSkills(skillSafeFile);
+            return skillSafeFile;
         }
 
-        private void SaveEncounterProgress(List<int> encountersSuccessNormal, List<int> encountersSuccessHeroic,
-            List<int> encountersSuccessMythic, KeyValueList<int, List<int>> encountersSuccessMythicPlus)
+        private EncounterProgressSafeFile GenerateEncounterProgressFile()
         {
+            List<int> encountersSuccessNormal = GameProgress.Instance.EncountersSuccessNormal;
+            List<int> encountersSuccessHeroic = GameProgress.Instance.EncountersSuccessHeroic;
+            List<int> encountersSuccessMythic = GameProgress.Instance.EncountersSuccessMythic;
+            KeyValueList<int, List<int>> encountersSuccessMythicPlus =
+                GameProgress.Instance.EncountersSuccessMythicPlus;
+
             EncounterProgressSafeFile encounterProgressSafeFile = new EncounterProgressSafeFile();
             encounterProgressSafeFile.EncountersSuccessNormal = encountersSuccessNormal;
             encounterProgressSafeFile.EncountersSuccessHeroic = encountersSuccessHeroic;
             encounterProgressSafeFile.EncountersSuccessMythic = encountersSuccessMythic;
             encounterProgressSafeFile.EncountersSuccessMythicPlus = encountersSuccessMythicPlus;
 
-            _currentGameFile.SaveEncounterProgress(encounterProgressSafeFile);
+            return encounterProgressSafeFile;
         }
+
         #endregion
     }
 
+
     [System.Serializable]
-    public class GameFile
+    public class SafeFile
     {
         #region Variables
+        public const string DefaultFileName = "New Safe File";
+        public const string DefaultCharacterName = "New Game";
+
         [SerializeField] private bool _isValidGameFile;
-        
+        public string CharacterName => _characterName;
+        [SerializeField] private string _characterName;
+        public int FileIndex;
+
+        // file name & path
         private string FilePath => GameFileManager.SafeFileDirectoryPath + "/" + FileNamePlusExtension;
         public string FileNamePlusExtension => _fileName + ".json";
         public string FileName => _fileName;
         [SerializeField] private string _fileName;
 
-        public SkillSafeFile SkillSafeFile => _skillSafeFile;
-        [SerializeField] private SkillSafeFile _skillSafeFile;
-        public EncounterProgressSafeFile EncounterProgressSafeFile => _encounterProgressSafeFile;
-        [SerializeField] private EncounterProgressSafeFile _encounterProgressSafeFile;
+        public GameFile GameFile => _gameFile ??= new GameFile();
+        [SerializeField] private GameFile _gameFile;
+
         #endregion
 
-        
+
         #region Loading
-        public static GameFile CreateNewGameFile()
+
+        public static SafeFile CreateNewGameFile(int fileIndex)
         {
-            GameFile gameFile = new GameFile();
-            gameFile._isValidGameFile = true;
-            gameFile._fileName = "New Game File " + Random.Range(0, 10000);
-            
-            gameFile.WriteToDisk();
-            return gameFile;
+            SafeFile safeFile = new SafeFile();
+            safeFile._isValidGameFile = true;
+            safeFile._fileName = DefaultFileName + " " + fileIndex;
+            safeFile._characterName = DefaultCharacterName;
+            safeFile.FileIndex = fileIndex;
+
+            safeFile.WriteToDisk();
+            return safeFile;
         }
-        
-        public static GameFile TryLoadGameFileFromDisk(string fileNamePlusExtension)
+
+        public static SafeFile TryLoadGameFileFromDisk(string fileNamePlusExtension)
         {
             StreamReader reader = new StreamReader(GameFileManager.SafeFileDirectoryPath + "/" + fileNamePlusExtension);
             string fileContent = reader.ReadToEnd();
             reader.Close();
 
-            GameFile gameFile = JsonUtility.FromJson<GameFile>(fileContent);
-            if (gameFile == null)
+            SafeFile safeFile = JsonUtility.FromJson<SafeFile>(fileContent);
+            if (safeFile == null)
             {
                 Debugger.LogError("Something went wrong loading a game file. File name: " + fileNamePlusExtension);
                 return null;
             }
 
-            if (!gameFile._isValidGameFile)
+            if (!safeFile._isValidGameFile)
                 return null;
 
-            gameFile._fileName = fileNamePlusExtension.Replace(".json", "");
-            return gameFile;
+            safeFile._fileName = fileNamePlusExtension.Replace(".json", "");
+            return safeFile;
+        }
+
+        public void SetCharacterName(string characterName)
+        {
+            _characterName = characterName;
+            WriteToDisk();
         }
         #endregion
 
-        
+
         #region Saving
-        public void SaveSkills(SkillSafeFile skillSafeFile)
-        {
-            _skillSafeFile = skillSafeFile;
-        }
-        
-        public void SaveEncounterProgress(EncounterProgressSafeFile encounterProgressSafeFile)
-        {
-            _encounterProgressSafeFile = encounterProgressSafeFile;
-        }
-        
         public void WriteToDisk()
         {
             string json = JsonUtility.ToJson(this, true);
-            
+
             StreamWriter writer = new StreamWriter(FilePath, false);
             writer.WriteLine(json);
             writer.Close();
         }
+
         #endregion
-    }        
-    #endregion
+    }
+
+
+    #region Game File
+    [System.Serializable]
+    public class GameFile
+    {
+        public SkillSafeFile SkillSafeFile => _skillSafeFile;
+        [SerializeField] private SkillSafeFile _skillSafeFile;
+        public EncounterProgressSafeFile EncounterProgressSafeFile => _encounterProgressSafeFile;
+        [SerializeField] private EncounterProgressSafeFile _encounterProgressSafeFile;
+
+        public void SaveSkills(SkillSafeFile skillSafeFile)
+        {
+            _skillSafeFile = skillSafeFile;
+        }
+
+        public void SaveEncounterProgress(EncounterProgressSafeFile encounterProgressSafeFile)
+        {
+            _encounterProgressSafeFile = encounterProgressSafeFile;
+        }
+    }
 
 
     [System.Serializable]
@@ -264,9 +318,11 @@ namespace Gavi
     [System.Serializable]
     public class EncounterProgressSafeFile
     {
-        public List<int> EncountersSuccessNormal = new ();
-        public List<int> EncountersSuccessHeroic = new ();
-        public List<int> EncountersSuccessMythic = new ();
-        public KeyValueList<int, List<int>> EncountersSuccessMythicPlus = new ();
+        public List<int> EncountersSuccessNormal = new();
+        public List<int> EncountersSuccessHeroic = new();
+        public List<int> EncountersSuccessMythic = new();
+        public KeyValueList<int, List<int>> EncountersSuccessMythicPlus = new();
     }
+
+    #endregion
 }

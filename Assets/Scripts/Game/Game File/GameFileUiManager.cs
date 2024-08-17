@@ -22,14 +22,14 @@ namespace Gavi
         // called from event in login panel
         public void ShowUis()
         {
-            List<GameFile> files = GameFileManager.Instance.GenerateGameFilesFromDisk();
+            List<SafeFile> files = GameFileManager.Instance.GenerateGameFilesFromDisk();
 
             for (int i = 0; i < _uis.Count; i++)
             {
                 if (i >= files.Count)
-                    _uis[i].SetGameFileUi(null);
+                    _uis[i].ApplyGameFileUi(null);
                 else
-                    _uis[i].SetGameFileUi(files[i]);
+                    _uis[i].ApplyGameFileUi(files[i]);
             }
         }
     }
