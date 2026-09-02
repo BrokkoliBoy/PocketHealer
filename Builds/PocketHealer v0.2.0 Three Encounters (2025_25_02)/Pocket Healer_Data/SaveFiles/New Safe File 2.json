@@ -1,0 +1,19 @@
+{
+    "_isValidGameFile": true,
+    "_characterName": "New Game",
+    "FileIndex": 2,
+    "_fileName": "New Safe File 2",
+    "_gameFile": {
+        "_skillSafeFile": {
+            "SkillEntries": []
+        },
+        "_encounterProgressSafeFile": {
+            "EncountersSuccessNormal": [],
+            "EncountersSuccessHeroic": [],
+            "EncountersSuccessMythic": [],
+            "EncountersSuccessMythicPlus": {
+                "_keyValuePairs": []
+            }
+        }
+    }
+}

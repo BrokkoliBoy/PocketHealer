@@ -14076,6 +14076,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1779217826}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: YOYO
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Gavi.Base.GameFlowManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -40341,7 +40353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68085b8344c3b849bb967a6e84674c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minGameFiles: 3
+  _fileAmount: 3
 --- !u!4 &1191964859
 Transform:
   m_ObjectHideFlags: 0
@@ -40468,6 +40480,18 @@ PrefabInstance:
     - target: {fileID: 6938355142068623119, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1779217826}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: YOYO
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Gavi.Base.GameFlowManager, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -63388,6 +63412,18 @@ PrefabInstance:
     - target: {fileID: 6938355142068623119, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1779217826}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: YOYO
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Gavi.Base.GameFlowManager, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
