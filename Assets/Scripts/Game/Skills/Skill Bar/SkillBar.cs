@@ -55,7 +55,7 @@ namespace Gavi
                     continue;
                 if (!zone.enabled || !zone.RootTransform.gameObject.activeSelf)
                     continue;
-                
+
                 _zones.Add(zone);
                 zone.PreSkillDragged.AddListener(OnSkillDragged);
                 zone.PostSkillDroppedPhysically.AddListener(OnSkillDroppedPhysically);
@@ -64,7 +64,7 @@ namespace Gavi
 
             while (_zones.Count < _minDropZones)
                 AddZone();
-            
+
             UpdateUi();
         }
         #endregion

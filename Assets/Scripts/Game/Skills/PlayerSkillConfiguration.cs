@@ -59,6 +59,7 @@ namespace Gavi
                 bar.SkillDroppedPhysically.AddListener(OnSkillDroppedPhysicallyAvailable);
             }
             EncounterManager.Instance.OnEncounterClear.AddListener(OnEncounterClear);
+            EncounterManager.Instance.OnEncounterInitialize.AddListener(OnEncounterInitialize);
         }
         #endregion
 
@@ -115,7 +116,7 @@ namespace Gavi
         {
             if (HasSkillUnlocked(skillPrefab))
                 return null;
-            
+
             Skill skill = Instantiate(skillPrefab, SkillManagerPlayer.Instance.SkillsParent).Skill;
             skill.SkillPrefab = skillPrefab;
 
@@ -205,7 +206,7 @@ namespace Gavi
                 Debugger.LogError("Tried to add skill to list, but index was higher than max size.");
                 return false;
             }
-            
+
             // if an index was specified, add spaces until index is reached. If it was reached before, make sure the
             // specified index is not occupied.
             if (index >= 0)
@@ -221,8 +222,8 @@ namespace Gavi
                 // UpdateSkillBars();
                 return true;
             }
-            
-            // if no index was specified, just append to first empty slot. 
+
+            // if no index was specified, just append to first empty slot.
             for (int i = 0; i < listOfSkills.Count; i++)
             {
                 if (listOfSkills[i] != null)
@@ -238,12 +239,12 @@ namespace Gavi
                 listOfSkills.Add(skill);
             else
                 return false;
-            
+
             // UpdateSkillBars();
             GameFileManager.Instance.SaveCurrentGameFile();
             return true;
         }
-        
+
         public void RemoveSkillFromLists(Skill skill)
         {
             if (_skillsAvailable.Contains(skill))
@@ -336,7 +337,9 @@ namespace Gavi
                 SkillBar tBar = _skillBarsAvailable[barIndex];
                 if (tBar == bar)
                 {
-                    AddSkillToList(droppableSkill.SkillUi.Skill, _skillsAvailable, -1, barZoneIndex + zoneIndex);
+                    bool wasAdded = AddSkillToList(droppableSkill.SkillUi.Skill, _skillsAvailable, -1, barZoneIndex + zoneIndex);
+                    if (!wasAdded)
+                        AddSkillToList(droppableSkill.SkillUi.Skill, _skillsAvailable, -1);
                     GameFileManager.Instance.SaveCurrentGameFile();
                     break;
                 }
@@ -352,7 +355,9 @@ namespace Gavi
         public void OnSkillDroppedPhysicallyNormalHc(DragAndDroppableSkill droppableSkill, SkillBar bar, int zoneIndex)
         {
             RemoveSkillFromLists(droppableSkill.SkillUi.Skill);
-            AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenNormalHc, _skillBarNormalHc.ZoneCount, zoneIndex);
+            bool wasAdded = AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenNormalHc, _skillBarNormalHc.ZoneCount, zoneIndex);
+            if (!wasAdded)
+                AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenNormalHc, _skillBarNormalHc.ZoneCount);
             GameFileManager.Instance.SaveCurrentGameFile();
         }
         
@@ -364,7 +369,9 @@ namespace Gavi
         public void OnSkillDroppedPhysicallyMythic(DragAndDroppableSkill droppableSkill, SkillBar bar, int zoneIndex)
         {
             RemoveSkillFromLists(droppableSkill.SkillUi.Skill);
-            AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenMythic, _skillBarMythic.ZoneCount, zoneIndex);
+            bool wasAdded = AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenMythic, _skillBarMythic.ZoneCount, zoneIndex);
+            if (!wasAdded)
+                AddSkillToList(droppableSkill.SkillUi.Skill, _skillsChosenMythic, _skillBarMythic.ZoneCount);
             GameFileManager.Instance.SaveCurrentGameFile();
         }
 
@@ -383,6 +390,15 @@ namespace Gavi
         private void OnEncounterClear()
         {
             UpdateSkillBars();
+        }
+
+        private void OnEncounterInitialize()
+        {
+            // Dragging skills is only meant to work in the Configuration view, not on the live in-combat action
+            // bar (which is a separate SkillBar owned by SkillUiManager and never wired back into this data model).
+            // Force the flag off here so a Configuration panel left open before starting a fight doesn't leave
+            // dragging silently enabled during combat.
+            OnClosePanelConfiguration();
         }
         #endregion
 
