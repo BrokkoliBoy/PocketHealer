@@ -8,6 +8,7 @@ codebase yourself.
 - [architecture.md](architecture.md) — the main systems, what they do, and where they live
 - [gotchas.md](gotchas.md) — non-obvious traps and quirks discovered the hard way
 - [changelog.md](changelog.md) — dated log of AI-assisted sessions and what they changed, so you don't rediscover or redo the same thing
+- [content-inventory.md](content-inventory.md) — living list of every player skill and boss ability (stats, unlock conditions, known gaps) — keep this one updated whenever content changes
 
 ## Quick facts
 
