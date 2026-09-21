@@ -13,17 +13,19 @@ resolve exactly as they would in-game), not guessed from raw prefab YAML. Last f
 All values: mana cost, cast time (0 = instant), channel time, cooldown (0 = none but still subject
 to the global cooldown), and how the skill is currently obtained in a normal playthrough.
 
-| Skill (internal name) | Mana | Cast | Channel | Cooldown | Target | Unlock | Description |
-|---|---|---|---|---|---|---|---|
-| Greater Heal | 5 | 2s | - | 0 | Ally | Starting skill | Mana-efficient, low-output heal for 40 health. |
-| Renew | 5 | instant | - | 4s | Ally | Starting skill | HoT: heals 10 every 3s for 15s (5 ticks, 50 total). |
-| Shadow Word: Death | 4 | 1.5s | - | 0 | Enemy | Unlocked on beating **Boss 3 Normal** *(fixed 2026-09-22 — used to also be a starting skill, which made this unlock condition dead code; see changelog.md)* | Deals 12 damage. |
-| Circle of Healing | 8 | instant | - | 7s | Up to 5 allies (AoE) | Unlocked on beating **Boss 1 Normal** | Heals up to 5 allies for 40 health each. |
-| Power Word: Shield | 5 | instant | - | 4s | Ally | Unlocked on beating **Boss 2 Normal** | Shields the target for 15s, absorbing 40 damage. *(Tooltip text fixed 2026-09-22 — used to show a leftover placeholder string.)* |
-| Penance | 4 | - | 1.5s (tick every 0.5s) | 5s | Ally (per its `SkillRange`, despite the description also mentioning an enemy-damage variant) | **Not obtainable yet** — meant to unlock on beating **Boss 4**, which doesn't exist yet | Channeled heal, ticks for 11 per 0.5s. *(Rebalanced 2026-09-22: mana 10→4, cooldown 0s→5s.)* |
-| Despell | 3 | instant | - | 5s | Ally | **Not obtainable** — intentionally left out of the unlock chain, may end up unused | Removes one random negative status effect from the target. |
-| Quick Heal | 10 | instant | - | 0 | Ally | **Not obtainable** — intentionally left out for now, possibly a future special/unusual unlock | **Tooltip is broken**: shows the literal string "ERROR" instead of real text (its `{{cast:0.0}}` template points at an empty `_effectsCastFinish` list — same bug class as the old Power Word Shield issue, not yet fixed). |
-| *(DEBUG) Kill Enemy* | 0 | 0.5s | - | 0 | Ally **and** Enemy | **Intentionally** part of every new save's starting loadout (per 2026-09-22 design decision) — kept in deliberately, dev-managed | Deals 10–20 damage. Its internal `Skill.Name` is also `"Shadow Word: Death"` — identical display name to the real damage skill, so it's indistinguishable in the UI. Not a bug — the dev wants it to stay for now. |
+| Skill (internal name) | Ready? | Mana | Cast | Channel | Cooldown | Target | Unlock | Description |
+|---|---|---|---|---|---|---|---|---|
+| Greater Heal | ✅ | 5 | 2s | - | 0 | Ally | Starting skill | Mana-efficient, low-output heal for 40 health. |
+| Renew | ✅ | 5 | instant | - | 4s | Ally | Starting skill | HoT: heals 10 every 3s for 15s (5 ticks, 50 total). |
+| Shadow Word: Death | ✅ | 4 | 1.5s | - | 0 | Enemy | Unlocked on beating **Boss 3 Normal** *(fixed 2026-09-22 — used to also be a starting skill, which made this unlock condition dead code; see changelog.md)* | Deals 12 damage. |
+| Circle of Healing | ✅ | 8 | instant | - | 7s | Up to 5 allies (AoE) | Unlocked on beating **Boss 1 Normal** | Heals up to 5 allies for 40 health each. |
+| Power Word: Shield | ✅ | 5 | instant | - | 4s | Ally | Unlocked on beating **Boss 2 Normal** | Shields the target for 15s, absorbing 40 damage. *(Tooltip text fixed 2026-09-22 — used to show a leftover placeholder string.)* |
+| Penance | ❌ | 4 | - | 1.5s (tick every 0.5s) | 5s | Ally (per its `SkillRange`, despite the description also mentioning an enemy-damage variant) | **Not obtainable yet** — meant to unlock on beating **Boss 4**, which doesn't exist yet | Channeled heal, ticks for 11 per 0.5s. *(Rebalanced 2026-09-22: mana 10→4, cooldown 0s→5s.)* |
+| Despell | ❌ | 3 | instant | - | 5s | Ally | **Not obtainable** — intentionally left out of the unlock chain, may end up unused | Removes one random negative status effect from the target. |
+| Quick Heal | ❌ | 10 | instant | - | 0 | Ally | **Not obtainable** — intentionally left out for now, possibly a future special/unusual unlock | **Tooltip is broken**: shows the literal string "ERROR" instead of real text (its `{{cast:0.0}}` template points at an empty `_effectsCastFinish` list — same bug class as the old Power Word Shield issue, not yet fixed). |
+| *(DEBUG) Kill Enemy* | ✅ | 0 | 0.5s | - | 0 | Ally **and** Enemy | **Intentionally** part of every new save's starting loadout (per 2026-09-22 design decision) — kept in deliberately, dev-managed | Deals 10–20 damage. Its internal `Skill.Name` is also `"Shadow Word: Death"` — identical display name to the real damage skill, so it's indistinguishable in the UI. Not a bug — the dev wants it to stay for now. |
+
+✅ = obtainable in a normal playthrough, working tooltip, no known issues. ❌ = not obtainable yet and/or broken.
 
 Starting bar (`_initialSkillsChosenPrefabs`, 5 slots total): Greater Heal, Renew, [DEBUG] Kill Enemy
 *(fixed 2026-09-22 — Shadow Word: Death removed from this list, see changelog.md)*, 2 free slots
@@ -32,39 +34,40 @@ Starting bar (`_initialSkillsChosenPrefabs`, 5 slots total): Greater Heal, Renew
 ## Bosses / Encounters
 
 Boss ability data pulled the same way (live-instantiated + `Awake()` invoked). `-` means the field
-doesn't apply or the effect prefab didn't expose a value this way.
+doesn't apply or the effect prefab didn't expose a value this way. ✅ = tuned and has a real tooltip.
+❌ = missing a description, untuned/placeholder numbers, or doesn't exist yet.
 
 ### Boss 1 — Encounter 1
 
-| Difficulty | Ability | Cast/Channel | Cooldown | Damage/Effect | Description authored? |
+| Difficulty | Ability | Ready? | Cast/Channel | Cooldown | Damage/Effect |
 |---|---|---|---|---|---|
-| Normal | Auto Attack | 2.5s cast | 0 | 20 dmg, prioritizes tanks, bonus vs healers/DDs | Yes |
-| Normal | Toss Boulder | 1s cast | 5s | 30 dmg, prioritizes healers/DDs | Yes |
-| Normal | Enrage | 3s cast | 25s | Self-buff: +40% haste & cooldown reduction for 12s | Yes |
-| Heroic | Auto Attack | 2s cast | 0 | 25 dmg | Yes |
-| Heroic | Toss Boulder | 1s cast | 4s | 35 dmg, prioritizes healers/DDs | Yes *(fixed 2026-09-22, also renamed from generic "Skill Damage")* |
-| Heroic | Enrage | 3s cast | 15s | Self-buff: +40% haste & cooldown reduction for 12s (same as Normal) | Yes *(fixed 2026-09-22, also renamed from generic "Skill Damage")* |
+| Normal | Auto Attack | ✅ | 2.5s cast | 0 | 20 dmg, prioritizes tanks, bonus vs healers/DDs |
+| Normal | Toss Boulder | ✅ | 1s cast | 5s | 30 dmg, prioritizes healers/DDs |
+| Normal | Enrage | ✅ | 3s cast | 25s | Self-buff: +40% haste & cooldown reduction for 12s |
+| Heroic | Auto Attack | ✅ | 2s cast | 0 | 25 dmg |
+| Heroic | Toss Boulder | ✅ | 1s cast | 4s | 35 dmg, prioritizes healers/DDs *(fixed 2026-09-22, also renamed from generic "Skill Damage")* |
+| Heroic | Enrage | ✅ | 3s cast | 15s | Self-buff: +40% haste & cooldown reduction for 12s, same as Normal *(fixed 2026-09-22, also renamed from generic "Skill Damage")* |
 
 ### Boss 2 — Encounter 2
 
-| Difficulty | Ability | Cast/Channel | Cooldown | Damage/Effect | Description authored? |
+| Difficulty | Ability | Ready? | Cast/Channel | Cooldown | Damage/Effect |
 |---|---|---|---|---|---|
-| Normal | Auto Attack | 1.5s cast | 0 | 10 dmg | Yes |
-| Normal | AoE | 1.5s channel, 3 ticks (every 0.5s) | 10s | hits up to 5 players, 12 dmg per tick | Yes *(fixed 2026-09-22)* |
-| Heroic | Auto Attack | 1.5s cast | 0 | 12 dmg | Yes |
-| Heroic | AoE | 1.5s channel, 3 ticks (every 0.5s) | 10s | hits up to 5 players, 12 dmg per tick (same as Normal) | Yes *(fixed 2026-09-22)* |
-| Heroic | Throw Rock *(HC-only extra ability)* | 1s cast | 12s | 30 dmg, single target | Yes *(fixed 2026-09-22)* |
+| Normal | Auto Attack | ✅ | 1.5s cast | 0 | 10 dmg |
+| Normal | AoE | ✅ | 1.5s channel, 3 ticks (every 0.5s) | 10s | hits up to 5 players, 12 dmg per tick *(fixed 2026-09-22)* |
+| Heroic | Auto Attack | ✅ | 1.5s cast | 0 | 12 dmg |
+| Heroic | AoE | ✅ | 1.5s channel, 3 ticks (every 0.5s) | 10s | hits up to 5 players, 12 dmg per tick, same as Normal *(fixed 2026-09-22)* |
+| Heroic | Throw Rock *(HC-only extra ability)* | ✅ | 1s cast | 12s | 30 dmg, single target *(fixed 2026-09-22)* |
 
 Boss 2 is the simplest boss overall — no dedicated "State Data" ability prefab exists for it (unlike
 Boss 1's Rage and Boss 3's Dark Pact), consistent with it being the least fleshed-out of the three.
 
 ### Boss 3 — Encounter 3
 
-| Difficulty | Ability | Cast/Channel | Cooldown | Damage/Effect | Description authored? |
+| Difficulty | Ability | Ready? | Cast/Channel | Cooldown | Damage/Effect |
 |---|---|---|---|---|---|
-| Normal | Auto Attack | 2.5s cast | 0 | **0 dmg** (unfinished/untuned) | Yes (text says "Deals 0 damage...") |
-| Normal | Skill Damage *(presumably "Dark Pact")* | 1.5s cast | 0 | no description text | **No** |
-| Heroic | — | — | — | **Doesn't exist.** `Encounter 3 HC` folder is empty, no prefab. | — |
+| Normal | Auto Attack | ❌ | 2.5s cast | 0 | **0 dmg** (unfinished/untuned) |
+| Normal | Skill Damage *(presumably "Dark Pact")* | ❌ | 1.5s cast | 0 | no description text |
+| Heroic | — | ❌ | — | — | **Doesn't exist.** `Encounter 3 HC` folder is empty, no prefab. |
 
 **Correction vs. the 2026-09-22 scouting report:** that report said Boss 3 Normal's enemy prefab had
 *zero* `Skill` components, based on a text grep for the `Skill.cs` script GUID. That grep was
