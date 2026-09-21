@@ -34,11 +34,6 @@ namespace Gavi.Base
             LoadSkillSafeFile(gameFile.SkillSafeFile);
             LoadBossProgressSafeFile(gameFile.EncounterProgressSafeFile);
         }
-
-        public void YOYO()
-        {
-            StartGame(new GameFile());
-        }
         #endregion
 
 
@@ -80,7 +75,6 @@ namespace Gavi.Base
         #region New Game File
         private void InitializeSkillsForNewSafeFile()
         {
-            Debug.Log("ASD");
             SkillLearnSystem.Instance.LearnInitialSkills();
         }
         #endregion

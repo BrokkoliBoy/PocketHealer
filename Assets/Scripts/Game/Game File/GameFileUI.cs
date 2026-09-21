@@ -39,6 +39,11 @@ namespace Gavi
             }
             _name.text = safeFile.CharacterName == "" ? SafeFile.DefaultCharacterName : safeFile.CharacterName;
             _safeFile = safeFile;
+
+            if (_safeFile.CharacterName == "" || _safeFile.CharacterName.Contains(SafeFile.DefaultCharacterName))
+                ShowNameUI();
+            else
+                HideNameUI();
         }
         #endregion
 
@@ -49,10 +54,7 @@ namespace Gavi
             if (_safeFile == null)
                 return;
 
-            if (_safeFile.CharacterName == "" || _safeFile.CharacterName.Contains(SafeFile.DefaultCharacterName))
-                ShowNameUI();
-            else
-                Login();
+            Login();
         }
 
         public void OnConfirmNameButtonPressed()
@@ -74,9 +76,15 @@ namespace Gavi
         #region Set Name
         private void ShowNameUI()
         {
-            _loginButton.gameObject.SetActive(false);
+            StartCoroutine(DeactivateLoginButtonNextFrame());
             _confirmNameButton.gameObject.SetActive(true);
             _characterName.gameObject.SetActive(true);
+        }
+
+        private IEnumerator DeactivateLoginButtonNextFrame()
+        {
+            yield return null;
+            _loginButton.gameObject.SetActive(false);
         }
 
         private void HideNameUI()

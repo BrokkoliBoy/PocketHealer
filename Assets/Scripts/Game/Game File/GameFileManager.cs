@@ -113,7 +113,7 @@ namespace Gavi
         public void LoadGameFile(SafeFile file)
         {
             _currentSafeFile = file;
-            // GameFlowManager.Instance.StartGame(_currentSafeFile);
+            GameFlowManager.Instance.StartGame(_currentSafeFile.GameFile);
         }
 
         #endregion
