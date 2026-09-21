@@ -3024,6 +3024,223 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &70075192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 70075194}
+  - component: {fileID: 70075193}
+  m_Layer: 0
+  m_Name: Skill Effect Heal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &70075193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70075192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d90a1710d6d6647b9c0b52974f0e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healAmount: 40
+--- !u!4 &70075194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70075192}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 90543603}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &90543594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 90543603}
+  - component: {fileID: 90543602}
+  - component: {fileID: 90543601}
+  - component: {fileID: 90543600}
+  - component: {fileID: 90543599}
+  - component: {fileID: 90543598}
+  - component: {fileID: 90543597}
+  - component: {fileID: 90543596}
+  - component: {fileID: 90543595}
+  m_Layer: 0
+  m_Name: Player Skill Cast Heal(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &90543595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90543594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c0dbb23cb32c14cbeb850dda9ce4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _generateGuid: 0
+  _guid: 6fd4c242-5f56-4b1a-a55d-8dc797add510
+  _skill: {fileID: 90543602}
+--- !u!114 &90543596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90543594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28480c7e548aa7d44980b2e4ac708f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsClickDown: 0
+--- !u!114 &90543597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90543594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeceaf487f043447ad3811ff387817e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &90543598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90543594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18112141779fcd4b9a13ca0feb0f514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canTargetDead: 0
+  _activationPoint: 0
+  _canTargetAlly: 1
+  _canTargetEnemy: 0
+--- !u!114 &90543599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90543594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047f61fd4b896340868a372133f67a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _warmupCooldown:
+    _min: 1.5
+    _max: 1.5
+    _roundingType: 0
+  _localCooldownApply:
+    _min: 0
+    _max: 0
+    _roundingType: 0
+  _globalCooldownApply: 1.5
+  _doNotApplyGlobalCooldown: 0
+--- !u!114 &90543600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90543594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7672b014fdedd95458a0d9dc3e94004b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manaCost: 5
+  _activationType: 1
+--- !u!114 &90543601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90543594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51534486e1bc4b54fa65a96b63f34aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsSequenceFinish: []
+  _castTime: 2
+  _effectsCastFinish:
+  - {fileID: 70075193}
+  _canBeCastWhileCasting: 0
+  _channelTime: 0
+  _effectsChanneling: []
+  _canBeCastWhileChanneling: 1
+  _channelPerformances: 0
+  _channelPerformOneAtStart: 0
+--- !u!114 &90543602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90543594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Greater Heal
+  _description: A mana efficient yet low output heal that heals {{cast:0.0}} health of an ally.
+  _skillPriority: 0
+  _iconSkill: {fileID: 21300000, guid: 190fdc3a377624b4880edaa6b7df4062, type: 3}
+  _skillUiPrefab: {fileID: 6292989599850068953, guid: f0367987a1517244abb0d496f19a6299, type: 3}
+  _dontUseUi: 0
+--- !u!4 &90543603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90543594}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 70075194}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &90826049
 GameObject:
   m_ObjectHideFlags: 0
@@ -3829,7 +4046,6 @@ MonoBehaviour:
   _initialSkillsChosenPrefabs:
   - {fileID: -2522928594737702234, guid: a254997b15b6e644f841b3df7a7e5eec, type: 3}
   - {fileID: -3195146320838224971, guid: 69910a65252cc5e42b39350854f6921a, type: 3}
-  - {fileID: 6632846607149812642, guid: 4e36f32315737ab4f997c40a17a2cf2a, type: 3}
   - {fileID: -4824830529867866820, guid: b5455ddc5af90d04095fe4c13ea91e74, type: 3}
   _padding: 50
   _parentInfoPanels: {fileID: 1722513007}
@@ -13954,6 +14170,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281167945}
   m_CullTransparentMesh: 0
+--- !u!1 &292689761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 292689763}
+  - component: {fileID: 292689762}
+  m_Layer: 0
+  m_Name: Skill Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &292689762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292689761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d90a1710d6d6647b9c0b52974f0e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healAmount: 11
+--- !u!4 &292689763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292689761}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 746341995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &294827999
 GameObject:
   m_ObjectHideFlags: 0
@@ -14162,6 +14423,178 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713713cd192075d42b126776d1d992cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &325081233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 325081242}
+  - component: {fileID: 325081241}
+  - component: {fileID: 325081240}
+  - component: {fileID: 325081239}
+  - component: {fileID: 325081238}
+  - component: {fileID: 325081237}
+  - component: {fileID: 325081236}
+  - component: {fileID: 325081235}
+  - component: {fileID: 325081234}
+  m_Layer: 0
+  m_Name: Player Skill Renew(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &325081234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325081233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c0dbb23cb32c14cbeb850dda9ce4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _generateGuid: 0
+  _guid: 249d931f-8ae8-4d36-9f01-7a0b45658e61
+  _skill: {fileID: 325081241}
+--- !u!114 &325081235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325081233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28480c7e548aa7d44980b2e4ac708f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsClickDown: 0
+--- !u!114 &325081236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325081233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeceaf487f043447ad3811ff387817e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &325081237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325081233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18112141779fcd4b9a13ca0feb0f514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canTargetDead: 0
+  _activationPoint: 0
+  _canTargetAlly: 1
+  _canTargetEnemy: 0
+--- !u!114 &325081238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325081233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047f61fd4b896340868a372133f67a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _warmupCooldown:
+    _min: 1.5
+    _max: 1.5
+    _roundingType: 0
+  _localCooldownApply:
+    _min: 4
+    _max: 4
+    _roundingType: 0
+  _globalCooldownApply: 1.5
+  _doNotApplyGlobalCooldown: 0
+--- !u!114 &325081239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325081233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7672b014fdedd95458a0d9dc3e94004b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manaCost: 5
+  _activationType: 1
+--- !u!114 &325081240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325081233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51534486e1bc4b54fa65a96b63f34aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsSequenceFinish: []
+  _castTime: 0
+  _effectsCastFinish:
+  - {fileID: 1476242966}
+  _canBeCastWhileCasting: 0
+  _channelTime: 0
+  _effectsChanneling: []
+  _canBeCastWhileChanneling: 1
+  _channelPerformances: 0
+  _channelPerformOneAtStart: 0
+--- !u!114 &325081241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325081233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Renew
+  _description: '{{cast:0.0}}'
+  _skillPriority: 0
+  _iconSkill: {fileID: 21300000, guid: a45e221b4610e4147824e40f3b504d72, type: 3}
+  _skillUiPrefab: {fileID: 6292989599850068953, guid: f0367987a1517244abb0d496f19a6299, type: 3}
+  _dontUseUi: 0
+--- !u!4 &325081242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325081233}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1476242967}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &345695551
 GameObject:
   m_ObjectHideFlags: 0
@@ -14363,6 +14796,187 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361911744}
   m_CullTransparentMesh: 1
+--- !u!1 &369506383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 369506392}
+  - component: {fileID: 369506391}
+  - component: {fileID: 369506390}
+  - component: {fileID: 369506389}
+  - component: {fileID: 369506388}
+  - component: {fileID: 369506387}
+  - component: {fileID: 369506386}
+  - component: {fileID: 369506385}
+  - component: {fileID: 369506384}
+  m_Layer: 0
+  m_Name: Player Skill Circle Of Healing(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &369506384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369506383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c0dbb23cb32c14cbeb850dda9ce4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _generateGuid: 0
+  _guid: 97491ffb-4940-42d1-a579-984ff5c13f89
+  _skill: {fileID: 369506391}
+--- !u!114 &369506385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369506383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c44a3057249ab04da4c0f41a47cf070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canTargetDead: 0
+  _activationPoint: 0
+  _numberTargets: 5
+  _targetTypes: 03000000i
+  _roles: 
+  _prioOrder: []
+  _maxNumberHitSameTarget: 1
+  _numberDontHitSameInARow: 0
+  _doNotLeavePrioOrder: 1
+  _timeSwitchTarget: 0
+  _targetsForSwitchTargets: 0
+  _targetingsForSwitchTargets: 0
+  _canBeCastIfNoPool: 0
+--- !u!114 &369506386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369506383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28480c7e548aa7d44980b2e4ac708f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsClickDown: 0
+--- !u!114 &369506387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369506383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeceaf487f043447ad3811ff387817e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &369506388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369506383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047f61fd4b896340868a372133f67a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _warmupCooldown:
+    _min: 1.5
+    _max: 1.5
+    _roundingType: 0
+  _localCooldownApply:
+    _min: 7
+    _max: 7
+    _roundingType: 0
+  _globalCooldownApply: 1.5
+  _doNotApplyGlobalCooldown: 0
+--- !u!114 &369506389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369506383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7672b014fdedd95458a0d9dc3e94004b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manaCost: 8
+  _activationType: 1
+--- !u!114 &369506390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369506383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51534486e1bc4b54fa65a96b63f34aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsSequenceFinish: []
+  _castTime: 0
+  _effectsCastFinish:
+  - {fileID: 400378555}
+  _canBeCastWhileCasting: 0
+  _channelTime: 0
+  _effectsChanneling: []
+  _canBeCastWhileChanneling: 1
+  _channelPerformances: 0
+  _channelPerformOneAtStart: 0
+--- !u!114 &369506391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369506383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Circle of Healing
+  _description: Heals up to 5 allies by {{cast:0.0}} health.
+  _skillPriority: 0
+  _iconSkill: {fileID: 21300000, guid: 18355895e2eba5b45b8110b914a83207, type: 3}
+  _skillUiPrefab: {fileID: 6292989599850068953, guid: f0367987a1517244abb0d496f19a6299, type: 3}
+  _dontUseUi: 0
+--- !u!4 &369506392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369506383}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 400378556}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &373004745
 GameObject:
   m_ObjectHideFlags: 0
@@ -14777,6 +15391,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9e16d1b7be93343b591249143ff844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &400378554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 400378556}
+  - component: {fileID: 400378555}
+  m_Layer: 0
+  m_Name: Skill Effect Heal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &400378555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400378554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d90a1710d6d6647b9c0b52974f0e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healAmount: 40
+--- !u!4 &400378556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400378554}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 369506392}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &418371879
 GameObject:
   m_ObjectHideFlags: 0
@@ -23026,6 +23685,178 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740063205}
   m_CullTransparentMesh: 0
+--- !u!1 &746341986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 746341995}
+  - component: {fileID: 746341994}
+  - component: {fileID: 746341993}
+  - component: {fileID: 746341992}
+  - component: {fileID: 746341991}
+  - component: {fileID: 746341990}
+  - component: {fileID: 746341989}
+  - component: {fileID: 746341988}
+  - component: {fileID: 746341987}
+  m_Layer: 0
+  m_Name: Player Skill Channel Heal(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &746341987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746341986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c0dbb23cb32c14cbeb850dda9ce4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _generateGuid: 1
+  _guid: 80024d01-12d3-4bbc-8579-fa1fa4d67bdd
+  _skill: {fileID: 746341994}
+--- !u!114 &746341988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746341986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28480c7e548aa7d44980b2e4ac708f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsClickDown: 0
+--- !u!114 &746341989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746341986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeceaf487f043447ad3811ff387817e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &746341990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746341986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18112141779fcd4b9a13ca0feb0f514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canTargetDead: 0
+  _activationPoint: 1
+  _canTargetAlly: 1
+  _canTargetEnemy: 0
+--- !u!114 &746341991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746341986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047f61fd4b896340868a372133f67a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _warmupCooldown:
+    _min: 1.5
+    _max: 1.5
+    _roundingType: 0
+  _localCooldownApply:
+    _min: 0
+    _max: 0
+    _roundingType: 0
+  _globalCooldownApply: 1.5
+  _doNotApplyGlobalCooldown: 0
+--- !u!114 &746341992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746341986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7672b014fdedd95458a0d9dc3e94004b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manaCost: 10
+  _activationType: 0
+--- !u!114 &746341993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746341986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51534486e1bc4b54fa65a96b63f34aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsSequenceFinish: []
+  _castTime: 0
+  _effectsCastFinish: []
+  _canBeCastWhileCasting: 0
+  _channelTime: 1.5
+  _effectsChanneling:
+  - {fileID: 292689762}
+  _canBeCastWhileChanneling: 1
+  _channelPerformances: 3
+  _channelPerformOneAtStart: 0
+--- !u!114 &746341994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746341986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Penance
+  _description: Channels for 1.5 seconds and performs every 0.5 seconds a {{channel:0.0}} heal if targeted towards allies or 10 damange cast if targeted towards an enemy. The target is determined when the effect is performed.
+  _skillPriority: 0
+  _iconSkill: {fileID: 21300000, guid: 073de535900cb0f41a67c9318e5678df, type: 3}
+  _skillUiPrefab: {fileID: 6292989599850068953, guid: f0367987a1517244abb0d496f19a6299, type: 3}
+  _dontUseUi: 0
+--- !u!4 &746341995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746341986}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 292689763}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &749359609
 GameObject:
   m_ObjectHideFlags: 0
@@ -30996,6 +31827,178 @@ RectTransform:
   m_AnchoredPosition: {x: -656.00006, y: 388.99997}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &915509568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 915509577}
+  - component: {fileID: 915509576}
+  - component: {fileID: 915509575}
+  - component: {fileID: 915509574}
+  - component: {fileID: 915509573}
+  - component: {fileID: 915509572}
+  - component: {fileID: 915509571}
+  - component: {fileID: 915509570}
+  - component: {fileID: 915509569}
+  m_Layer: 0
+  m_Name: Player Skill Cast Heal(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &915509569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915509568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c0dbb23cb32c14cbeb850dda9ce4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _generateGuid: 0
+  _guid: 6fd4c242-5f56-4b1a-a55d-8dc797add510
+  _skill: {fileID: 915509576}
+--- !u!114 &915509570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915509568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28480c7e548aa7d44980b2e4ac708f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsClickDown: 0
+--- !u!114 &915509571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915509568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeceaf487f043447ad3811ff387817e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &915509572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915509568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18112141779fcd4b9a13ca0feb0f514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canTargetDead: 0
+  _activationPoint: 0
+  _canTargetAlly: 1
+  _canTargetEnemy: 0
+--- !u!114 &915509573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915509568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047f61fd4b896340868a372133f67a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _warmupCooldown:
+    _min: 1.5
+    _max: 1.5
+    _roundingType: 0
+  _localCooldownApply:
+    _min: 0
+    _max: 0
+    _roundingType: 0
+  _globalCooldownApply: 1.5
+  _doNotApplyGlobalCooldown: 0
+--- !u!114 &915509574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915509568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7672b014fdedd95458a0d9dc3e94004b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manaCost: 5
+  _activationType: 1
+--- !u!114 &915509575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915509568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51534486e1bc4b54fa65a96b63f34aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsSequenceFinish: []
+  _castTime: 2
+  _effectsCastFinish:
+  - {fileID: 1264879027}
+  _canBeCastWhileCasting: 0
+  _channelTime: 0
+  _effectsChanneling: []
+  _canBeCastWhileChanneling: 1
+  _channelPerformances: 0
+  _channelPerformOneAtStart: 0
+--- !u!114 &915509576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915509568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Greater Heal
+  _description: A mana efficient yet low output heal that heals {{cast:0.0}} health of an ally.
+  _skillPriority: 0
+  _iconSkill: {fileID: 21300000, guid: 190fdc3a377624b4880edaa6b7df4062, type: 3}
+  _skillUiPrefab: {fileID: 6292989599850068953, guid: f0367987a1517244abb0d496f19a6299, type: 3}
+  _dontUseUi: 0
+--- !u!4 &915509577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915509568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1264879028}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &922617241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40360,6 +41363,178 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1cb001a57d974428d11c6a05f563e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1182776487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1182776496}
+  - component: {fileID: 1182776495}
+  - component: {fileID: 1182776494}
+  - component: {fileID: 1182776493}
+  - component: {fileID: 1182776492}
+  - component: {fileID: 1182776491}
+  - component: {fileID: 1182776490}
+  - component: {fileID: 1182776489}
+  - component: {fileID: 1182776488}
+  m_Layer: 0
+  m_Name: Player Skill Cast Damage(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1182776488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182776487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c0dbb23cb32c14cbeb850dda9ce4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _generateGuid: 0
+  _guid: e413f3f4-9c3a-401e-a669-f5e87663f984
+  _skill: {fileID: 1182776495}
+--- !u!114 &1182776489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182776487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28480c7e548aa7d44980b2e4ac708f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsClickDown: 0
+--- !u!114 &1182776490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182776487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeceaf487f043447ad3811ff387817e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1182776491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182776487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18112141779fcd4b9a13ca0feb0f514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canTargetDead: 0
+  _activationPoint: 0
+  _canTargetAlly: 0
+  _canTargetEnemy: 1
+--- !u!114 &1182776492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182776487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047f61fd4b896340868a372133f67a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _warmupCooldown:
+    _min: 1.5
+    _max: 1.5
+    _roundingType: 0
+  _localCooldownApply:
+    _min: 0
+    _max: 0
+    _roundingType: 0
+  _globalCooldownApply: 1.5
+  _doNotApplyGlobalCooldown: 0
+--- !u!114 &1182776493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182776487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7672b014fdedd95458a0d9dc3e94004b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manaCost: 4
+  _activationType: 1
+--- !u!114 &1182776494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182776487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51534486e1bc4b54fa65a96b63f34aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsSequenceFinish: []
+  _castTime: 1.5
+  _effectsCastFinish:
+  - {fileID: 2093494140}
+  _canBeCastWhileCasting: 0
+  _channelTime: 0
+  _effectsChanneling: []
+  _canBeCastWhileChanneling: 1
+  _channelPerformances: 0
+  _channelPerformOneAtStart: 0
+--- !u!114 &1182776495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182776487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 'Shadow Word: Death'
+  _description: Deals {{cast:0.0}} damage to the target.
+  _skillPriority: 0
+  _iconSkill: {fileID: 21300000, guid: 991a4375f40521c45923435cfa3d0be4, type: 3}
+  _skillUiPrefab: {fileID: 6292989599850068953, guid: f0367987a1517244abb0d496f19a6299, type: 3}
+  _dontUseUi: 0
+--- !u!4 &1182776496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182776487}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2093494141}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1189168461
 GameObject:
   m_ObjectHideFlags: 0
@@ -41272,6 +42447,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257356074}
   m_CullTransparentMesh: 0
+--- !u!1 &1264879026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264879028}
+  - component: {fileID: 1264879027}
+  m_Layer: 0
+  m_Name: Skill Effect Heal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1264879027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264879026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d90a1710d6d6647b9c0b52974f0e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healAmount: 40
+--- !u!4 &1264879028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264879026}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 915509577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1271181365
 GameObject:
   m_ObjectHideFlags: 0
@@ -46997,6 +48217,96 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9e16d1b7be93343b591249143ff844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1472909855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1472909857}
+  - component: {fileID: 1472909856}
+  m_Layer: 0
+  m_Name: Skill Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1472909856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472909855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d90a1710d6d6647b9c0b52974f0e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healAmount: 28
+--- !u!4 &1472909857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472909855}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1795171466}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1476242965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1476242967}
+  - component: {fileID: 1476242966}
+  m_Layer: 0
+  m_Name: Skill Effect - Apply State (HoT)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1476242966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476242965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ff3a78141f75349bb974d0cf46c294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateDataToApply: {fileID: 8117412904085671196, guid: b2d68643a600f68439aac78cba77158f, type: 3}
+--- !u!4 &1476242967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476242965}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 325081242}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536819933
 GameObject:
   m_ObjectHideFlags: 0
@@ -60747,6 +62057,178 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782454335}
   m_CullTransparentMesh: 0
+--- !u!1 &1795171457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1795171466}
+  - component: {fileID: 1795171465}
+  - component: {fileID: 1795171464}
+  - component: {fileID: 1795171463}
+  - component: {fileID: 1795171462}
+  - component: {fileID: 1795171461}
+  - component: {fileID: 1795171460}
+  - component: {fileID: 1795171459}
+  - component: {fileID: 1795171458}
+  m_Layer: 0
+  m_Name: Player Skill Instant Heal(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1795171458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795171457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c0dbb23cb32c14cbeb850dda9ce4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _generateGuid: 0
+  _guid: 84f1aa64-4809-490f-a60d-4207e2390299
+  _skill: {fileID: 1795171465}
+--- !u!114 &1795171459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795171457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28480c7e548aa7d44980b2e4ac708f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsClickDown: 0
+--- !u!114 &1795171460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795171457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeceaf487f043447ad3811ff387817e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1795171461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795171457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18112141779fcd4b9a13ca0feb0f514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canTargetDead: 0
+  _activationPoint: 0
+  _canTargetAlly: 1
+  _canTargetEnemy: 0
+--- !u!114 &1795171462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795171457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047f61fd4b896340868a372133f67a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _warmupCooldown:
+    _min: 1.5
+    _max: 1.5
+    _roundingType: 0
+  _localCooldownApply:
+    _min: 0
+    _max: 0
+    _roundingType: 0
+  _globalCooldownApply: 1.5
+  _doNotApplyGlobalCooldown: 0
+--- !u!114 &1795171463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795171457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7672b014fdedd95458a0d9dc3e94004b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manaCost: 10
+  _activationType: 0
+--- !u!114 &1795171464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795171457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51534486e1bc4b54fa65a96b63f34aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectsSequenceFinish:
+  - {fileID: 1472909856}
+  _castTime: 0
+  _effectsCastFinish: []
+  _canBeCastWhileCasting: 0
+  _channelTime: 0
+  _effectsChanneling: []
+  _canBeCastWhileChanneling: 1
+  _channelPerformances: 0
+  _channelPerformOneAtStart: 0
+--- !u!114 &1795171465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795171457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Quick Heal
+  _description: Instantly heals the target by {{cast:0.0}}. This cast is not mana efficient.
+  _skillPriority: 0
+  _iconSkill: {fileID: 21300000, guid: 55fc45232488a6b47b3be3346e8cdfc0, type: 3}
+  _skillUiPrefab: {fileID: 6292989599850068953, guid: f0367987a1517244abb0d496f19a6299, type: 3}
+  _dontUseUi: 0
+--- !u!4 &1795171466
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795171457}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1472909857}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1831270678 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3745868781383559464, guid: 0e677903c34504542a948c6ad3307bcd, type: 3}
@@ -62953,6 +64435,55 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5571335017314912989, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
   m_PrefabInstance: {fileID: 2070639561}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2093494139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093494141}
+  - component: {fileID: 2093494140}
+  m_Layer: 0
+  m_Name: Skill Effect Damage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2093494140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093494139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02d972c9e30bb2469cd5a0cec693a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage:
+    _min: 12
+    _max: 12
+    _roundingType: 3
+  _roleModifiers: []
+--- !u!4 &2093494141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093494139}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1182776496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2102699867
 GameObject:
   m_ObjectHideFlags: 0
@@ -63640,3 +65171,10 @@ SceneRoots:
   - {fileID: 511432608}
   - {fileID: 1779217820}
   - {fileID: 717643801}
+  - {fileID: 90543603}
+  - {fileID: 915509577}
+  - {fileID: 746341995}
+  - {fileID: 369506392}
+  - {fileID: 1182776496}
+  - {fileID: 1795171466}
+  - {fileID: 325081242}
