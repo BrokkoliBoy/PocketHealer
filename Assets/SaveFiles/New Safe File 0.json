@@ -25,11 +25,18 @@
                     "GUID": "93205561-fc28-4dac-87ca-05b739b9525c",
                     "BarType": 0,
                     "ZoneIndex": 3
+                },
+                {
+                    "GUID": "97491ffb-4940-42d1-a579-984ff5c13f89",
+                    "BarType": 0,
+                    "ZoneIndex": 4
                 }
             ]
         },
         "_encounterProgressSafeFile": {
-            "EncountersSuccessNormal": [],
+            "EncountersSuccessNormal": [
+                1
+            ],
             "EncountersSuccessHeroic": [],
             "EncountersSuccessMythic": [],
             "EncountersSuccessMythicPlus": {
