@@ -61,11 +61,11 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3814331081046951793, guid: db994f59a948cc94cb94d5286c0c122a, type: 3}
-      propertyPath: _prioOrder.Array.data[0]._data.Array.data[0]
+      propertyPath: '_prioOrder.Array.data[0]._data.Array.data[0]'
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3814331081046951793, guid: db994f59a948cc94cb94d5286c0c122a, type: 3}
-      propertyPath: _prioOrder.Array.data[0]._data.Array.data[1]
+      propertyPath: '_prioOrder.Array.data[0]._data.Array.data[1]'
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3932006832383397773, guid: db994f59a948cc94cb94d5286c0c122a, type: 3}
@@ -107,6 +107,14 @@ PrefabInstance:
     - target: {fileID: 5665706600059103152, guid: db994f59a948cc94cb94d5286c0c122a, type: 3}
       propertyPath: _castTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5840461750956517839, guid: db994f59a948cc94cb94d5286c0c122a, type: 3}
+      propertyPath: _name
+      value: Toss Boulder
+      objectReference: {fileID: 0}
+    - target: {fileID: 5840461750956517839, guid: db994f59a948cc94cb94d5286c0c122a, type: 3}
+      propertyPath: _description
+      value: Tosses a gigant boulder onto a random target dealing {{cast:0.0}} damage. Prioritizes healers and damage dealers.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -213,6 +221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy 1 HC
       objectReference: {fileID: 0}
+    - target: {fileID: 1370252274284232356, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 1550055503580677839, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
       propertyPath: _name
       value: Attack
@@ -234,15 +246,15 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3422469507017198183, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
-      propertyPath: _initialSkills.Array.data[0]
+      propertyPath: '_initialSkills.Array.data[0]'
       value: 
       objectReference: {fileID: 1386761287404101668}
     - target: {fileID: 3422469507017198183, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
-      propertyPath: _initialSkills.Array.data[1]
+      propertyPath: '_initialSkills.Array.data[1]'
       value: 
       objectReference: {fileID: 6687692387560500096}
     - target: {fileID: 3422469507017198183, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
-      propertyPath: _initialSkills.Array.data[2]
+      propertyPath: '_initialSkills.Array.data[2]'
       value: 
       objectReference: {fileID: 2585814496306215215}
     - target: {fileID: 3422469507017198183, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
@@ -250,11 +262,11 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3422469507017198183, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
-      propertyPath: _initialSkillsPrefab.Array.data[1]
+      propertyPath: '_initialSkillsPrefab.Array.data[1]'
       value: 
       objectReference: {fileID: 6687692387560500096}
     - target: {fileID: 3422469507017198183, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
-      propertyPath: _initialSkillsPrefab.Array.data[2]
+      propertyPath: '_initialSkillsPrefab.Array.data[2]'
       value: 
       objectReference: {fileID: 2585814496306215215}
     - target: {fileID: 4374211579005609459, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
@@ -285,6 +297,10 @@ PrefabInstance:
       propertyPath: _castTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5576779025353172673, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 6597088206655424260, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -297,6 +313,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e83b585bb7a35bc47b778056e549716f, type: 3}
+    - target: {fileID: 6728522263230011233, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 7471935555182552608, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
       propertyPath: _damage._max
       value: 25
@@ -410,7 +430,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3601777200843405211, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
-      propertyPath: _targetTypes.Array.data[0]
+      propertyPath: '_targetTypes.Array.data[0]'
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5454860310987790170, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
@@ -436,6 +456,14 @@ PrefabInstance:
     - target: {fileID: 5454860310987790244, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
       propertyPath: _localCooldownApply._min
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6061371947593423141, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
+      propertyPath: _name
+      value: Enrage
+      objectReference: {fileID: 0}
+    - target: {fileID: 6061371947593423141, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
+      propertyPath: _description
+      value: '{{cast:0.0}}'
       objectReference: {fileID: 0}
     - target: {fileID: 6061371947593423141, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
       propertyPath: _skillPriority
