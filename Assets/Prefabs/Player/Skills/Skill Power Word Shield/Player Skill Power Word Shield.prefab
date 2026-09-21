@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: 'Power Word: Shield'
-  _description: '{SOMETHING_IS_NOT_WORKING{cast:0.0}}'
+  _description: Applies a shield to the target for 15 seconds that absorbs 40 damage.
   _skillPriority: 0
   _iconSkill: {fileID: 21300000, guid: 85fcef3312a8dac47aa7988b49f0422a, type: 3}
   _skillUiPrefab: {fileID: 6292989599850068953, guid: f0367987a1517244abb0d496f19a6299, type: 3}
