@@ -43,3 +43,19 @@ a fallback-to-first-free-slot if the target index turns out occupied, as defense
 - Everything else in that commit is expected upgrade fallout: mass `.meta` reserialization, a TMP
   Essentials reimport (new shader/shadergraph files), and new default `ProjectSettings` assets
   (`MultiplayerManager.asset`, `PhysicsCoreProjectSettings2D.asset`, `ProjectAuditorSettings.asset`).
+
+## 2026-09-22 — content inventory, Power Word Shield fix, Encounter 3 registered, boss/skill balancing
+
+- Fixed Power Word Shield's tooltip (leftover placeholder text) and registered Encounter 3 Normal in
+  `EncounterManager`'s list (previously unreachable in-game). See gotchas.md and
+  content-inventory.md for details.
+- Added `docs/content-inventory.md` — full stat table for every player skill and boss ability, pulled
+  live from the Editor, plus the dev's design roadmap for early progression (Boss 3/4/5 ideas, Mind
+  Blast rename idea). Keep this file updated going forward.
+- Added missing names/descriptions for Boss 1 HC ("Skill Damage" x2 → "Toss Boulder"/"Enrage") and
+  Boss 2's AoE (Normal + HC) and HC's Throw Rock, using real values read from each ability's
+  `SkillEffectDamage`/`SkillEffectAddState` component rather than guessing.
+- Removed Shadow Word: Death from the starting skill loadout (`SkillLearnSystem._initialSkillsChosenPrefabs`)
+  — it was previously both a starting skill and (uselessly) unlocked again on beating Boss 3 Normal.
+  That unlock condition now actually fires.
+- Rebalanced Penance: mana cost 10 → 4, cooldown 0s → 5s.

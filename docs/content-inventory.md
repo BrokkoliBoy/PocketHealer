@@ -17,21 +17,17 @@ to the global cooldown), and how the skill is currently obtained in a normal pla
 |---|---|---|---|---|---|---|---|
 | Greater Heal | 5 | 2s | - | 0 | Ally | Starting skill | Mana-efficient, low-output heal for 40 health. |
 | Renew | 5 | instant | - | 4s | Ally | Starting skill | HoT: heals 10 every 3s for 15s (5 ticks, 50 total). |
-| Shadow Word: Death | 4 | 1.5s | - | 0 | Enemy | Starting skill *(also has a dead-code unlock condition at Encounter 3 Normal — see note below)* | Deals 12 damage. |
+| Shadow Word: Death | 4 | 1.5s | - | 0 | Enemy | Unlocked on beating **Boss 3 Normal** *(fixed 2026-09-22 — used to also be a starting skill, which made this unlock condition dead code; see changelog.md)* | Deals 12 damage. |
 | Circle of Healing | 8 | instant | - | 7s | Up to 5 allies (AoE) | Unlocked on beating **Boss 1 Normal** | Heals up to 5 allies for 40 health each. |
 | Power Word: Shield | 5 | instant | - | 4s | Ally | Unlocked on beating **Boss 2 Normal** | Shields the target for 15s, absorbing 40 damage. *(Tooltip text fixed 2026-09-22 — used to show a leftover placeholder string.)* |
-| Penance | 10 | - | 1.5s (tick every 0.5s) | 0 | Ally (per its `SkillRange`, despite the description also mentioning an enemy-damage variant) | **Not obtainable** — not in the starting loadout and not referenced by any `SkillUnlockCondition` | Channeled heal, ticks for 11 per 0.5s. |
-| Despell | 3 | instant | - | 5s | Ally | **Not obtainable** — same as above | Removes one random negative status effect from the target. |
-| Quick Heal | 10 | instant | - | 0 | Ally | **Not obtainable** — same as above | **Tooltip is broken**: shows the literal string "ERROR" instead of real text (its `{{cast:0.0}}` template points at an empty `_effectsCastFinish` list — same bug class as the old Power Word Shield issue, not yet fixed). |
-| *(DEBUG) Kill Enemy* | 0 | 0.5s | - | 0 | Ally **and** Enemy | **Intentionally** part of every new save's starting loadout (3rd of 5 action-bar slots, per 2026-09-22 design decision) — kept in deliberately, dev-managed | Deals 10–20 damage. Its internal `Skill.Name` is also `"Shadow Word: Death"` — identical display name to the real damage skill, so it's indistinguishable in the UI. Not a bug — the dev wants it to stay for now. |
+| Penance | 4 | - | 1.5s (tick every 0.5s) | 5s | Ally (per its `SkillRange`, despite the description also mentioning an enemy-damage variant) | **Not obtainable yet** — meant to unlock on beating **Boss 4**, which doesn't exist yet | Channeled heal, ticks for 11 per 0.5s. *(Rebalanced 2026-09-22: mana 10→4, cooldown 0s→5s.)* |
+| Despell | 3 | instant | - | 5s | Ally | **Not obtainable** — intentionally left out of the unlock chain, may end up unused | Removes one random negative status effect from the target. |
+| Quick Heal | 10 | instant | - | 0 | Ally | **Not obtainable** — intentionally left out for now, possibly a future special/unusual unlock | **Tooltip is broken**: shows the literal string "ERROR" instead of real text (its `{{cast:0.0}}` template points at an empty `_effectsCastFinish` list — same bug class as the old Power Word Shield issue, not yet fixed). |
+| *(DEBUG) Kill Enemy* | 0 | 0.5s | - | 0 | Ally **and** Enemy | **Intentionally** part of every new save's starting loadout (per 2026-09-22 design decision) — kept in deliberately, dev-managed | Deals 10–20 damage. Its internal `Skill.Name` is also `"Shadow Word: Death"` — identical display name to the real damage skill, so it's indistinguishable in the UI. Not a bug — the dev wants it to stay for now. |
 
-**Note on Shadow Word: Death's duplicate unlock condition:** `SkillLearnSystem` has an entry unlocking
-"Shadow Word: Death" (`Player Skill Cast Damage`) on beating Encounter 3 Normal, but the same skill
-is *also* already in the starting loadout — so that unlock condition can never meaningfully fire
-(the player already has the skill). Not fixed, just flagged.
-
-Starting bar (`_initialSkillsChosenPrefabs`, 5 slots total): Greater Heal, Renew, Shadow Word: Death,
-[DEBUG] Kill Enemy, *(1 free slot, filled by Circle of Healing after Boss 1 Normal)*.
+Starting bar (`_initialSkillsChosenPrefabs`, 5 slots total): Greater Heal, Renew, [DEBUG] Kill Enemy
+*(fixed 2026-09-22 — Shadow Word: Death removed from this list, see changelog.md)*, 2 free slots
+(filled by Circle of Healing after Boss 1 Normal, then Power Word: Shield after Boss 2 Normal).
 
 ## Bosses / Encounters
 
@@ -97,11 +93,11 @@ thing to check before assuming what "should" unlock where.
 
 | Step | Encounter | Unlocks | Status |
 |---|---|---|---|
-| Start | - | Greater Heal, Renew, [DEBUG] Kill Enemy (3 starting skills) | **TODO** — currently 4 starting skills; Shadow Word: Death needs to be removed from `_initialSkillsChosenPrefabs` |
+| Start | - | Greater Heal, Renew, [DEBUG] Kill Enemy (3 starting skills) | **Done (2026-09-22)** |
 | Boss 1 (unchanged fight) | Encounter 1 Normal | Circle of Healing | Already correct, no change needed |
 | Boss 2 (unchanged fight, has the AoE) | Encounter 2 Normal | Power Word: Shield | Already correct, no change needed |
-| Boss 3 (redesign planned — see below) | Encounter 3 Normal | Shadow Word: Death | Unlock condition already exists and points at the right encounter — it's just currently dead code because Shadow Word: Death is *also* a starting skill. Fixing the TODO above makes this live automatically. |
-| Boss 4 (new boss, not implemented) | Encounter 4 Normal | Penance | **TODO** — Boss 4 doesn't exist yet |
+| Boss 3 (redesign planned — see below) | Encounter 3 Normal | Shadow Word: Death | **Done (2026-09-22)** — unlock condition already existed and now actually fires, since Shadow Word: Death was removed from the starting loadout |
+| Boss 4 (new boss, not implemented) | Encounter 4 Normal | Penance | **TODO** — Boss 4 doesn't exist yet. Penance's stats are already rebalanced (mana 4, cooldown 5s) and ready for whenever this unlock condition is added. |
 | Boss 5 (idea only, not implemented) | Encounter 5 Normal | *(tbd)* | **TODO** — design idea only |
 
 ### Boss design ideas
@@ -128,17 +124,15 @@ thing to check before assuming what "should" unlock where.
   (see table above) is *not yet fixed* — dev floated maybe using this skill as a special/unusual
   unlock later (not a normal boss-clear reward), so it's being kept but deprioritized rather than
   deleted.
-- **Penance rebalance (proposed, not yet applied):** Mana cost 10 → 4, Cooldown 0s → 5s.
+- **Penance rebalance:** Mana cost 10 → 4, Cooldown 0s → 5s. **Done 2026-09-22.**
 
 ### TODOs & small plans
 
-1. **Remove Shadow Word: Death from the starting loadout.** Plan: remove the
-   `Player Skill Cast Damage` entry from `SkillLearnSystem._initialSkillsChosenPrefabs` (scene data,
-   edit via live Editor like the Encounter 3 registration was done). This alone makes the existing
-   Boss 3 unlock condition meaningful — no new `SkillUnlockCondition` needed. Low risk, one scene edit.
-2. **Apply the Penance rebalance.** Plan: edit `Player Skill Channel Heal` (Penance)'s
-   `SkillMana._manaCost` 10 → 4 and `SkillCooldown._localCooldownApply` 0 → 5 via the live Editor,
-   same pattern as the Power Word Shield description fix. Low risk, one prefab edit.
+1. ~~**Remove Shadow Word: Death from the starting loadout.**~~ **Done 2026-09-22.** Removed the
+   `Player Skill Cast Damage` entry from `SkillLearnSystem._initialSkillsChosenPrefabs`. The existing
+   Boss 3 unlock condition is now live.
+2. ~~**Apply the Penance rebalance.**~~ **Done 2026-09-22.** `Player Skill Channel Heal`'s
+   `SkillMana._manaCost` 10 → 4, `SkillCooldown._localCooldownApply` 0 → 5.
 3. **Fix Quick Heal's "ERROR" tooltip.** Plan: same root cause class as the old Power Word Shield
    bug — inspect `Player Skill Instant Heal`'s `SkillCast._effectsCastFinish` (currently empty, which
    is why `{{cast:0.0}}` fails) and either populate that list properly or replace the description
@@ -153,9 +147,6 @@ thing to check before assuming what "should" unlock where.
 6. **Design & build Boss 5** (idea stage only — mechanic above needs to be fleshed out before it's
    buildable). Real content work, biggest unknown of the list.
 
-**What I (Claude) could do in one pass right now, if you give the go-ahead:** #1 (remove Shadow Word:
-Death from the starting loadout) and #2 (Penance mana/cooldown rebalance) — both are small, fully-specified
-data edits with no open design questions. #3 (Quick Heal tooltip) is also mechanically small but
-wasn't explicitly requested yet. #4–#6 are genuine content/design work (new bosses, abilities,
-balancing) that need more back-and-forth on the actual mechanic before I'd implement them, not just
-a go-ahead.
+#1 and #2 are done (2026-09-22). #3 (Quick Heal tooltip) is mechanically small but wasn't explicitly
+requested yet. #4–#6 are genuine content/design work (new bosses, abilities, balancing) that need
+more back-and-forth on the actual mechanic before implementing, not just a go-ahead.
