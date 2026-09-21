@@ -1,32 +1,11 @@
 {
     "_isValidGameFile": true,
-    "_characterName": "2",
+    "_characterName": "New Game",
     "FileIndex": 1,
     "_fileName": "New Safe File 1",
     "_gameFile": {
         "_skillSafeFile": {
-            "SkillEntries": [
-                {
-                    "GUID": "6fd4c242-5f56-4b1a-a55d-8dc797add510",
-                    "BarType": 0,
-                    "ZoneIndex": 0
-                },
-                {
-                    "GUID": "249d931f-8ae8-4d36-9f01-7a0b45658e61",
-                    "BarType": 0,
-                    "ZoneIndex": 1
-                },
-                {
-                    "GUID": "e413f3f4-9c3a-401e-a669-f5e87663f984",
-                    "BarType": 0,
-                    "ZoneIndex": 2
-                },
-                {
-                    "GUID": "93205561-fc28-4dac-87ca-05b739b9525c",
-                    "BarType": 0,
-                    "ZoneIndex": 3
-                }
-            ]
+            "SkillEntries": []
         },
         "_encounterProgressSafeFile": {
             "EncountersSuccessNormal": [],

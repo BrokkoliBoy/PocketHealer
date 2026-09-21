@@ -14,15 +14,17 @@ namespace Gavi
         [SerializeField] private TMP_InputField _characterName;
         [SerializeField] private UIButton _loginButton;
         [SerializeField] private UIButton _confirmNameButton;
-        
+        [SerializeField] private UIButton _deleteButton;
+
         private SafeFile _safeFile;
 
-        
+
         #region Mono
         private void Awake()
         {
             _loginButton.Button.onClick.AddListener(OnLoginButtonPressed);
             _confirmNameButton.Button.onClick.AddListener(OnConfirmNameButtonPressed);
+            _deleteButton.Button.onClick.AddListener(OnDeleteButtonPressed);
             HideNameUI();
         }
         #endregion
@@ -40,10 +42,12 @@ namespace Gavi
             _name.text = safeFile.CharacterName == "" ? SafeFile.DefaultCharacterName : safeFile.CharacterName;
             _safeFile = safeFile;
 
-            if (_safeFile.CharacterName == "" || _safeFile.CharacterName.Contains(SafeFile.DefaultCharacterName))
-                ShowNameUI();
-            else
+            bool hasExistingCharacter = _safeFile.CharacterName != "" && !_safeFile.CharacterName.Contains(SafeFile.DefaultCharacterName);
+            if (hasExistingCharacter)
                 HideNameUI();
+            else
+                ShowNameUI();
+            SetDeleteButtonActive(hasExistingCharacter);
         }
         #endregion
 
@@ -61,6 +65,15 @@ namespace Gavi
         {
             _safeFile.SetCharacterName(_characterName.text);
             Login();
+        }
+
+        public void OnDeleteButtonPressed()
+        {
+            if (_safeFile == null)
+                return;
+
+            GameFileManager.Instance.DeleteSafeFile(_safeFile);
+            GameFileUiManager.Instance.ShowUis();
         }
         #endregion
 
@@ -92,6 +105,23 @@ namespace Gavi
             _loginButton.gameObject.SetActive(true);
             _confirmNameButton.gameObject.SetActive(false);
             _characterName.gameObject.SetActive(false);
+        }
+        #endregion
+
+
+        #region Delete Button
+        private void SetDeleteButtonActive(bool active)
+        {
+            if (active)
+                _deleteButton.gameObject.SetActive(true);
+            else
+                StartCoroutine(DeactivateDeleteButtonNextFrame());
+        }
+
+        private IEnumerator DeactivateDeleteButtonNextFrame()
+        {
+            yield return null;
+            _deleteButton.gameObject.SetActive(false);
         }
         #endregion
     }

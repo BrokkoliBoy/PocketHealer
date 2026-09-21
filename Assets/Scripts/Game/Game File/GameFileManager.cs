@@ -119,6 +119,20 @@ namespace Gavi
         #endregion
 
 
+        #region Delete
+        public void DeleteSafeFile(SafeFile file)
+        {
+            if (file == null)
+                return;
+
+            string path = SafeFileDirectoryPath + "/" + file.FileNamePlusExtension;
+            if (File.Exists(path))
+                File.Delete(path);
+        }
+
+        #endregion
+
+
         #region Save
         public void SaveCurrentGameFile()
         {
