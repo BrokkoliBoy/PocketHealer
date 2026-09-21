@@ -73,7 +73,7 @@ namespace Doozy.Editor
             public static void CreateFromTemplate(string initialName, string templatePath)
             {
                 ProjectWindowUtil.StartNameEditingIfProjectWindowExists(
-                    0,
+                    EntityId.None,
                     ScriptableObject.CreateInstance<DoCreateCodeFile>(),
                     initialName,
                     ScriptIcon,
@@ -307,9 +307,9 @@ namespace Doozy.Editor
             }
 
             /// Inherits from EndNameAction, must override EndNameAction.Action
-            public class DoCreateCodeFile : EndNameEditAction
+            public class DoCreateCodeFile : AssetCreationEndAction
             {
-                public override void Action(int instanceId, string pathName, string resourceFile)
+                public override void Action(EntityId instanceId, string pathName, string resourceFile)
                 {
                     Object o = CreateScript(pathName, resourceFile);
                     ProjectWindowUtil.ShowCreatedAsset(o);

@@ -6,6 +6,7 @@ using Doozy.Engine.Nody.Models;
 using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEditor.Callbacks;
+using UnityEngine;
 
 namespace Doozy.Editor.Nody.Windows
 {
@@ -15,9 +16,9 @@ namespace Doozy.Editor.Nody.Windows
         public static void Open() { GetWindow<NodyWindow>(); }
 
         [OnOpenAsset]
-        public static bool OnOpenAsset(int instanceId, int line)
+        public static bool OnOpenAsset(EntityId instanceId, int line)
         {
-            var graph = EditorUtility.InstanceIDToObject(instanceId) as Graph; //cast the asset
+            var graph = EditorUtility.EntityIdToObject(instanceId) as Graph; //cast the asset
             if (graph == null) return false;                                   //if the clicked asset is not a Graph -> return
             Instance.LoadGraph(graph);                                         //load the Graph
             return true;

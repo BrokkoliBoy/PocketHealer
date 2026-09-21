@@ -1,42 +1,35 @@
 {
     "_isValidGameFile": true,
-    "_characterName": "xcy",
+    "_characterName": "asd",
     "FileIndex": 0,
     "_fileName": "New Safe File 0",
     "_gameFile": {
         "_skillSafeFile": {
             "SkillEntries": [
                 {
-                    "GUID": "249d931f-8ae8-4d36-9f01-7a0b45658e61",
+                    "GUID": "6fd4c242-5f56-4b1a-a55d-8dc797add510",
                     "BarType": 0,
                     "ZoneIndex": 0
                 },
                 {
-                    "GUID": "93205561-fc28-4dac-87ca-05b739b9525c",
+                    "GUID": "249d931f-8ae8-4d36-9f01-7a0b45658e61",
                     "BarType": 0,
                     "ZoneIndex": 1
                 },
                 {
-                    "GUID": "97491ffb-4940-42d1-a579-984ff5c13f89",
+                    "GUID": "e413f3f4-9c3a-401e-a669-f5e87663f984",
                     "BarType": 0,
                     "ZoneIndex": 2
                 },
                 {
-                    "GUID": "6fd4c242-5f56-4b1a-a55d-8dc797add510",
+                    "GUID": "93205561-fc28-4dac-87ca-05b739b9525c",
                     "BarType": 0,
                     "ZoneIndex": 3
-                },
-                {
-                    "GUID": "e413f3f4-9c3a-401e-a669-f5e87663f984",
-                    "BarType": 0,
-                    "ZoneIndex": 4
                 }
             ]
         },
         "_encounterProgressSafeFile": {
-            "EncountersSuccessNormal": [
-                1
-            ],
+            "EncountersSuccessNormal": [],
             "EncountersSuccessHeroic": [],
             "EncountersSuccessMythic": [],
             "EncountersSuccessMythicPlus": {

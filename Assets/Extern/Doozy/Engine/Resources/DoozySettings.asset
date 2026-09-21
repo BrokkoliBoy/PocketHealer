@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7be99880c2e4b8248847a4c0807b1ca3, type: 3}
   m_Name: DoozySettings
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::Doozy.Engine.Settings.DoozySettings
   SelectedLanguage: 1
   AutoDisableUIInteractions: 1
   DebugBackButton: 0

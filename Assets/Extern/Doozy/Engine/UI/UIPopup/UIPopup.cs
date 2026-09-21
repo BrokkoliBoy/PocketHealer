@@ -697,7 +697,7 @@ namespace Doozy.Engine.UI
 
         private void Initialize()
         {
-            SetPopupName(name + GetInstanceID());
+            SetPopupName(name + GetEntityId());
 
             m_childUIButtons = GetComponentsInChildren<UIButton>();
             UpdateChildUIButtonsStartValues();

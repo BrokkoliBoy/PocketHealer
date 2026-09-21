@@ -50,7 +50,7 @@ public class AllIn1ShaderWindow : EditorWindow
 
         if (obj == null) return false;
 
-        path = AssetDatabase.GetAssetPath(obj.GetInstanceID());
+        path = AssetDatabase.GetAssetPath(obj);
 
         if (path.Length > 0)
         {

@@ -1039,7 +1039,7 @@ namespace Doozy.Engine.UI.Animation
         /// <param name="target"> The target RectTransform </param>
         /// <param name="animationType"> The animation type that determines the behavior of this animation </param>
         /// <param name="animationAction"> The animation action </param>
-        public static string GetTweenId(RectTransform target, AnimationType animationType, AnimationAction animationAction) { return target.GetInstanceID() + "-" + animationType + "-" + animationAction; }
+        public static string GetTweenId(RectTransform target, AnimationType animationType, AnimationAction animationAction) { return target.GetEntityId() + "-" + animationType + "-" + animationAction; }
 
         /// <summary> Resets the CanvasGroup attached to the target RectTransform (if there is one) </summary>
         public static void ResetCanvasGroup(RectTransform target, bool interactable = true, bool blocksRaycasts = true)

@@ -139,7 +139,7 @@ namespace Doozy.Engine.Progress
         public bool WholeNumbers { get { return m_wholeNumbers; } }
 
         private bool DebugComponent { get { return DebugMode || DoozySettings.Instance.DebugProgressor; } }
-        private string GetAnimationId { get { return GetInstanceID() + " - Progressor Animation"; } }
+        private string GetAnimationId { get { return GetEntityId() + " - Progressor Animation"; } }
 
         #endregion
 
