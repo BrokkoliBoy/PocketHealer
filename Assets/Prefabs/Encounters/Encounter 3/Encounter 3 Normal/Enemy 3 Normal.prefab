@@ -129,6 +129,14 @@ PrefabInstance:
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
       objectReference: {fileID: 0}
+    - target: {fileID: 3422469507017198183, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
+      propertyPath: _initialSkillsPrefab.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422469507017198183, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
+      propertyPath: '_initialSkillsPrefab.Array.data[1]'
+      value: 
+      objectReference: {fileID: 238527663362344767}
     - target: {fileID: 5576779025353172673, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
@@ -302,6 +310,17 @@ PrefabInstance:
       addedObject: {fileID: 1641336190324316391}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
+--- !u!114 &238527663362344767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6061371947593423141, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
+  m_PrefabInstance: {fileID: 6291873988767637018}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2463052f2059c04e95e316648c8737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &313217455804972318 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5983594588084314884, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
