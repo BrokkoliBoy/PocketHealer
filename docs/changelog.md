@@ -109,3 +109,29 @@ a fallback-to-first-free-slot if the target index turns out occupied, as defense
   and get treated as a real character.
 - Removed all temporary `DEBUG` `Debug.Log` calls added earlier while hunting this bug (`Skill.cs`,
   `SkillRangeCustom.cs`, `SkillPerformance.cs`, `SkillEffectHeal.cs`).
+
+## 2026-09-22 (later still) — Boss 3 max health, Boss 3 Necrotic Curse registration, Boss 4 built
+
+- Raised Boss 3 Normal's `CharacterHealth._maxHealth` 100 → 500 (dev balance call).
+- Fixed Boss 3 Normal's Necrotic Curse never firing and never showing in the pre-fight ability
+  overview: it was fully configured but missing from `SkillManager._initialSkillsPrefab`, so it was
+  never instantiated/assigned. Both live combat and `EnemySkillsInfoPanel` read from that same
+  assigned-skills list, so it was invisible to both. Added it at index 1.
+- Built Boss 4 (`Assets/Prefabs/Encounters/Encounter 4/Encounter 4 Normal/`) from the dev's spec: a
+  cyclical self-enrage buff (+20% haste/cooldown reduction for 6s, 12s cooldown), an alternating-tank
+  auto attack (60 dmg, 4s cast), and a focused nuke on a random DD/healer (50 dmg, 2s cast, 6s
+  cooldown). Two parts of the spec (bonus damage dealt/taken while enraged, and a raid-wide splash on
+  the nuke) aren't supported by the current Skill/SkillEffect system and were reported back rather
+  than faked — see `content-inventory.md`'s Boss 4 section for exactly why. Built entirely via live
+  Editor prefab edits (`PrefabUtility.LoadPrefabContents`/`SaveAsPrefabAsset`), no code touched.
+  **Not registered in `EncounterManager`** — see the next entry.
+
+## 2026-09-23 — Boss 4 shelved, next release scoped to 3 bosses, Boss 3 HC is now the active TODO
+
+- Dev decision: the next release ships with exactly the 3 existing bosses, each Normal + HC. Boss 4
+  is explicitly **out of scope** and stays shelved (built, committed, but not registered in
+  `EncounterManager`, so unreachable in-game) — confirmed by the dev's own playtest (killed Boss
+  1/2/3, Boss 4 correctly never appeared). No further action needed to "hide" it.
+- Active TODO going forward: **build Boss 3 HC** (`Encounter 3 HC` currently only has an empty
+  `.meta`, no prefab) — the last piece needed for the 3×2 release target. See
+  `content-inventory.md` for the up-to-date status.

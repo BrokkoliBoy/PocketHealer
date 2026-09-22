@@ -78,7 +78,8 @@ on `Encounter 3 Normal.prefab`) — fixed 2026-09-22, it was accidentally set to
 |---|---|---|---|---|---|
 | Normal | Auto Attack | ✅ | 2.5s cast | 0 | 20 dmg, prioritizes tanks (randomly picks one of the fight's 2 tanks — same priority mechanism as Boss 1/2, no special config needed) *(fixed 2026-09-22, was 0 dmg)* |
 | Normal | Necrotic Curse *(renamed from generic "Skill Damage")* | ✅ | 1s cast | 8s | 40 direct damage, plus a debuff (new `State Data - Boss 3 Necrotic Curse Debuff.prefab`) dealing an additional 60 damage over 4s (15 dmg/tick every 1s) *(built 2026-09-22)* |
-| Heroic | — | ❌ | — | — | **Doesn't exist.** `Encounter 3 HC` folder is empty, no prefab. |
+| Normal | Max Health | ✅ | - | - | 500 *(raised from 100 on 2026-09-22, dev balance call)* |
+| Heroic | — | ❌ | — | — | **Doesn't exist yet — this is the active TODO as of 2026-09-23.** `Encounter 3 HC` folder is currently just an empty `.meta`, no prefab underneath it. |
 
 The old "Dark Pact" state-data prefab (`State Data - Boss 3 Dark Pact.prefab`) is still unused/unwired
 — the dev deliberately started with these 2 simpler abilities instead ("fangen mal gerade klein an").
@@ -97,6 +98,42 @@ correctly showed it has 2 skills all along.
 Also see [gotchas.md](gotchas.md) for the Encounter-3-was-never-finished background and
 [changelog.md](changelog.md) for the 2026-09-22 fixes.
 
+### Boss 4 — Encounter 4 (built 2026-09-22, shelved 2026-09-23 — not in the next release)
+
+Built per the dev's spec (cyclical enrage buff, alternating-tank auto attack, a focused nuke on a
+random DD/healer), then **deliberately shelved**: the dev decided the next release ships with only
+the 3 existing bosses (Normal + HC each), and Boss 4 is not part of that. It is **not registered** in
+`EncounterManager`'s encounter list, so it cannot be reached in-game — confirmed by the dev's own
+playtest (killed Boss 1/2/3, Boss 4 correctly did not appear). The prefabs are committed and sitting
+unused; nothing further needs to be done to "hide" it.
+
+| Difficulty | Ability | Cast/Channel | Cooldown | Damage/Effect |
+|---|---|---|---|---|
+| Normal | Auto Attack | 4s cast | 0 (cast-time-gated only) | 60 dmg, strictly alternates between the fight's 2 tanks (`_numberDontHitSameInARow=1`) |
+| Normal | Soul Brand *(placeholder name)* | 2s cast | 6s | 50 dmg to a random DD or healer (never a tank) |
+| Normal | Enrage | 2s cast | 12s | Self-buff, 6s duration: +20% haste, +20% cooldown reduction |
+
+Two mechanics from the original spec are **not implemented** — not a bug, a hard capability gap in
+the current Skill/SkillEffect system, reported back to the dev at build time rather than faked:
+- **"+20% damage dealt" while enraged**: `CharacterStats.AttackRateAdditive` exists as a field but is
+  never read anywhere in the codebase (same dead stat Boss 1's own Enrage already leaves at 0). Left
+  at 0 rather than showing a tooltip number that would do nothing.
+- **"+20% damage taken" while enraged**: no field for this exists at all, not even an unused one —
+  `CharacterHealth.TakeDamage` applies incoming damage with zero multiplier hooks. Omitted entirely.
+- **Soul Brand's raid-wide 10 dmg splash** (hit one target hard, everyone else lightly, in one cast):
+  not achievable with one `Skill` — `SkillPerformance` applies every effect in a skill to the same
+  shared target list, there's no "primary vs. rest" concept, and a character has exactly one shared
+  cast slot (`CastManager` is one-per-character, not one-per-skill) so a second skill can't truly run
+  in parallel to fake it either. Only the single focused 50 dmg hit was built.
+
+All three would need an actual code change (a real damage-dealt/damage-taken multiplier hook, and
+either a "primary + splash" concept in `SkillPerformance` or a way to target two groups from one
+skill). Not scheduled — Boss 4 itself is shelved.
+
+Other placeholders on this content, still using dev-supplied filler until someone does a naming/balance
+pass: Character name "Boss 4", max health 500 (matched to Boss 3's post-balance tier, not tuned), party
+composition copied verbatim from Boss 3 (2 Tank/2 Heal/6 DPS).
+
 ### Mythic difficulty
 
 No `Encounter` prefab currently has `Difficulty == Mythic` (or `MythicPlus`). The Mythic button in
@@ -104,6 +141,13 @@ No `Encounter` prefab currently has `Difficulty == Mythic` (or `MythicPlus`). Th
 [gotchas.md](gotchas.md) for that logic), but selecting it will fail —
 `EncounterManager.SetEncounterIndex` logs "no match was found" and doesn't start anything, since
 there's no Mythic-tier boss content yet.
+
+## Release Plan (as of 2026-09-23)
+
+**Next release ships with exactly 3 bosses, each with a Normal and a Heroic version.** Boss 4 (and
+Boss 5) are explicitly **out of scope** for it — Boss 4 exists as unused, unregistered content (see
+above) and Boss 5 is still just an idea. The immediate next content task is **Boss 3 HC**, the last
+missing piece for that 3-bosses-×-2-difficulties target.
 
 ## Design Plan / Roadmap (as of 2026-09-22)
 
@@ -118,7 +162,7 @@ thing to check before assuming what "should" unlock where.
 | Boss 1 (unchanged fight) | Encounter 1 Normal | Circle of Healing | Already correct, no change needed |
 | Boss 2 (unchanged fight, has the AoE) | Encounter 2 Normal | Power Word: Shield | Already correct, no change needed |
 | Boss 3 (redesign planned — see below) | Encounter 3 Normal | Shadow Word: Death | **Done (2026-09-22)** — unlock condition already existed and now actually fires, since Shadow Word: Death was removed from the starting loadout |
-| Boss 4 (new boss, not implemented) | Encounter 4 Normal | Penance | **TODO** — Boss 4 doesn't exist yet. Penance's stats are already rebalanced (mana 4, cooldown 5s) and ready for whenever this unlock condition is added. |
+| Boss 4 (new boss, built but shelved 2026-09-23) | Encounter 4 Normal | Penance | **Shelved, not in the next release.** The boss itself is built (see the Boss 4 section above) but deliberately not registered in `EncounterManager`, and this unlock condition was never added. Penance's stats are already rebalanced (mana 4, cooldown 5s) and ready for whenever Boss 4 actually ships. |
 | Boss 5 (idea only, not implemented) | Encounter 5 Normal | *(tbd)* | **TODO** — design idea only |
 
 ### Boss design ideas
@@ -159,13 +203,13 @@ thing to check before assuming what "should" unlock where.
    is why `{{cast:0.0}}` fails) and either populate that list properly or replace the description
    with hardcoded text pulled from whatever effect the skill actually performs. Needs the same kind
    of investigation done for Power Word Shield. Not scheduled — Quick Heal isn't obtainable anyway.
-4. **Build Boss 4** (new `Encounter 4` prefab set, Normal at least) with a ramping/enrage-over-time
-   mechanic, plus a new `SkillUnlockCondition` unlocking Penance on its success. This is real content
-   work (enemy prefab, abilities, tuning, registering in `EncounterManager`) — not a one-line fix.
-5. ~~**Finish Boss 3's first two abilities.**~~ **Partially done 2026-09-22.** Auto Attack (20 dmg,
-   random tank) and Necrotic Curse (40 direct + 60-over-4s curse) are in. Still open: Boss 3 HC
-   doesn't exist, and the unused "Dark Pact" state data was intentionally left out for now
-   ("fangen mal gerade klein an").
+4. ~~**Build Boss 4.**~~ **Built 2026-09-22, shelved 2026-09-23** — see the Boss 4 section above.
+   Deliberately not registered in `EncounterManager` and not part of the next release. No unlock
+   condition for Penance was added since the boss isn't reachable.
+5. **Build Boss 3 HC.** **Active TODO as of 2026-09-23** — the last piece needed before the next
+   release (3 bosses × 2 difficulties). `Encounter 3 HC` folder currently only has an empty `.meta`,
+   no prefab underneath. Boss 3 Normal's first two abilities (Auto Attack, Necrotic Curse) are done;
+   the unused "Dark Pact" state data is still intentionally unwired ("fangen mal gerade klein an").
 6. **Design & build Boss 5** (idea stage only — mechanic above needs to be fleshed out before it's
    buildable). Real content work, biggest unknown of the list.
 7. **Investigate the Circle of Healing "consumes resources, heals nothing" bug** (see the ⚠️ row
