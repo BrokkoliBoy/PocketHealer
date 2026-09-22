@@ -59,3 +59,30 @@ a fallback-to-first-free-slot if the target index turns out occupied, as defense
   — it was previously both a starting skill and (uselessly) unlocked again on beating Boss 3 Normal.
   That unlock condition now actually fires.
 - Rebalanced Penance: mana cost 10 → 4, cooldown 0s → 5s.
+
+## 2026-09-22 (later same day) — Boss 2 tooltip correction, Boss 3 first pass, Circle of Healing bug hunt
+
+- Fixed Boss 2's Auto Attack tooltip (Normal + HC) to say "two single targets" instead of "a single
+  target" — `SkillRangeCustom._numberTargets` was already 2 (matching the fight's 2 tanks), only the
+  wording was wrong.
+- Boss 3 Normal, first pass at real abilities (previously 0-damage/undescribed placeholders):
+  - Auto Attack now deals 20 damage, targeting priority "Tank" (randomly hits one of the fight's 2
+    tanks for free, see gotchas.md).
+  - Renamed the second ability "Skill Damage" → "Necrotic Curse": 1s cast, 8s cooldown, 40 direct
+    damage plus a new debuff (`State Data - Boss 3 Necrotic Curse Debuff.prefab`, a `StateData` with
+    `PeriodicCooldown=1`/`MaxDuration=4` ticking a 15-damage `SkillEffectDamage`, i.e. 60 damage over
+    4 seconds).
+  - Found and worked around a real regex bug in `Skill.GenerateDescription` that breaks with two
+    `{{cast:X.Y}}` placeholders in one description — see gotchas.md.
+  - Fixed `Encounter 3 Normal`'s forced party size: was accidentally 20 characters, now the intended
+    10 (2 Tank / 2 Heal / 6 DPS).
+  - Not done yet: Boss 3 HC (still doesn't exist), the existing unused "Dark Pact" state data
+    (deliberately not wired in yet, starting small).
+- Circle of Healing: dev reported mana/cooldown being consumed with no heal happening, intermittently
+  (worked before). Static prefab inspection found nothing wrong with its own configuration. Added
+  temporary (uncommitted) debug logging to `Skill.PerformSkill`, `SkillRangeCustom.GetPool`/
+  `GetTargets`, `SkillPerformance.Perform`, and `SkillEffectHeal.PerformEffect` to catch it live -
+  root cause not yet found, waiting on a reproduction with console output.
+- Noted as a design TODO (not yet implemented): Circle of Healing should always be castable, using
+  the mouse-over ally as a guaranteed target when hovering a living ally, and falling back to 5 random
+  living allies otherwise (currently it seems to just fail to activate when hovering a dead ally).

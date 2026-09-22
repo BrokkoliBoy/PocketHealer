@@ -90,3 +90,24 @@ installed Editor's own bundled default manifest
 `com.unity.ugui`) and add it to the project's `Packages/manifest.json` by hand, then have the
 Editor regain focus (or restart) to force a re-resolve — a running Editor does not notice an
 external `manifest.json` edit until it regains focus.
+
+## `Skill.GenerateDescription`'s `{{cast:X.Y}}` template can't handle two placeholders in one description
+
+The regex (`{{(cast|channel):.*\..*}}`) uses greedy `.*`, so with two `{{...}}` occurrences in the
+same string it matches from the **first** `{{` all the way to the **last** `}}`, swallowing
+everything in between (including the first placeholder's own closing `}}`) as part of a single
+match. This mangles the parsed indices and throws a `FormatException` from `int.Parse` on the
+resulting garbage string. Found 2026-09-22 while building Boss 3's "Necrotic Curse" ability
+(wanted `"Deals {{cast:0.0}} damage... applies a curse: {{cast:1.0}}"`). Workaround used: hardcode
+the description text instead of templating both effects. If this needs fixing for real, the regex
+would need to be non-greedy (`.*?`) or effects would need a dedicated multi-placeholder formatter —
+not attempted, since a one-off hardcoded string was good enough here.
+
+## Enemy abilities are "Prioritize tanks" for free when there are multiple tanks
+
+`SkillRangeCustom.GetRandomPrioCharacter()` already picks a **random** character among tied
+top-priority candidates (`pool[Random.Range(0, pool.Count)]`). So an ability configured to prioritize
+the "Tank" role automatically distributes hits randomly across however many tanks are actually in the
+fight — no extra config needed to make an attack "randomly target one of the 2 tanks" instead of
+always the same one. Boss 3's "Auto Attack" (rebuilt 2026-09-22 for a 2-tank fight) relies on exactly
+this — it's configured identically to Boss 1's single-tank Auto Attack.

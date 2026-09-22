@@ -18,14 +18,22 @@ to the global cooldown), and how the skill is currently obtained in a normal pla
 | Greater Heal | ✅ | 5 | 2s | - | 0 | Ally | Starting skill | Mana-efficient, low-output heal for 40 health. |
 | Renew | ✅ | 5 | instant | - | 4s | Ally | Starting skill | HoT: heals 10 every 3s for 15s (5 ticks, 50 total). |
 | Shadow Word: Death | ✅ | 4 | 1.5s | - | 0 | Enemy | Unlocked on beating **Boss 3 Normal** *(fixed 2026-09-22 — used to also be a starting skill, which made this unlock condition dead code; see changelog.md)* | Deals 12 damage. |
-| Circle of Healing | ✅ | 8 | instant | - | 7s | Up to 5 allies (AoE) | Unlocked on beating **Boss 1 Normal** | Heals up to 5 allies for 40 health each. |
+| Circle of Healing | ⚠️ | 8 | instant | - | 7s | Up to 5 allies (AoE) | Unlocked on beating **Boss 1 Normal** | Heals up to 5 allies for 40 health each. **Live bug under investigation (2026-09-22):** mana/cooldown are consumed but no healing happens, intermittently — worked before, broke again. Prefab config itself checks out (verified live); root cause not yet found. Temporary debug logging added to `Skill.PerformSkill`, `SkillRangeCustom.GetPool`/`GetTargets`, `SkillPerformance.Perform`, `SkillEffectHeal.PerformEffect` (uncommitted, remove once diagnosed). |
 | Power Word: Shield | ✅ | 5 | instant | - | 4s | Ally | Unlocked on beating **Boss 2 Normal** | Shields the target for 15s, absorbing 40 damage. *(Tooltip text fixed 2026-09-22 — used to show a leftover placeholder string.)* |
 | Penance | ❌ | 4 | - | 1.5s (tick every 0.5s) | 5s | Ally (per its `SkillRange`, despite the description also mentioning an enemy-damage variant) | **Not obtainable yet** — meant to unlock on beating **Boss 4**, which doesn't exist yet | Channeled heal, ticks for 11 per 0.5s. *(Rebalanced 2026-09-22: mana 10→4, cooldown 0s→5s.)* |
 | Despell | ❌ | 3 | instant | - | 5s | Ally | **Not obtainable** — intentionally left out of the unlock chain, may end up unused | Removes one random negative status effect from the target. |
 | Quick Heal | ❌ | 10 | instant | - | 0 | Ally | **Not obtainable** — intentionally left out for now, possibly a future special/unusual unlock | **Tooltip is broken**: shows the literal string "ERROR" instead of real text (its `{{cast:0.0}}` template points at an empty `_effectsCastFinish` list — same bug class as the old Power Word Shield issue, not yet fixed). |
 | *(DEBUG) Kill Enemy* | ✅ | 0 | 0.5s | - | 0 | Ally **and** Enemy | **Intentionally** part of every new save's starting loadout (per 2026-09-22 design decision) — kept in deliberately, dev-managed | Deals 10–20 damage. Its internal `Skill.Name` is also `"Shadow Word: Death"` — identical display name to the real damage skill, so it's indistinguishable in the UI. Not a bug — the dev wants it to stay for now. |
 
-✅ = obtainable in a normal playthrough, working tooltip, no known issues. ❌ = not obtainable yet and/or broken.
+✅ = obtainable in a normal playthrough, working tooltip, no known issues. ⚠️ = obtainable but has a known, currently-uninvestigated/unfixed live bug. ❌ = not obtainable yet and/or broken.
+
+**Also TODO (design idea, 2026-09-22):** Circle of Healing should never be "un-castable". Right now,
+hovering over a dead ally and pressing Circle of Healing seems to just fail to activate. Intended
+behavior: it should always be castable — hovering over a *living* ally guarantees that ally is one of
+the (up to 5) targets, with the rest chosen randomly among other living allies; hovering over a dead
+ally, an enemy, or nothing in particular should just pick 5 random living allies with no guaranteed
+target. Not investigated yet — likely needs a real code change to how mouse-over targeting feeds into
+`SkillRangeCustom`, not just prefab tuning.
 
 Starting bar (`_initialSkillsChosenPrefabs`, 5 slots total): Greater Heal, Renew, [DEBUG] Kill Enemy
 *(fixed 2026-09-22 — Shadow Word: Death removed from this list, see changelog.md)*, 2 free slots
@@ -52,9 +60,9 @@ doesn't apply or the effect prefab didn't expose a value this way. ✅ = tuned a
 
 | Difficulty | Ability | Ready? | Cast/Channel | Cooldown | Damage/Effect |
 |---|---|---|---|---|---|
-| Normal | Auto Attack | ✅ | 1.5s cast | 0 | 10 dmg |
+| Normal | Auto Attack | ✅ | 1.5s cast | 0 | 10 dmg to **2** single targets *(fixed 2026-09-22 — tooltip used to say "a single target", but `SkillRangeCustom._numberTargets` is actually 2, matching the fight's 2 tanks)* |
 | Normal | AoE | ✅ | 1.5s channel, 3 ticks (every 0.5s) | 10s | hits up to 5 players, 12 dmg per tick *(fixed 2026-09-22)* |
-| Heroic | Auto Attack | ✅ | 1.5s cast | 0 | 12 dmg |
+| Heroic | Auto Attack | ✅ | 1.5s cast | 0 | 12 dmg to **2** single targets *(fixed 2026-09-22, same reason as Normal)* |
 | Heroic | AoE | ✅ | 1.5s channel, 3 ticks (every 0.5s) | 10s | hits up to 5 players, 12 dmg per tick, same as Normal *(fixed 2026-09-22)* |
 | Heroic | Throw Rock *(HC-only extra ability)* | ✅ | 1s cast | 12s | 30 dmg, single target *(fixed 2026-09-22)* |
 
@@ -63,21 +71,31 @@ Boss 1's Rage and Boss 3's Dark Pact), consistent with it being the least fleshe
 
 ### Boss 3 — Encounter 3
 
+Party size for this fight is **10** (2 Tank, 2 Heal, 6 DPS via `EncounterPartySettings._charactersForced`
+on `Encounter 3 Normal.prefab`) — fixed 2026-09-22, it was accidentally set to 20 forced characters.
+
 | Difficulty | Ability | Ready? | Cast/Channel | Cooldown | Damage/Effect |
 |---|---|---|---|---|---|
-| Normal | Auto Attack | ❌ | 2.5s cast | 0 | **0 dmg** (unfinished/untuned) |
-| Normal | Skill Damage *(presumably "Dark Pact")* | ❌ | 1.5s cast | 0 | no description text |
+| Normal | Auto Attack | ✅ | 2.5s cast | 0 | 20 dmg, prioritizes tanks (randomly picks one of the fight's 2 tanks — same priority mechanism as Boss 1/2, no special config needed) *(fixed 2026-09-22, was 0 dmg)* |
+| Normal | Necrotic Curse *(renamed from generic "Skill Damage")* | ✅ | 1s cast | 8s | 40 direct damage, plus a debuff (new `State Data - Boss 3 Necrotic Curse Debuff.prefab`) dealing an additional 60 damage over 4s (15 dmg/tick every 1s) *(built 2026-09-22)* |
 | Heroic | — | ❌ | — | — | **Doesn't exist.** `Encounter 3 HC` folder is empty, no prefab. |
+
+The old "Dark Pact" state-data prefab (`State Data - Boss 3 Dark Pact.prefab`) is still unused/unwired
+— the dev deliberately started with these 2 simpler abilities instead ("fangen mal gerade klein an").
+
+**Gotcha found while building Necrotic Curse:** `Skill.GenerateDescription`'s regex
+(`{{(cast|channel):.*\..*}}`) is greedy and does **not** support two `{{...}}` placeholders in the same
+description string — it matches from the first `{{` to the *last* `}}` in the whole string, mangling
+the middle text and throwing a `FormatException` on `int.Parse`. Worked around here by hardcoding the
+description text instead of templating both effects. See gotchas.md.
 
 **Correction vs. the 2026-09-22 scouting report:** that report said Boss 3 Normal's enemy prefab had
 *zero* `Skill` components, based on a text grep for the `Skill.cs` script GUID. That grep was
 wrong — `Enemy 3 Normal.prefab` is a **prefab variant**, so its inherited components don't show up
 as literal GUID references in its own file. Querying the live Editor (as done for this inventory)
-shows it actually has 2 skills, but Auto Attack currently deals 0 damage and the second ability has
-no description — so "not functional yet" still holds, just not for the reason originally stated.
+correctly showed it has 2 skills all along.
 Also see [gotchas.md](gotchas.md) for the Encounter-3-was-never-finished background and
-[changelog.md](changelog.md) for the 2026-09-22 fix that added Encounter 3 Normal to
-`EncounterManager`'s list.
+[changelog.md](changelog.md) for the 2026-09-22 fixes.
 
 ### Mythic difficulty
 
@@ -144,12 +162,17 @@ thing to check before assuming what "should" unlock where.
 4. **Build Boss 4** (new `Encounter 4` prefab set, Normal at least) with a ramping/enrage-over-time
    mechanic, plus a new `SkillUnlockCondition` unlocking Penance on its success. This is real content
    work (enemy prefab, abilities, tuning, registering in `EncounterManager`) — not a one-line fix.
-5. **Finish Boss 3** (currently placeholder: 0-damage Auto Attack, undescribed "Dark Pact"-ish
-   ability, no HC version) with the "frequent heavy hits" design above. Real content work, same
-   caveat as #4.
+5. ~~**Finish Boss 3's first two abilities.**~~ **Partially done 2026-09-22.** Auto Attack (20 dmg,
+   random tank) and Necrotic Curse (40 direct + 60-over-4s curse) are in. Still open: Boss 3 HC
+   doesn't exist, and the unused "Dark Pact" state data was intentionally left out for now
+   ("fangen mal gerade klein an").
 6. **Design & build Boss 5** (idea stage only — mechanic above needs to be fleshed out before it's
    buildable). Real content work, biggest unknown of the list.
+7. **Investigate the Circle of Healing "consumes resources, heals nothing" bug** (see the ⚠️ row
+   above). Debug logging added 2026-09-22, waiting on a reproduction with console output.
+8. **Circle of Healing hover-targeting** (see the design-idea note above the Player Skills table) —
+   always castable, guaranteed mouse-over ally as one of the targets when hovering a living ally.
 
-#1 and #2 are done (2026-09-22). #3 (Quick Heal tooltip) is mechanically small but wasn't explicitly
-requested yet. #4–#6 are genuine content/design work (new bosses, abilities, balancing) that need
-more back-and-forth on the actual mechanic before implementing, not just a go-ahead.
+#1 and #2 are done (2026-09-22). #5 is partially done. #3 (Quick Heal tooltip), #6 (Boss 5) and #8
+(hover-targeting) need more design/investigation before implementing. #7 is actively being
+investigated (debug logs in place, uncommitted).
