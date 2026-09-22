@@ -69,6 +69,10 @@ PrefabInstance:
       propertyPath: _numberTargets
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1476034276, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
+      propertyPath: _maxHealth
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 1370252273628263756, guid: 95ef20aaf9a7032429cffd40c08da9a6, type: 3}
       propertyPath: m_RootOrder
       value: 0
