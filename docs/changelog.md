@@ -86,3 +86,26 @@ a fallback-to-first-free-slot if the target index turns out occupied, as defense
 - Noted as a design TODO (not yet implemented): Circle of Healing should always be castable, using
   the mouse-over ally as a guaranteed target when hovering a living ally, and falling back to 5 random
   living allies otherwise (currently it seems to just fail to activate when hovering a dead ally).
+
+## 2026-09-22 (later still) — root-caused the Enemy.Die() crash, removed debug logging
+
+- Found the real cause of the intermittent `NullReferenceException` in `Enemy.Die()` (previously
+  suspected to be an Encounter-lifecycle/targeting-cache bug): a leftover `Enemy 3 Normal(Clone)`
+  GameObject, orphaned from an earlier live-Editor `GameObject.Instantiate()` call during this same
+  session's content-inventory work, was still sitting in the open `MainMenu` scene (in-memory only,
+  never saved to disk) with a live, hoverable `UiTargetCharacter`. A multi-target skill (Shadow Word:
+  Death) picked it up alongside the real boss; the real boss's death fired `SuccessEncounter()`
+  (nulling `EncounterManager.CurrentEncounter`) mid-loop, and the second, stale target's death then
+  crashed on the now-null reference. Destroyed the stray object; confirmed fixed by reproducing twice
+  (error gone, Circle of Healing also works correctly on the second battle).
+- Two earlier fix attempts this session (an `OnEncounterInitialize`-driven target-cache reset in
+  `SkillRangeCustom`, and moving `OnEncounterClear` to fire from `StopEncounter()`) were investigating
+  a real but different theory and turned out not to be the cause of this specific crash. The second
+  attempt caused a severe regression (mass `NullReferenceException`s from destroying party/skills
+  while other player-side systems were still updating mid-results-screen) and was reverted immediately.
+  The `SkillRangeCustom` cache-reset fix is harmless and was kept.
+- Lesson for future live-Editor sessions: always `Destroy`/`DestroyImmediate` any `GameObject.Instantiate()`
+  used for live stat/description inspection - a forgotten one can sit in the open scene indefinitely
+  and get treated as a real character.
+- Removed all temporary `DEBUG` `Debug.Log` calls added earlier while hunting this bug (`Skill.cs`,
+  `SkillRangeCustom.cs`, `SkillPerformance.cs`, `SkillEffectHeal.cs`).

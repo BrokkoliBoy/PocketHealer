@@ -75,6 +75,32 @@ namespace Gavi.Skills
         #endregion
 
 
+        #region Mono
+        private void OnEnable()
+        {
+            EncounterManager.Instance.OnEncounterInitialize.AddListener(ResetTargetSwitchCache);
+        }
+
+        private void OnDisable()
+        {
+            EncounterManager.Instance.OnEncounterInitialize.RemoveListener(ResetTargetSwitchCache);
+        }
+
+        // Skills (especially the player's) live across encounter boundaries, but their targets
+        // (enemies, party members) get destroyed and recreated for every encounter. Without this,
+        // GetTargets()'s target-switch cache below could hand back references to characters from a
+        // fight that has already ended - TargetIsValid() can't tell a destroyed target from a null
+        // one, so the stale reference is never filtered out.
+        private void ResetTargetSwitchCache()
+        {
+            _targets.Clear();
+            _timeSwitchTargetRdy = 0;
+            _targetingsDoneAfterSwitchingTarget = 0;
+            _charactersTargetedAfterSwitchingTarget = 0;
+        }
+        #endregion
+
+
         #region Logic
         public override List<Character> GetTargets()
         {

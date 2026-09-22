@@ -159,8 +159,10 @@ namespace Gavi.Skills
             
             // targeting
             if (_skillRange.ActivationPoint == SkillRange.ActivisionPoint.OnActivision)
+            {
                 performance.SetTargets(_skillRange.GetTargets());
-            
+            }
+
             // mana
             if (performance.Skill.SkillMana != null && performance.Skill.SkillMana.Activation == SkillMana.ActivationType.OnActivision)
                 _manaManager.CurrentMana -= performance.Skill._skillMana.ManaCost;
