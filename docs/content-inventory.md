@@ -145,13 +145,19 @@ Other placeholders on this content, still using dev-supplied filler until someon
 pass: Character name "Boss 4", max health 500 (matched to Boss 3's post-balance tier, not tuned), party
 composition copied verbatim from Boss 3 (2 Tank/2 Heal/6 DPS).
 
-### Mythic difficulty
+### Mythic difficulty — not planned, buttons hidden (2026-09-23)
 
-No `Encounter` prefab currently has `Difficulty == Mythic` (or `MythicPlus`). The Mythic button in
-`MenuPanelChooseEncounter` can become visible once its unlock condition is met (see
-[gotchas.md](gotchas.md) for that logic), but selecting it will fail —
-`EncounterManager.SetEncounterIndex` logs "no match was found" and doesn't start anything, since
-there's no Mythic-tier boss content yet.
+No `Encounter` prefab currently has `Difficulty == Mythic` (or `MythicPlus`), and the dev has decided
+**against designing/implementing it** for now — too much design effort, and it works better once all
+5 bosses exist on Normal/HC first. `MenuPanelChooseEncounter.BuildMenu()` now force-hides every
+Mythic/Mythic+ button (`button.Show(false)`) regardless of progress, instead of relying on the old
+unlock check (which would never resolve to a real boss anyway, see below and
+[gotchas.md](gotchas.md)). The old conditional logic is left commented out right above each
+`button.Show(false)` so it's a one-line revert if Mythic is ever picked back up. The 3 existing
+"Button - Encounter Chooser N Mythic" buttons in `MainMenu.unity` were left as-is (still in the
+`_buttons` list, just always hidden now) — no scene/prefab cleanup was needed. If Mythic content is
+never built, `EncounterManager.SetEncounterIndex` would still just log "no match was found" and do
+nothing if one were ever selected — this was already true before and is now unreachable anyway.
 
 ## Debug System (added 2026-09-23)
 

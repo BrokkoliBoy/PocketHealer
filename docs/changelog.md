@@ -186,3 +186,23 @@ before/after table.
   TakeDamage` asserts/logs an error on `dmg <= 0`, so leaving a 0-damage direct-hit effect wired in
   would have spammed the console on every cast. The now-unused "Skill Effect - Direct Damage" child
   GameObject/component is still present on both prefabs but disconnected from the skill.
+
+## 2026-09-23 (later still) — Mythic difficulty dropped from scope, its buttons hidden
+
+- Dev decision: Mythic (and Mythic+) will likely not be implemented at all — too much design effort,
+  and it works better once all 5 bosses exist on Normal/HC first. Removed the functionality that
+  shows the Mythic/Mythic+ difficulty buttons at all, rather than just leaving their old (already
+  broken/unreachable, see gotchas.md) unlock condition in place.
+- `MenuPanelChooseEncounter.BuildMenu()`: both the Mythic and MythicPlus branches now call
+  `button.Show(false)` unconditionally. The previous conditional logic (and the two now-unused
+  `hasSuccessInAllNormal`/`hasSuccessInAllHeroic` locals) is left commented out directly above each,
+  so re-enabling Mythic later is a one-line change per branch, not a rebuild.
+- No scene/prefab cleanup done — the existing "Button - Encounter Chooser N Mythic" buttons and the
+  `Mythic`/`MythicPlus` enum values, save-file fields, and skill-bar plumbing (`PlayerSkillConfiguration`,
+  `GameProgress`, `GameFileManager`) are untouched. This is a pure UI-visibility change, not a removal
+  of the underlying system.
+- Checked all docs (`README.md`, `docs/architecture.md`, `docs/gotchas.md`,
+  `docs/content-inventory.md`) plus the external project-notes file in the Claude working folder
+  (`D:\Claude\Projects\Portfolio\docs\repos\pocket-healer\notes.md`) for Mythic mentions — no separate
+  design draft existed anywhere. Updated each to reflect that Mythic is out of scope and its buttons
+  are hidden (`README.md` now advertises 2 difficulties instead of 3).

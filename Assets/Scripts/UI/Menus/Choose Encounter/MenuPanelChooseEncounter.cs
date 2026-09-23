@@ -22,8 +22,9 @@ namespace Gavi
             if (GameProgress.Instance == null) // TODO: That is just a hack to avoid getting null refs when the scene starts
                 return;
             
-            bool hasSuccessInAllNormal = GameProgress.Instance.HasEncounterSuccess(EncounterManager.Instance.HighestEncounterIndexNormal, Encounter.Encounter.EncounterDifficulty.Normal);
-            bool hasSuccessInAllHeroic = GameProgress.Instance.HasEncounterSuccess(EncounterManager.Instance.HighestEncounterIndexHeroic, Encounter.Encounter.EncounterDifficulty.Heroic);
+            // Mythic is shelved (see TODO below) - these are only needed again once it's restored.
+            // bool hasSuccessInAllNormal = GameProgress.Instance.HasEncounterSuccess(EncounterManager.Instance.HighestEncounterIndexNormal, Encounter.Encounter.EncounterDifficulty.Normal);
+            // bool hasSuccessInAllHeroic = GameProgress.Instance.HasEncounterSuccess(EncounterManager.Instance.HighestEncounterIndexHeroic, Encounter.Encounter.EncounterDifficulty.Heroic);
             foreach (ChooseEncounterButton button in _buttons)
             {
                 int number = button.EncounterNumber;
@@ -53,11 +54,17 @@ namespace Gavi
                 }
                 else if (difficulty == Encounter.Encounter.EncounterDifficulty.Mythic)
                 {
-                    button.Show(hasSuccessInAllNormal && hasSuccessInAllHeroic);
+                    // TODO: Mythic is not implemented/designed yet (shelved 2026-09-23) - keep hidden regardless of progress.
+                    // Restore once Mythic is implemented (and uncomment hasSuccessInAllNormal/hasSuccessInAllHeroic above):
+                    // button.Show(hasSuccessInAllNormal && hasSuccessInAllHeroic);
+                    button.Show(false);
                 }
                 else if (difficulty == Encounter.Encounter.EncounterDifficulty.MythicPlus)
                 {
-                    button.Show(GameProgress.Instance.HasEncounterSuccess(number, Encounter.Encounter.EncounterDifficulty.Mythic));
+                    // TODO: Mythic+ is not implemented/designed yet (shelved 2026-09-23) - keep hidden regardless of progress.
+                    // Restore once Mythic+ is implemented:
+                    // button.Show(GameProgress.Instance.HasEncounterSuccess(number, Encounter.Encounter.EncounterDifficulty.Mythic));
+                    button.Show(false);
                 }
             }
         }

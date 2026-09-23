@@ -1,8 +1,10 @@
 # Architecture
 
-A WoW-Priest-inspired 2D healing sim: heal your group through boss fights across three difficulty
-tiers (Normal / Heroic / Mythic, plus a stubbed-out Mythic+), with a spell loadout you configure
-between fights.
+A WoW-Priest-inspired 2D healing sim: heal your group through boss fights across two difficulty
+tiers (Normal / Heroic), with a spell loadout you configure between fights. A Mythic tier (plus a
+stubbed-out Mythic+) exists in the data model and UI plumbing but its selection buttons are
+force-hidden (2026-09-23) — the dev decided against designing/implementing it, at least for the
+next release; see the "Mythic difficulty" note below and gotchas.md.
 
 Namespace is `Gavi` throughout (a few files use `Gavi.Base`, `Gavi.Encounter`, `Gavi.Skills`, etc.
 as sub-namespaces). Most systems are singleton `MonoBehaviour`s (`public static X Instance`) set in
@@ -88,10 +90,12 @@ bug this caused.
 - **`GameProgress`** — tracks beaten encounters per difficulty as `List<int>` (encounter numbers).
   `HasEncounterSuccess(number, difficulty)` checks membership in that specific list, nothing fuzzier.
 - **`MenuPanelChooseEncounter.BuildMenu()`** — decides which difficulty buttons are visible per
-  encounter. Mythic is shown once `HasEncounterSuccess(HighestEncounterIndexNormal, Normal)` **and**
-  the same for Heroic are both true — i.e. "beaten the current highest-numbered registered boss on
-  both difficulties", not "beaten every boss ever" (misleading local variable names
-  `hasSuccessInAllNormal`/`hasSuccessInAllHeroic` notwithstanding).
+  encounter. **Mythic and Mythic+ buttons are hard-hidden as of 2026-09-23** (`button.Show(false)`,
+  unconditionally) — Mythic is not planned for now, so its old unlock check (would-be shown once
+  `HasEncounterSuccess(HighestEncounterIndexNormal, Normal)` **and** the same for Heroic are both
+  true, i.e. "beaten the current highest-numbered registered boss on both difficulties", not "beaten
+  every boss ever" — misleading local variable names `hasSuccessInAllNormal`/`hasSuccessInAllHeroic`
+  notwithstanding) is left commented out in place, ready to restore if Mythic ever ships.
 
 ## UI framework notes (Doozy)
 

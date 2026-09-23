@@ -47,16 +47,20 @@ belongs to. Anything that can leave this flag in the wrong state (e.g. opening t
 screen and never explicitly closing it before some other flow starts) silently changes drag-and-drop
 behavior everywhere else in the game too.
 
-## Mythic-difficulty unlock is not "beat every boss"
+## Mythic-difficulty unlock is not "beat every boss" (currently moot — buttons are hard-hidden)
 
 `EncounterManager.HighestEncounterIndexNormal`/`HighestEncounterIndexHeroic` are **counts of
 currently-registered encounters**, not "the number of the last boss ever added" or "all bosses
-beaten". `MenuPanelChooseEncounter` shows Mythic once the player has beaten whichever encounter
-currently holds that highest number, on both Normal and Heroic. This is fragile: adding a new boss
-to the roster immediately raises the threshold, so a player who already had Mythic unlocked (under
-the old, smaller roster) would need to beat the new top boss again to keep it. Not a bug today
-(boss numbers are sequential with no gaps and the roster only has as many bosses as are finished),
-but worth remembering before adding boss 3/4/5.
+beaten". The old logic showed Mythic once the player had beaten whichever encounter currently held
+that highest number, on both Normal and Heroic. This was fragile: adding a new boss to the roster
+immediately raises the threshold, so a player who already had Mythic unlocked (under the old,
+smaller roster) would need to beat the new top boss again to keep it.
+
+**As of 2026-09-23, this is dormant**: the dev decided against implementing Mythic (too much design
+effort, works better once all bosses exist on Normal/HC first), so `MenuPanelChooseEncounter` now
+force-hides the Mythic and Mythic+ buttons unconditionally (`button.Show(false)`), with the old
+conditional logic left commented out right above it for an easy restore. Keep this trap in mind if
+that ever happens — it wasn't fixed, just switched off.
 
 ## No dedicated save-file deletion existed before 2026-09-21
 

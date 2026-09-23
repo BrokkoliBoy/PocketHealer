@@ -16,14 +16,14 @@ The game consists of different encounters in which your group has to fight a bos
 
 Spells cost mana and inflict direct healing or temporary state effects (aka buffs) that apply healing, absorbtion shields or other things like increased damage dealt or reduced damage taken. The player may only bring a selection of 5 spells into encounters. They can manage which spells to bring, which slot in the action bar they are in and which hotkey that slot is assigned to. The player starts with two basic healing spells and whenever they beat an encounter, new spells are added.<br><br>
 
-Encounters are singular boss fights. Encounters come in 3 different difficulties: Normal, Heroic (with tougher numbers to beat) and Mythic (designed and balanced for when the player has all abilities unlocked). Once a boss is beat, the next difficulty is unlocked for that boss.
+Encounters are singular boss fights. Encounters come in 2 different difficulties: Normal and Heroic (with tougher numbers to beat). Once a boss is beat, the next difficulty is unlocked for that boss.
 
 ## Features
 - fully working healing simulation
 - editor* for spells
 - editor* for encoutners and bosses
   - includes group size and group setup
-- bosses in 3 difficulties
+- bosses in 2 difficulties
 - skill learning after bosses
 - drag and drop spells into action bars
 
