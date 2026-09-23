@@ -206,3 +206,81 @@ before/after table.
   (`D:\Claude\Projects\Portfolio\docs\repos\pocket-healer\notes.md`) for Mythic mentions — no separate
   design draft existed anywhere. Updated each to reflect that Mythic is out of scope and its buttons
   are hidden (`README.md` now advertises 2 difficulties instead of 3).
+
+## 2026-09-23 (later still) — Settings button hidden, its click effect copied to its main-menu siblings
+
+- The Settings menu doesn't have any actual settings yet, so the dev decided its main-menu button
+  would just be confusing and hid it (`Button - Settings` under `View - Main Menu`, `SetActive(false)`
+  in `MainMenu.unity`). Not deleted, just deactivated — trivial to bring back.
+  `View - Settings Menu` itself and its "Back" button are untouched (unreachable now, but intact).
+- Before hiding it, found that `Button - Settings`'s Doozy `UIButton.OnClick` had a distinct
+  "punch" click effect (a small upward Move punch + a squash/stretch Scale punch, both DOTween-style
+  loops) that no other main-menu button had — confirmed by diffing every `UIButton.OnClick.PunchAnimation`
+  in the scene. (`Button - Debug Mode` already happened to carry the exact same effect, but that
+  button is hidden by default behind its own debug toggle, so the dev likely never noticed it there.)
+  Copied the same `OnClick.PunchAnimation.Move`/`.Scale` settings (Enabled, By, Vibrato, Elasticity,
+  Duration, Ease, LoopType) onto the other 3 main-menu buttons that lacked it - `Button - Encounter
+  Menu`, `Button - Configuration Menu`, `Button - Quit` - via `SerializedObject`, so the menu keeps a
+  consistent feel after Settings disappears. Scoped to the main menu only; the ~40 other `UIButton`s
+  elsewhere in the game (Choose Encounter, GameFile login/delete, in-combat pause/quit, etc.) were
+  left as they were, not part of what was asked.
+
+## 2026-09-23 (later still) — click effect rolled out further, Login Menu renamed, Quit→Logout, Configuration overlap fixed
+
+All done live via `SerializedObject`/`SerializedProperty` in one batch (`MainMenu.unity`), 0 console
+errors after, scene saved once at the end.
+
+- **Click effect extended** to every remaining button the dev pointed out, by copying
+  `OnClick.PunchAnimation.Move`/`.Scale` from `Button - Settings` the same way as the previous entry:
+  - All 9 buttons across the 3 save-slot groups in the Login Menu: `Button - Login`, `Button - Delete
+    Safefile`, `Button - Confirm Character Name`.
+  - `View - Encounter Choose`'s own `Button - Back`, plus **both** sub-buttons (`Button - Start
+    Encounter Border` and `Button - Start Encounter (and background`) on all 10 `ChooseEncounterButton`
+    instances (Debug, and Boss 1/2/3 × Normal/Heroic/Mythic) — confirmed these boss-select buttons are
+    real Doozy `UIButton`s wired to `ChooseEncounterButton.ChooseEncounter()`, so the effect applies
+    cleanly to both stacked buttons identically (they share position/size, so they stay visually
+    aligned through the punch).
+  - `View - Configuration`'s own `Button - Back`.
+- **`View - GameFile Menu` renamed to `View - Login Menu`** (GameObject name) and its heading text
+  changed from "Game Files" to "Login" — both the dev-facing Hierarchy name and the in-game text.
+  Grepped `Assets/Scripts` first for any string reference to "GameFile Menu"/"Game Files" — none
+  exist (the view is only ever addressed by object reference, e.g. `GameFileUI`, not by name string),
+  so the rename is safe.
+- **Main Menu's `Button - Quit` repurposed into `Button - Logout`**: renamed the GameObject, changed
+  its label text to "Logout", and copied the exact `OnClick.OnTrigger.Event` persistent-call config
+  from `View - Quit Menu/Button - Logout` (`GameFileManager.Logout()`) onto it. Also changed its
+  Doozy `ButtonName` from `"Quit Menu"` to `"Logout"` — reverse-engineered how Doozy's Nody graph
+  (`Graph Controller` GameObject, `Doozy.Engine.Nody.GraphController`) routes button clicks
+  (`Assets/Extern/Doozy/Engine/UI/Nodes/UINode.cs`, `OnUIButtonClickMessage`): each `UINode`'s output
+  sockets carry a `UIConnection` matched purely by `ButtonName` (category is not checked) against
+  whichever button was clicked, and a click with no matching socket on the current node is simply a
+  no-op for navigation. So renaming away from `"Quit Menu"` silently detaches this button from the
+  graph link that used to open `View - Quit Menu`, without needing to touch the Nody graph asset at
+  all — the old graph connection is left completely intact, just permanently unused now.
+  **`View - Quit Menu` itself and all its children (`Button - Back`, `Button - Logout`, `Button -
+  Quit`) were left completely untouched** — not deleted, not deactivated, just unreachable, per the
+  dev's explicit "preserve, don't delete" instruction. No other button in the scene targets `"Quit
+  Menu"` as a `ButtonName` (checked `View - GameFile Menu`'s own separate `Button - Quit`, which uses
+  `ButtonName="Quit"` instead, and the 4 in-combat `Button - Quit`s under `View - Encounter`, which
+  call `EncounterManager.AbortEncounter` and are unrelated), so this was the only path in.
+- **Configuration heading no longer covered by the skill bars**: `Panel - Skill Bars` (the shared
+  parent of both the 4-bar "Available Skills"/inventory panel and the `NormalHc`/`Mytic` 5-skill
+  action bars) moved down 50 units (`anchoredPosition.y`: 0 → -50). Measured world-space bounds
+  before/after via `RectTransform.GetWorldCorners` to confirm: previously the Available Skills panel's
+  top edge overlapped the "Configuration" heading's rendered text (the heading's own `RectTransform`
+  box is only 25 units tall but the text overflows it at font size 61.7); after the shift there's
+  roughly 34 canvas-units of clear gap. Moving the shared parent (rather than each bar individually)
+  keeps the existing spacing between the inventory bars and the action bar unchanged.
+- **Dangling `OnClick` persistent calls in the Login Menu, cleaned up.** The `Button - Login` dead
+  call to `GameFlowManager.YOYO()` flagged above turned out to be one of **nine** identical leftovers
+  once all 3 save-slot groups' Login/Delete/Confirm buttons were checked — 2 of the 3 "Login" buttons
+  still called the long-deleted `GameFlowManager.YOYO()` directly, and all 6 Delete/Confirm buttons
+  (plus the first group's Login button, after an interim manual fix attempt) pointed at a
+  `Gavi.GameFileUI.OnButtonPressed` that never existed with no target object assigned either. The dev
+  tried fixing the first one by hand via the Inspector, which left it in the second, still-broken
+  state (`OnButtonPressed` + null target) — a classic case of picking a method in the dropdown before
+  assigning the target object. Cleared all nine persistent-call lists entirely
+  (`OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls` → size 0) rather than repointing them, since
+  the real login/delete/confirm logic has been wired separately and correctly in code all along, via
+  `GameFileUI.Awake()`'s `Button.onClick.AddListener(...)` — these Doozy-side calls never did
+  anything real, they were just inherited dead scaffolding.

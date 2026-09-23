@@ -361,7 +361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &24861639
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2764,6 +2764,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 178019616}
     m_Modifications:
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 935336641694637369, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: _encounterNumber
       value: 2
@@ -2856,6 +2864,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6885937620462124206, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
@@ -2878,6 +2894,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 178019616}
     m_Modifications:
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 935336641694637369, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: _difficulty
       value: 2
@@ -2973,6 +2997,14 @@ PrefabInstance:
     - target: {fileID: 5571335017314912989, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6885937620462124206, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -6858,6 +6890,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 178019616}
     m_Modifications:
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 935336641694637369, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: _difficulty
       value: 1
@@ -6953,6 +6993,14 @@ PrefabInstance:
     - target: {fileID: 5571335017314912989, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6885937620462124206, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -7121,7 +7169,7 @@ GameObject:
   - component: {fileID: 216006462}
   - component: {fileID: 216006461}
   m_Layer: 0
-  m_Name: View - GameFile Menu
+  m_Name: View - Login Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8166,6 +8214,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 611926320}
     m_Modifications:
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 935336641694637369, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: _difficulty
       value: 1
@@ -8261,6 +8317,14 @@ PrefabInstance:
     - target: {fileID: 5571335017314912989, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6885937620462124206, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -8432,6 +8496,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1774225198}
     m_Modifications:
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 935336641694637369, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: _difficulty
       value: 1
@@ -8523,6 +8595,14 @@ PrefabInstance:
     - target: {fileID: 5571335017314912989, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6885937620462124206, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -9472,13 +9552,13 @@ MonoBehaviour:
       AnimationType: 4
       Move:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
+        By: {x: 0, y: 10, z: 0}
         UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
+        Vibrato: 4
+        Elasticity: 0.5
         NumberOfLoops: -1
         LoopType: 1
         Direction: 0
@@ -9492,7 +9572,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.2
       Rotate:
         AnimationType: 4
         Enabled: 0
@@ -9517,12 +9597,12 @@ MonoBehaviour:
         Duration: 1
       Scale:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
+        By: {x: 0.1, y: -0.15, z: 0}
         UseCustomFromAndTo: 0
-        Vibrato: 10
+        Vibrato: 8
         Elasticity: 1
         NumberOfLoops: -1
         LoopType: 1
@@ -9535,7 +9615,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.4
       Fade:
         AnimationType: 4
         Enabled: 0
@@ -14299,6 +14379,94 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 216006460}
     m_Modifications:
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.By.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Vibrato
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Vibrato
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Duration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Elasticity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.By.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Vibrato
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Vibrato
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Duration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Elasticity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4269632374366845639, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
       propertyPath: m_Name
       value: Login Button
@@ -14390,6 +14558,50 @@ PrefabInstance:
     - target: {fileID: 8388583028785351353, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.By.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Vibrato
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Vibrato
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Duration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Elasticity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
       propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -21770,7 +21982,7 @@ MonoBehaviour:
       AnimationType: 4
       Move:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
         By: {x: 0, y: 10, z: 0}
@@ -21815,7 +22027,7 @@ MonoBehaviour:
         Duration: 0.3
       Scale:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
         By: {x: 0.1, y: -0.15, z: 0}
@@ -23469,7 +23681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Files
+  m_text: Login
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -32548,6 +32760,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1774225198}
     m_Modifications:
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2448138620772848439, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_Name
       value: Button - Encounter Chooser 1 Normal
@@ -32635,6 +32855,14 @@ PrefabInstance:
     - target: {fileID: 5571335017314912989, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6885937620462124206, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -33468,7 +33696,7 @@ GameObject:
   - component: {fileID: 1056251557}
   - component: {fileID: 1056251556}
   m_Layer: 0
-  m_Name: Button - Quit
+  m_Name: Button - Logout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33513,7 +33741,7 @@ MonoBehaviour:
   StartAlpha: 1
   AllowMultipleClicks: 1
   ButtonCategory: Main Menu
-  ButtonName: Quit Menu
+  ButtonName: Logout
   ClickMode: 0
   DeselectButtonAfterClick: 0
   DisableButtonBetweenClicksInterval: 0.2
@@ -34373,7 +34601,19 @@ MonoBehaviour:
         CustomSortingLayer: Default
       Event:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 1191964858}
+            m_TargetAssemblyTypeName: Gavi.GameFileManager, Assembly-CSharp
+            m_MethodName: Logout
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       GameEvents: []
       SoundData:
         SoundSource: 0
@@ -34387,13 +34627,13 @@ MonoBehaviour:
       AnimationType: 4
       Move:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
+        By: {x: 0, y: 10, z: 0}
         UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
+        Vibrato: 4
+        Elasticity: 0.5
         NumberOfLoops: -1
         LoopType: 1
         Direction: 0
@@ -34407,7 +34647,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.2
       Rotate:
         AnimationType: 4
         Enabled: 0
@@ -34432,12 +34672,12 @@ MonoBehaviour:
         Duration: 1
       Scale:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
+        By: {x: 0.1, y: -0.15, z: 0}
         UseCustomFromAndTo: 0
-        Vibrato: 10
+        Vibrato: 8
         Elasticity: 1
         NumberOfLoops: -1
         LoopType: 1
@@ -34450,7 +34690,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.4
       Fade:
         AnimationType: 4
         Enabled: 0
@@ -41682,6 +41922,94 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 216006460}
     m_Modifications:
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.By.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Vibrato
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Vibrato
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Duration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Elasticity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.By.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Vibrato
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Vibrato
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Duration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Elasticity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4269632374366845639, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
       propertyPath: m_Name
       value: Login Button
@@ -41779,16 +42107,48 @@ PrefabInstance:
       value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
-      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1779217826}
-    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
-      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: YOYO
+      propertyPath: OnClick.PunchAnimation.Move.By.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
-      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Gavi.Base.GameFlowManager, Assembly-CSharp
+      propertyPath: OnClick.PunchAnimation.Scale.By.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Vibrato
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Vibrato
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Duration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Elasticity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42369,7 +42729,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: Logout
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -45288,6 +45648,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 611926320}
     m_Modifications:
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 935336641694637369, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: _encounterNumber
       value: 3
@@ -45379,6 +45747,14 @@ PrefabInstance:
     - target: {fileID: 5571335017314912989, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6885937620462124206, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -46501,13 +46877,13 @@ MonoBehaviour:
       AnimationType: 4
       Move:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
+        By: {x: 0, y: 10, z: 0}
         UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
+        Vibrato: 4
+        Elasticity: 0.5
         NumberOfLoops: -1
         LoopType: 1
         Direction: 0
@@ -46521,7 +46897,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.2
       Rotate:
         AnimationType: 4
         Enabled: 0
@@ -46546,12 +46922,12 @@ MonoBehaviour:
         Duration: 1
       Scale:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
+        By: {x: 0.1, y: -0.15, z: 0}
         UseCustomFromAndTo: 0
-        Vibrato: 10
+        Vibrato: 8
         Elasticity: 1
         NumberOfLoops: -1
         LoopType: 1
@@ -46564,7 +46940,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         StartDelay: 0
-        Duration: 1
+        Duration: 0.4
       Fade:
         AnimationType: 4
         Enabled: 0
@@ -50942,6 +51318,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 277252362}
     m_Modifications:
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 750955372165842739, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -51037,6 +51421,14 @@ PrefabInstance:
     - target: {fileID: 5571335017314912989, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6885937620462124206, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_text
@@ -56477,7 +56869,7 @@ MonoBehaviour:
       AnimationType: 4
       Move:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
         By: {x: 0, y: 10, z: 0}
@@ -56522,7 +56914,7 @@ MonoBehaviour:
         Duration: 0.3
       Scale:
         AnimationType: 4
-        Enabled: 0
+        Enabled: 1
         From: {x: 0, y: 0, z: 0}
         To: {x: 0, y: 0, z: 0}
         By: {x: 0.1, y: -0.15, z: 0}
@@ -63984,6 +64376,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1774225198}
     m_Modifications:
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 935336641694637369, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: _difficulty
       value: 2
@@ -64075,6 +64475,14 @@ PrefabInstance:
     - target: {fileID: 5571335017314912989, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6885937620462124206, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -64354,6 +64762,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 611926320}
     m_Modifications:
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311201949102874927, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 935336641694637369, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: _difficulty
       value: 2
@@ -64449,6 +64865,14 @@ PrefabInstance:
     - target: {fileID: 5571335017314912989, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885937619854045260, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6885937620462124206, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -64549,7 +64973,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2103998851
@@ -65068,6 +65492,94 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 216006460}
     m_Modifications:
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.By.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Vibrato
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Vibrato
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Duration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Elasticity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754523973892846850, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.By.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Vibrato
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Vibrato
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Duration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Elasticity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982746670110781058, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4269632374366845639, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
       propertyPath: m_Name
       value: Login Button
@@ -65159,6 +65671,50 @@ PrefabInstance:
     - target: {fileID: 8388583028785351353, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.By.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.By.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Vibrato
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Vibrato
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Scale.Duration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.PunchAnimation.Move.Elasticity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
+      propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8532931590724661009, guid: cda871f60e91e614e846ba0bfba160b5, type: 3}
       propertyPath: OnClick.OnTrigger.Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
