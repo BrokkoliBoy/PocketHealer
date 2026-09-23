@@ -29,6 +29,13 @@ namespace Gavi
                 int number = button.EncounterNumber;
                 Encounter.Encounter.EncounterDifficulty difficulty = button.Difficulty;
 
+                // debug test-boss button, gated behind its own independent debug toggle
+                if (number == 0)
+                {
+                    button.Show(DebugMode.Instance.EnableBossDebugEncounter);
+                    continue;
+                }
+
                 // always show the first encounter
                 if (number == 1 && difficulty == Encounter.Encounter.EncounterDifficulty.Normal)
                 {

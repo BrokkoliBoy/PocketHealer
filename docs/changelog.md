@@ -126,6 +126,37 @@ a fallback-to-first-free-slot if the target index turns out occupied, as defense
   Editor prefab edits (`PrefabUtility.LoadPrefabContents`/`SaveAsPrefabAsset`), no code touched.
   **Not registered in `EncounterManager`** — see the next entry.
 
+## 2026-09-23 (later still) — small, independent debug-toggle system
+
+Consolidated 3 previously ad-hoc/always-on debug behaviors into 3 independent inspector booleans on
+the existing `DebugMode` singleton (all default `false`), instead of leaving them hardcoded or
+entangled with each other. See `content-inventory.md`'s new "Debug System" section for the full
+before/after table.
+
+- `SkillLearnSystem`: `[DEBUG] Kill Enemy` moved out of `_initialSkillsChosenPrefabs` (was
+  unconditional) into a new dedicated `_debugKillSkillPrefab` field, added back in
+  `LearnInitialSkills()` only when `DebugMode.StartWithDebugKillSkill` is true.
+- `MenuPanelChooseEncounter`: the "Boss Debug" button (`Button - Encounter Chooser Debug`, encounter
+  number 0) is now part of the same managed `_buttons` list as every other encounter button, gated on
+  `DebugMode.EnableBossDebugEncounter` instead of being permanently visible/clickable and completely
+  outside the menu's own visibility logic.
+- `GameProgress`: found and fixed a real timing bug while investigating the existing "Debug Mode"
+  button — it only ever checked `DebugMode.IsDebug` once in its own `Start()`, which already runs
+  before a player can click any UI button, so clicking "Debug Mode" at runtime unlocked all skills
+  (via `SkillLearnSystem`) but never actually marked any encounter as beaten. `GameProgress` now also
+  subscribes to `DebugMode.OnDebugEnabled` live, so the button behaves the same as pre-setting
+  `_setDebugAtStart` before pressing Play.
+- No new UI, no persistence layer — all toggles are plain `[SerializeField] bool`s set directly on
+  the `DebugMode` GameObject's Inspector in `MainMenu.unity`, mirroring how `_setDebugAtStart` already
+  worked. The two existing in-game debug buttons are unchanged and still work as runtime triggers.
+
+## 2026-09-23 (later still) — 4th debug toggle: show/hide the Debug Mode button itself
+
+- Added `DebugMode._enableDebugModeButton` (default false) and a new, small
+  `DebugModeButtonVisibility` component (`Assets/Scripts/Debug/DebugModeButtonVisibility.cs`),
+  attached to the "Button - Debug Mode" GameObject in `MainMenu.unity`. It reads the flag once in
+  `Start()` and `SetActive`s itself accordingly. Previously the button was unconditionally visible.
+
 ## 2026-09-23 — Boss 4 shelved, next release scoped to 3 bosses, Boss 3 HC is now the active TODO
 
 - Dev decision: the next release ships with exactly the 3 existing bosses, each Normal + HC. Boss 4

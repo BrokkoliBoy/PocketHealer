@@ -33,6 +33,8 @@ namespace Gavi
         [SerializeField] private List<PlayerSkillPrefab> _initialSkillsAvailablePrefabs;
         [Tooltip("Skills that are chosen for normal and hc bar if a new game file is started.")]
         [SerializeField] private List<PlayerSkillPrefab> _initialSkillsChosenPrefabs;
+        [Tooltip("Added on top of _initialSkillsChosenPrefabs, but only if DebugMode.StartWithDebugKillSkill is enabled.")]
+        [SerializeField] private PlayerSkillPrefab _debugKillSkillPrefab;
 
         [Header("- UI -")]
         [SerializeField] private float _padding = 50f;
@@ -66,7 +68,10 @@ namespace Gavi
         #region Life Cycle
         public void LearnInitialSkills()
         {
-            PlayerSkillConfiguration.Instance.AssignInitialSetup(_initialSkillsAvailablePrefabs, _initialSkillsChosenPrefabs);
+            List<PlayerSkillPrefab> chosen = new List<PlayerSkillPrefab>(_initialSkillsChosenPrefabs);
+            if (DebugMode.Instance.StartWithDebugKillSkill)
+                chosen.Add(_debugKillSkillPrefab);
+            PlayerSkillConfiguration.Instance.AssignInitialSetup(_initialSkillsAvailablePrefabs, chosen);
         }
         #endregion
         

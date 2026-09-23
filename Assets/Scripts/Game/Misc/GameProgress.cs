@@ -25,6 +25,10 @@ namespace Gavi
             {
                 ApplyDebugEncounter();
             }
+            // also react live: enabling Debug Mode via the in-game button happens after this Start()
+            // already ran once, so without this listener it would only unlock all skills (via
+            // SkillLearnSystem) but never mark encounters as beaten.
+            DebugMode.Instance.OnDebugEnabled.AddListener(ApplyDebugEncounter);
         }
         #endregion
         

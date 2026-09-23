@@ -4046,7 +4046,7 @@ MonoBehaviour:
   _initialSkillsChosenPrefabs:
   - {fileID: -2522928594737702234, guid: a254997b15b6e644f841b3df7a7e5eec, type: 3}
   - {fileID: -3195146320838224971, guid: 69910a65252cc5e42b39350854f6921a, type: 3}
-  - {fileID: -4824830529867866820, guid: b5455ddc5af90d04095fe4c13ea91e74, type: 3}
+  _debugKillSkillPrefab: {fileID: -4824830529867866820, guid: b5455ddc5af90d04095fe4c13ea91e74, type: 3}
   _padding: 50
   _parentInfoPanels: {fileID: 1722513007}
   _panelNewSkillUnlocked: {fileID: 2103998851}
@@ -11756,6 +11756,7 @@ MonoBehaviour:
   - {fileID: 1619457327}
   - {fileID: 1701894174}
   - {fileID: 263303241}
+  - {fileID: 1568444414}
 --- !u!1 &281167945
 GameObject:
   m_ObjectHideFlags: 0
@@ -48321,6 +48322,7 @@ GameObject:
   - component: {fileID: 1536819937}
   - component: {fileID: 1536819936}
   - component: {fileID: 1536819935}
+  - component: {fileID: 1536819939}
   m_Layer: 0
   m_Name: Button - Debug Mode
   m_TagString: Untagged
@@ -50746,6 +50748,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536819933}
   m_CullTransparentMesh: 0
+--- !u!114 &1536819939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536819933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a1c8973751df048a7fa443e0bd4801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gavi.DebugModeButtonVisibility
 --- !u!1001 &1552532212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51042,6 +51056,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5571335017314912989, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
   m_PrefabInstance: {fileID: 1568444412}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1568444414 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 935336641694637369, guid: c2734ab61476a1b4a9bd20a70790b49c, type: 3}
+  m_PrefabInstance: {fileID: 1568444412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1cb001a57d974428d11c6a05f563e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1583023783 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3745868781383559464, guid: 0e677903c34504542a948c6ad3307bcd, type: 3}
@@ -61661,6 +61686,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _setDebugAtStart: 0
+  _startWithDebugKillSkill: 0
+  _enableBossDebugEncounter: 0
+  _enableDebugModeButton: 0
   OnDebugEnabled:
     m_PersistentCalls:
       m_Calls: []

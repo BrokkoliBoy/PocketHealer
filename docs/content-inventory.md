@@ -23,7 +23,7 @@ to the global cooldown), and how the skill is currently obtained in a normal pla
 | Penance | ❌ | 4 | - | 1.5s (tick every 0.5s) | 5s | Ally (per its `SkillRange`, despite the description also mentioning an enemy-damage variant) | **Not obtainable yet** — meant to unlock on beating **Boss 4**, which doesn't exist yet | Channeled heal, ticks for 11 per 0.5s. *(Rebalanced 2026-09-22: mana 10→4, cooldown 0s→5s.)* |
 | Despell | ❌ | 3 | instant | - | 5s | Ally | **Not obtainable** — intentionally left out of the unlock chain, may end up unused | Removes one random negative status effect from the target. |
 | Quick Heal | ❌ | 10 | instant | - | 0 | Ally | **Not obtainable** — intentionally left out for now, possibly a future special/unusual unlock | **Tooltip is broken**: shows the literal string "ERROR" instead of real text (its `{{cast:0.0}}` template points at an empty `_effectsCastFinish` list — same bug class as the old Power Word Shield issue, not yet fixed). |
-| *(DEBUG) Kill Enemy* | ✅ | 0 | 0.5s | - | 0 | Ally **and** Enemy | **Intentionally** part of every new save's starting loadout (per 2026-09-22 design decision) — kept in deliberately, dev-managed | Deals 10–20 damage. Its internal `Skill.Name` is also `"Shadow Word: Death"` — identical display name to the real damage skill, so it's indistinguishable in the UI. Not a bug — the dev wants it to stay for now. |
+| *(DEBUG) Kill Enemy* | ✅ | 0 | 0.5s | - | 0 | Ally **and** Enemy | Part of the starting loadout **only if `DebugMode.StartWithDebugKillSkill` is enabled** (off by default) — see the new Debug System section below. Previously unconditional, changed 2026-09-23. | Deals 10–20 damage. Its internal `Skill.Name` is also `"Shadow Word: Death"` — identical display name to the real damage skill, so it's indistinguishable in the UI. Not a bug — the dev wants it to stay for now. |
 
 ✅ = obtainable in a normal playthrough, working tooltip, no known issues. ⚠️ = obtainable but has a known, currently-uninvestigated/unfixed live bug. ❌ = not obtainable yet and/or broken.
 
@@ -152,6 +152,26 @@ No `Encounter` prefab currently has `Difficulty == Mythic` (or `MythicPlus`). Th
 [gotchas.md](gotchas.md) for that logic), but selecting it will fail —
 `EncounterManager.SetEncounterIndex` logs "no match was found" and doesn't start anything, since
 there's no Mythic-tier boss content yet.
+
+## Debug System (added 2026-09-23)
+
+Four independent, inspector-only booleans on the `DebugMode` component (`MainMenu.unity`'s DebugMode
+GameObject) — all default to `false`, safe for a real build:
+
+| Field | Gates | Default |
+|---|---|---|
+| `_setDebugAtStart` | Auto-enables Debug Mode (see below) as soon as the scene loads, without needing to click the in-game button. Pre-existing. | false |
+| `_startWithDebugKillSkill` | Whether `[DEBUG] Kill Enemy` is part of the starting skill loadout on a new save (`SkillLearnSystem.LearnInitialSkills`). Previously always true. | false |
+| `_enableBossDebugEncounter` | Whether the "Boss Debug" button (in the Choose Encounter menu, targets the standing `Encounter Debug` test boss) is shown at all. Previously always visible/clickable, completely unmanaged by `MenuPanelChooseEncounter`. | false |
+| `_enableDebugModeButton` | Whether the "Debug Mode" button itself is shown in the main menu. New `DebugModeButtonVisibility` component on that button reads this at `Start()`. Previously always visible/clickable. | false |
+
+The in-game "Debug Mode" button (calls `DebugMode.EnableDebugMode()`) still exists and still
+immediately unlocks all 9 player skills via `SkillLearnSystem.DEBUG_LEARN_ALL_SKILLS`. **Fixed
+2026-09-23:** it previously did *not* retroactively mark every encounter as beaten when clicked at
+runtime — `GameProgress` only checked `DebugMode.IsDebug` once in its own `Start()`, which had already
+run by the time a player could click the button. `GameProgress` now also listens live to
+`DebugMode.OnDebugEnabled`, so clicking the button mid-session behaves the same as pre-setting
+`_setDebugAtStart` before entering Play mode.
 
 ## Release Plan (as of 2026-09-23)
 
