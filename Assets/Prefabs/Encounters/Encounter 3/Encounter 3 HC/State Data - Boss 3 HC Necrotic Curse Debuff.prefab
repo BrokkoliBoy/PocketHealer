@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gavi.Bosses.SkillEffectDamage
   _damage:
-    _min: 20
-    _max: 20
+    _min: 32.5
+    _max: 32.5
     _roundingType: 0
   _roleModifiers: []
 --- !u!1 &7584668505121373494
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34dba0b4cbba1c4aa6953a5ab92cf51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gavi.States.StateData
-  _description: Deals 80 damage over 4 seconds.
+  _description: Deals 130 damage over 4 seconds.
   _maxDuration: 4
   _periodicCooldown: 1
   _reapplyType: 2

@@ -268,12 +268,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5454860310987790170, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
       propertyPath: _effectsCastFinish.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5454860310987790170, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
       propertyPath: '_effectsCastFinish.Array.data[0]'
       value: 
-      objectReference: {fileID: 8069950693161159230}
+      objectReference: {fileID: 313217455804972318}
     - target: {fileID: 5454860310987790170, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
       propertyPath: '_effectsCastFinish.Array.data[1]'
       value: 
@@ -300,7 +300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6061371947593423141, guid: 8c254cd729a55b3458baad4bb5ea301b, type: 3}
       propertyPath: _description
-      value: Deals 40 damage to the target and applies a curse that deals an additional 60 damage over 4 seconds.
+      value: Applies a curse that deals 100 damage over 4 seconds.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

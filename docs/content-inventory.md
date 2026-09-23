@@ -77,10 +77,10 @@ on `Encounter 3 Normal.prefab`) — fixed 2026-09-22, it was accidentally set to
 | Difficulty | Ability | Ready? | Cast/Channel | Cooldown | Damage/Effect |
 |---|---|---|---|---|---|
 | Normal | Auto Attack | ✅ | 2.5s cast | 0 | 20 dmg, prioritizes tanks (randomly picks one of the fight's 2 tanks — same priority mechanism as Boss 1/2, no special config needed) *(fixed 2026-09-22, was 0 dmg)* |
-| Normal | Necrotic Curse *(renamed from generic "Skill Damage")* | ✅ | 1s cast | 8s | 40 direct damage, plus a debuff (new `State Data - Boss 3 Necrotic Curse Debuff.prefab`) dealing an additional 60 damage over 4s (15 dmg/tick every 1s) *(built 2026-09-22)* |
+| Normal | Necrotic Curse *(renamed from generic "Skill Damage")* | ✅ | 1s cast | 8s | **No direct damage** — deals its full 100 damage via the debuff (25 dmg/tick over 4s) *(built 2026-09-22 with 40 direct + 60 curse; redistributed to be pure-DoT on 2026-09-23, dev call — same total damage)* |
 | Normal | Max Health | ✅ | - | - | 500 *(raised from 100 on 2026-09-22, dev balance call)* |
 | Heroic | Auto Attack | ✅ | 2.5s cast | 0 | 25 dmg, prioritizes tanks *(built 2026-09-23)* |
-| Heroic | Necrotic Curse | ✅ | 1s cast | 6s | 50 direct damage, plus a debuff (`State Data - Boss 3 HC Necrotic Curse Debuff.prefab`) dealing an additional 80 damage over 4s (20 dmg/tick) *(built 2026-09-23)* |
+| Heroic | Necrotic Curse | ✅ | 1s cast | 6s | **No direct damage** — deals its full 130 damage via the debuff (32.5 dmg/tick over 4s) *(built 2026-09-23 with 50 direct + 80 curse; redistributed to be pure-DoT the same day, dev call — same total damage)* |
 | Heroic | Max Health | ✅ | - | - | 500, unchanged from Normal *(matches the Boss 1 / Boss 2 convention of not scaling health for HC — only ability damage/cooldowns scale)* |
 
 Boss 3 HC was built 2026-09-23 by duplicating Boss 3 Normal and scaling numbers using the same

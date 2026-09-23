@@ -143,3 +143,15 @@ a fallback-to-first-free-slot if the target index turns out occupied, as defense
   saved). The level-select UI already had a "Button - Encounter Chooser 3 Heroic" prepared and gated
   behind beating Boss 3 Normal, so it's immediately playable with no UI changes needed. This completes
   the next release's 3-bosses-×-2-difficulties content scope.
+
+## 2026-09-23 (later) — Necrotic Curse redistributed to be pure-DoT (Normal + HC)
+
+- Dev call: Necrotic Curse should deal no direct/initial damage, only damage-over-time via its debuff,
+  on both Normal and HC. Total damage per cast is unchanged, just moved entirely into the DoT:
+  - Normal: was 40 direct + 60 curse (15/tick) → now 0 direct + 100 curse (25/tick over 4s).
+  - HC: was 50 direct + 80 curse (20/tick) → now 0 direct + 130 curse (32.5/tick over 4s).
+- Removed the "Skill Effect - Direct Damage" entry from each Necrotic Curse skill's
+  `SkillCast._effectsCastFinish` list, rather than just zeroing its damage value — `CharacterHealth.
+  TakeDamage` asserts/logs an error on `dmg <= 0`, so leaving a 0-damage direct-hit effect wired in
+  would have spammed the console on every cast. The now-unused "Skill Effect - Direct Damage" child
+  GameObject/component is still present on both prefabs but disconnected from the skill.
