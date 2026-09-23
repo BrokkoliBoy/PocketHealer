@@ -35919,6 +35919,7 @@ MonoBehaviour:
   - {fileID: 3791806780011144752, guid: ff2f2eebe4de360499baf7c3a44c924c, type: 3}
   - {fileID: 3791806780011144752, guid: a0e67a0446b47f24fb60f3c00f8ee159, type: 3}
   - {fileID: 3791806780011144752, guid: a2c7ab65e13be134090648dbb5950216, type: 3}
+  - {fileID: 3791806780011144752, guid: 4f344e6dd8c810045ab09e146294761e, type: 3}
   _encounterInstantiateRoot: {fileID: 1061018809}
   _bossUiParentTransform: {fileID: 105094185}
   OnEncounterSpawn:

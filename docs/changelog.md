@@ -135,3 +135,11 @@ a fallback-to-first-free-slot if the target index turns out occupied, as defense
 - Active TODO going forward: **build Boss 3 HC** (`Encounter 3 HC` currently only has an empty
   `.meta`, no prefab) — the last piece needed for the 3×2 release target. See
   `content-inventory.md` for the up-to-date status.
+- Built Boss 3 HC (`Assets/Prefabs/Encounters/Encounter 3/Encounter 3 HC/`) right after, in the same
+  session: duplicated Boss 3 Normal and scaled numbers using the existing Boss 1 HC / Boss 2 HC
+  convention (~+20-25% ability damage, shorter cooldowns, health unchanged) — Auto Attack 20→25 dmg,
+  Necrotic Curse 40→50 direct / 60→80 curse-over-4s (15→20 per tick) / cooldown 8s→6s. Registered the
+  new `Encounter 3 HC.prefab` in `EncounterManager._encounterPrefabs` (scene edit, `MainMenu.unity`
+  saved). The level-select UI already had a "Button - Encounter Chooser 3 Heroic" prepared and gated
+  behind beating Boss 3 Normal, so it's immediately playable with no UI changes needed. This completes
+  the next release's 3-bosses-×-2-difficulties content scope.

@@ -79,7 +79,18 @@ on `Encounter 3 Normal.prefab`) — fixed 2026-09-22, it was accidentally set to
 | Normal | Auto Attack | ✅ | 2.5s cast | 0 | 20 dmg, prioritizes tanks (randomly picks one of the fight's 2 tanks — same priority mechanism as Boss 1/2, no special config needed) *(fixed 2026-09-22, was 0 dmg)* |
 | Normal | Necrotic Curse *(renamed from generic "Skill Damage")* | ✅ | 1s cast | 8s | 40 direct damage, plus a debuff (new `State Data - Boss 3 Necrotic Curse Debuff.prefab`) dealing an additional 60 damage over 4s (15 dmg/tick every 1s) *(built 2026-09-22)* |
 | Normal | Max Health | ✅ | - | - | 500 *(raised from 100 on 2026-09-22, dev balance call)* |
-| Heroic | — | ❌ | — | — | **Doesn't exist yet — this is the active TODO as of 2026-09-23.** `Encounter 3 HC` folder is currently just an empty `.meta`, no prefab underneath it. |
+| Heroic | Auto Attack | ✅ | 2.5s cast | 0 | 25 dmg, prioritizes tanks *(built 2026-09-23)* |
+| Heroic | Necrotic Curse | ✅ | 1s cast | 6s | 50 direct damage, plus a debuff (`State Data - Boss 3 HC Necrotic Curse Debuff.prefab`) dealing an additional 80 damage over 4s (20 dmg/tick) *(built 2026-09-23)* |
+| Heroic | Max Health | ✅ | - | - | 500, unchanged from Normal *(matches the Boss 1 / Boss 2 convention of not scaling health for HC — only ability damage/cooldowns scale)* |
+
+Boss 3 HC was built 2026-09-23 by duplicating Boss 3 Normal and scaling numbers using the same
+convention already established by Boss 1 HC / Boss 2 HC (roughly +20-25% ability damage, shorter
+cooldowns, unchanged health): Auto Attack 20→25 dmg, Necrotic Curse 40→50 direct / 60→80 curse (15→20
+per tick) / cooldown 8s→6s. **Fully wired and playable** — registered in
+`EncounterManager._encounterPrefabs` (index 6), and the level-select UI already had a
+"Button - Encounter Chooser 3 Heroic" prepared in `MainMenu.unity` (gated behind beating Boss 3
+Normal, per `MenuPanelChooseEncounter`'s existing logic), so no UI work was needed beyond building the
+actual fight content.
 
 The old "Dark Pact" state-data prefab (`State Data - Boss 3 Dark Pact.prefab`) is still unused/unwired
 — the dev deliberately started with these 2 simpler abilities instead ("fangen mal gerade klein an").
@@ -146,8 +157,8 @@ there's no Mythic-tier boss content yet.
 
 **Next release ships with exactly 3 bosses, each with a Normal and a Heroic version.** Boss 4 (and
 Boss 5) are explicitly **out of scope** for it — Boss 4 exists as unused, unregistered content (see
-above) and Boss 5 is still just an idea. The immediate next content task is **Boss 3 HC**, the last
-missing piece for that 3-bosses-×-2-difficulties target.
+above) and Boss 5 is still just an idea. **Boss 3 HC was the last missing piece for that target and is
+now done (2026-09-23)** — the 3×2 release scope is complete content-wise, pending playtesting.
 
 ## Design Plan / Roadmap (as of 2026-09-22)
 
@@ -206,10 +217,11 @@ thing to check before assuming what "should" unlock where.
 4. ~~**Build Boss 4.**~~ **Built 2026-09-22, shelved 2026-09-23** — see the Boss 4 section above.
    Deliberately not registered in `EncounterManager` and not part of the next release. No unlock
    condition for Penance was added since the boss isn't reachable.
-5. **Build Boss 3 HC.** **Active TODO as of 2026-09-23** — the last piece needed before the next
-   release (3 bosses × 2 difficulties). `Encounter 3 HC` folder currently only has an empty `.meta`,
-   no prefab underneath. Boss 3 Normal's first two abilities (Auto Attack, Necrotic Curse) are done;
-   the unused "Dark Pact" state data is still intentionally unwired ("fangen mal gerade klein an").
+5. ~~**Build Boss 3 HC.**~~ **Done 2026-09-23.** Auto Attack and Necrotic Curse scaled up (see the
+   Boss 3 HC row above), registered in `EncounterManager`, and reachable via the pre-existing
+   "Button - Encounter Chooser 3 Heroic" once Boss 3 Normal is beaten. This completes the next
+   release's 3-bosses-×-2-difficulties content scope. The unused "Dark Pact" state data is still
+   intentionally unwired ("fangen mal gerade klein an").
 6. **Design & build Boss 5** (idea stage only — mechanic above needs to be fleshed out before it's
    buildable). Real content work, biggest unknown of the list.
 7. **Investigate the Circle of Healing "consumes resources, heals nothing" bug** (see the ⚠️ row
