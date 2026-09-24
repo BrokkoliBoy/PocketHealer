@@ -60,6 +60,15 @@ A few things worth calling out for anyone poking around the code:
 | Core systems (combat loop, saving, skill config, UI) | ~90% complete |
 
 Development is currently paused, with two more bosses and three more spells mapped out for whenever
-it picks back up. Deliberately **not** on the roadmap: a third "Mythic" difficulty tier — prototyped
-early on, but shelved as more design overhead than the game needs once all five bosses exist on
-Normal and Heroic.
+it picks back up.
+
+## Looking Ahead
+
+If I pick this back up, beyond the usual "more bosses, more spells" content work, here's what's on
+my list:
+
+- General UI polish
+- Sound effects
+- Visual effects for spells, so casting something actually feels like it's doing something
+- A third "Mythic" difficulty tier — prototyped early on, then shelved since it worked better to
+  finish Normal and Heroic across all bosses first
