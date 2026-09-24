@@ -104,6 +104,6 @@ bug this caused.
   A button's own click handler running inside this chain cannot deactivate its own GameObject
   synchronously — see gotchas.md.
 - Doozy's "Nody" node graphs independently drive some panel transitions (e.g. the login screen used
-  to have a node-graph-side transition racing the code-side login logic — since fixed, see
-  changelog.md) — when a Doozy-driven UI flow behaves unexpectedly, check both the C# side **and**
-  the Nody graph/`OnClick` persistent-call wiring in the Inspector, not just the script.
+  to have a node-graph-side transition racing the code-side login logic, since fixed) — when a
+  Doozy-driven UI flow behaves unexpectedly, check both the C# side **and** the Nody graph/`OnClick`
+  persistent-call wiring in the Inspector, not just the script.

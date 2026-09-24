@@ -73,9 +73,8 @@ delete, by explicit choice, not an oversight).
 ## Vendored third-party code (`Assets/Extern/Doozy`, `Assets/Extern/AllIn1SpriteShader`) needed hand-patching for Unity 6.6
 
 Neither plugin is actively maintained/updated for newer Unity API changes, so upgrading the Editor
-surfaces real compile errors in vendored source, not just package-manifest issues. Already patched
-as of 2026-09-22 (see changelog.md for the exact APIs): `Object.GetInstanceID()` →
-`Object.GetEntityId()`, `AssetDatabase.GetAssetPath(int)` → the `Object` overload,
+surfaces real compile errors in vendored source, not just package-manifest issues. Already patched:
+`Object.GetInstanceID()` → `Object.GetEntityId()`, `AssetDatabase.GetAssetPath(int)` → the `Object` overload,
 `EndNameEditAction` → `AssetCreationEndAction`, `[OnOpenAsset]` callback signature `int` → `EntityId`
 + `EditorUtility.EntityIdToObject`. If a *future* Unity upgrade surfaces more of these, the fix
 pattern is the same: don't guess the new signature, check `UnityEditor.xml`/`UnityEngine.CoreModule.xml` inside the installed Editor's `Editor/Data/Managed/` folder for the exact
